@@ -1,4 +1,4 @@
-package Interfaz;
+package GUI;
 
 public class GUI {
 }
