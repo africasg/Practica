@@ -576,8 +576,8 @@ public class GUI {
 
             frame.setVisible(true);
         }
-        public static void mostrarFinal(){
-            //tienes que escribir el nombre del asesino
+       public static void mostrarFinal(){
+            //FALTA AÑADIR DONDE TE DICE SI GANAS O PIERDES PERO SE TIENE QUE HACER CUANDO TENGAMOS EL BACKEND LISTO
             //ganas o pierdes
 
             final String[] nom={""};
@@ -587,6 +587,8 @@ public class GUI {
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
             JPanel panel = new JPanel();
+            panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+            panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
             frame.add(panel);
 
 
@@ -595,16 +597,18 @@ public class GUI {
             panel.add(texto);
 
             JTextField textField = new JTextField();
-            textField.setBounds(50, 60, 200, 25);
-            frame.add(textField);
+            textField.setMaximumSize(new Dimension(300, 25));
+            panel.add(Box.createRigidArea(new Dimension(0, 10)));
+            panel.add(textField);
 
             JButton button = new JButton("Guardar");
-            button.setBounds(50, 100, 100, 30);
-            frame.add(button);
-
+            button.setAlignmentX(Component.CENTER_ALIGNMENT);
+            panel.add(Box.createRigidArea(new Dimension(0, 10)));
+            panel.add(button);
 
             JButton botonMenu = new JButton("Volver al menu");
-            botonMenu.setBounds(50, 150, 150, 30);
+            botonMenu.setAlignmentX(Component.CENTER_ALIGNMENT);
+            panel.add(Box.createRigidArea(new Dimension(0, 10)));
             panel.add(botonMenu);
 
             button.addActionListener(new ActionListener() {
