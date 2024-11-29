@@ -578,7 +578,7 @@ public class GUI {
         }
         public static void mostrarFinal(){
             //tienes que escribir el nombre del asesino
-       public static void mostrarFinal(){
+       
             //FALTA AÑADIR DONDE TE DICE SI GANAS O PIERDES PERO SE TIENE QUE HACER CUANDO TENGAMOS EL BACKEND LISTO
             //ganas o pierdes
 
