@@ -1,6 +1,6 @@
 package Objetos;
 
-public abstract class Objeto {
+public  class Objeto {
     private String nombreobj;
     private String desc;
     private boolean disponible;

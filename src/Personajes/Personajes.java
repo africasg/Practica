@@ -1,13 +1,15 @@
 package Personajes;
 
+import javax.swing.*;
+
 public abstract class Personajes {
         private String nombre;
-        private String imagen;//como hacer lo de las imagenes, mirar si se hace con string o no
+        private ImageIcon imagen;//como hacer lo de las imagenes, mirar si se hace con string o no
         private String descripcion;
         //posicion imagen (en el main del juego)
-        public Personajes(String nombre, String imagen, String descripcion) {
+        public Personajes(String nombre, String ruta, String descripcion) {
             this.nombre = nombre;
-            this.imagen = imagen;
+            this.imagen = new ImageIcon(ruta);
             this.descripcion = descripcion;
         }
 /*metodos: aparecer
@@ -17,7 +19,7 @@ public abstract class Personajes {
         return nombre;
     }
 
-    public String getImagen() {
+    public ImageIcon getImagen() {
         return imagen;
     }
 
