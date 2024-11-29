@@ -1,5 +1,11 @@
 package GUI;
 
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+
 public class GUI {
    //RECUERDA IMPORTAR MAIN PARA QUE FUNCIONE
         public static void mostrarMenu(){
@@ -471,20 +477,191 @@ public class GUI {
         public static void mostrarPantalla6(){
             //has ido y te encuentras con mike que te cuenta lo que paso
             //mostrarPantalla7()
+
+            JFrame frame= new JFrame("Pantalla 6");
+            frame.setSize(400, 300);
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+            JPanel panel = new JPanel();
+            frame.add(panel);
+
+
+            JLabel texto= new JLabel("Llegue al sitio y estaba... MIKE!!! (te cuenta el lore)");
+            texto.setAlignmentX(Component.CENTER_ALIGNMENT);
+            panel.add(texto);
+
+            JButton botonir = new JButton("Vas a ver a Ryan");
+            botonir.setBounds(50, 100, 150, 30);
+            panel.add(botonir);
+
+            botonir.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    mostrarPantalla7();
+                    frame.dispose();
+                }
+            });
+
+            frame.setVisible(true);
         }
         public static void mostrarPantalla7(){
             //has ido a hablar con ryan para confrontarle pero te ataca
             //usas pistola (mostrarPantalla8())
             //no la usas(no la tienes, no quieres, no tienes bala)-mostrarPantExtra()
+
+            JFrame frame= new JFrame("Pantalla 7");
+            frame.setSize(400, 300);
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+            JPanel panel = new JPanel();
+            frame.add(panel);
+
+
+            JLabel texto= new JLabel("OH NO... el maldito ryan me ha atacado que hago??");
+            texto.setAlignmentX(Component.CENTER_ALIGNMENT);
+            panel.add(texto);
+
+            JButton botonDefenderte = new JButton("Defenderte con pistola");
+            botonDefenderte.setBounds(50, 100, 150, 30);
+            panel.add(botonDefenderte);
+
+            JButton botonNoDefenderte = new JButton("No te defiendes");
+            botonNoDefenderte.setBounds(50, 150, 150, 30);
+            panel.add(botonNoDefenderte);
+
+            botonDefenderte.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    mostrarPantalla8();
+                    frame.dispose();
+                }
+            });
+            botonNoDefenderte.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    mostrarPantaExtra();
+                    frame.dispose();
+                }
+            });
+
+            frame.setVisible(true);
         }
         public static void mostrarPantalla8(){
         //te defiendes y has ganado. detienes a ryan
+            JFrame frame= new JFrame("Pantalla 8");
+            frame.setSize(400, 300);
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+            JPanel panel = new JPanel();
+            frame.add(panel);
+
+
+            JLabel texto= new JLabel("TE HAS DEFENDIDIO Y GANAS OLE OLE");
+            texto.setAlignmentX(Component.CENTER_ALIGNMENT);
+            panel.add(texto);
+
+            JButton botonMenu = new JButton("Volver al menu");
+            botonMenu.setBounds(50, 100, 150, 30);
+            panel.add(botonMenu);
+
+
+            botonMenu.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    mostrarMenu();
+                    frame.dispose();
+                }
+            });
+
+
+            frame.setVisible(true);
         }
-        public static void mostrarFinal(){
-            //tienes que escribir el nombre del asesino
+       public static void mostrarFinal(){
+            //FALTA AÑADIR DONDE TE DICE SI GANAS O PIERDES PERO SE TIENE QUE HACER CUANDO TENGAMOS EL BACKEND LISTO
             //ganas o pierdes
+
+            final String[] nom={""};
+
+            JFrame frame= new JFrame("Pantalla Final");
+            frame.setSize(400, 300);
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+            JPanel panel = new JPanel();
+            panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+            panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+            frame.add(panel);
+
+
+            JLabel texto= new JLabel("Llegaste al final, quien crees que ha matado a emily carter??");
+            texto.setAlignmentX(Component.CENTER_ALIGNMENT);
+            panel.add(texto);
+
+            JTextField textField = new JTextField();
+            textField.setMaximumSize(new Dimension(300, 25));
+            panel.add(Box.createRigidArea(new Dimension(0, 10)));
+            panel.add(textField);
+
+            JButton button = new JButton("Guardar");
+            button.setAlignmentX(Component.CENTER_ALIGNMENT);
+            panel.add(Box.createRigidArea(new Dimension(0, 10)));
+            panel.add(button);
+
+            JButton botonMenu = new JButton("Volver al menu");
+            botonMenu.setAlignmentX(Component.CENTER_ALIGNMENT);
+            panel.add(Box.createRigidArea(new Dimension(0, 10)));
+            panel.add(botonMenu);
+
+            button.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    nom[0]= textField.getText();
+                    JOptionPane.showMessageDialog(frame, "Asesino elegido: " + nom[0]);
+                    frame.dispose();
+                }
+            });
+
+
+            botonMenu.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    mostrarMenu();
+
+                    frame.dispose();
+                }
+            });
+
+
+            frame.setVisible(true);
         }
         public static void mostrarPantaExtra(){
             //no te has podido defender y mueres dejando el caso sin resolver
+
+            JFrame frame= new JFrame("Pantalla Extra");
+            frame.setSize(400, 300);
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+            JPanel panel = new JPanel();
+            frame.add(panel);
+
+
+            JLabel texto= new JLabel("QUE TE HAN MATADO Y NO SABES NA ");
+            texto.setAlignmentX(Component.CENTER_ALIGNMENT);
+            panel.add(texto);
+
+            JButton botonMenu = new JButton("Volver al menu");
+            botonMenu.setBounds(50, 100, 150, 30);
+            panel.add(botonMenu);
+
+
+            botonMenu.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    mostrarMenu();
+                    frame.dispose();
+                }
+            });
+
+
+            frame.setVisible(true);
         }
 }
