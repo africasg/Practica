@@ -17,7 +17,24 @@ public class UI {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         JPanel panel = new JPanel();
-        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+
+        // Cargar la imagen de fondo
+        ImageIcon originalIcon = new ImageIcon(getClass().getClassLoader().getResource("PANTALLA_TITULO.jpg"));
+        Image originalImage = originalIcon.getImage();
+        JLabel fondo = new JLabel();
+        fondo.setIcon(new ImageIcon(originalImage));
+
+        // Añadir el fondo al panel, pero no dimensionarlo aún
+        panel.add(fondo, BorderLayout.CENTER);
+
+
+
+
+
+
+
+
+
         JButton btnIniciar = new JButton("Jugar");
         btnIniciar.setAlignmentX(Component.CENTER_ALIGNMENT);
         btnIniciar.addActionListener(new ActionListener() {
@@ -41,34 +58,6 @@ public class UI {
         });
         panel.add(btnSalir);
 
-        ImageIcon originalIcon = new ImageIcon(getClass().getClassLoader().getResource("PANTALLA_TITULO.jpg"));
-        Image originalImage = originalIcon.getImage();
-
-        JLabel fondo = new JLabel(new ImageIcon(originalImage));
-
-        Image scaledImage = originalImage.getScaledInstance(
-                frame.getWidth(), frame.getHeight(), Image.SCALE_SMOOTH);
-        ImageIcon scaledIcon = new ImageIcon(scaledImage);
-
-        frame.addComponentListener(new ComponentAdapter() {
-            @Override
-            public void componentResized(ComponentEvent e) {
-                // Cuando la ventana cambie de tamaño, actualizar la imagen escalada
-                int width = frame.getWidth();
-                int height = frame.getHeight();
-                Image scaledImage = originalImage.getScaledInstance(width, height, Image.SCALE_SMOOTH);
-                fondo.setIcon(new ImageIcon(scaledImage));  // Actualizamos el fondo con la imagen escalada
-            }
-        });
-
-        panel.add(fondo, BorderLayout.CENTER);
-
-        // Añadir el panel al JFrame
-        frame.add(panel);
-
-        // Tamaño inicial del JFrame
-        frame.setSize(800, 600);
-        frame.setVisible(true);
 
         JLabel mensaje = new JLabel("Bienvenido al juego detective ¿Qué quieres hacer?");
         mensaje.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -76,13 +65,14 @@ public class UI {
         mensaje.setFont(new Font("Arial", Font.BOLD, 24)); // Estilo de la fuente
         panel.add(mensaje);
 
-
-
+        frame.add(panel);
+        frame.setVisible(true);
     }
+
     public void mostrarPantallaInicial(){
         //Se muestra el texto con lore, consigues movil(lees conver y tienes codigo)
 
-        JFrame frame= new JFrame("Pantalla incicial");
+        JFrame frame= new JFrame("Pantalla inicial");
         frame.setSize(400, 300);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
