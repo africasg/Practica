@@ -5,11 +5,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class GUI {
-   //RECUERDA IMPORTAR MAIN PARA QUE FUNCIONE
+
         public static void mostrarMenu(){
         JFrame frame= new JFrame("Mistery Murder");
-            frame.setSize(400, 300);
+            frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            JLabel fondo = new JLabel(new ImageIcon("ruta_del_fondo.jpg"))
             JPanel panel = new JPanel();
             panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
 
