@@ -10,7 +10,8 @@ public class GUI {
         JFrame frame= new JFrame("Mistery Murder");
             frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            JLabel fondo = new JLabel(new ImageIcon("ruta_del_fondo.jpg"))
+            JLabel fondo = new JLabel(new ImageIcon(GUI.class.getResource("/PANTALLA_TITULO.jpg")));
+            fondo.setLayout(new BorderLayout());
             JPanel panel = new JPanel();
             panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
 
