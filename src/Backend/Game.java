@@ -9,8 +9,7 @@ public class Game {
 
     public void Decision1(){
         Objeto movil= new Objeto("Movil","Movil de la victima.",true);
-
-
+        //caca
 
 
 
