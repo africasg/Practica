@@ -4,7 +4,7 @@ import javax.swing.*;
 
 public abstract class Personajes {
     private String nombre;
-    private ImageIcon imagen;//como hacer lo de las imagenes, mirar si se hace con string o no
+    private ImageIcon imagen;
     private String descripcion;
     //posicion imagen (en el main del juego)
     public Personajes(String nombre, String ruta, String descripcion) {

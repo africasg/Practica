@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 import java.awt.image.BufferedImage;
+import Backend.Game;
 
 
 public class UI {
@@ -79,12 +80,13 @@ public class UI {
         JPanel panel = new JPanel();
         frame.add(panel);
 
-
+        //mejorar este texto con lore
         JLabel texto= new JLabel(" Bienvenida detective Alisson ");
         texto.setAlignmentX(Component.CENTER_ALIGNMENT);
         panel.add(texto);
 
-
+        Game game= new Game();
+        game.Decision1();
 
         JButton botonJess = new JButton("Hablar con Jess");
         botonJess.setBounds(50, 100, 150, 30);

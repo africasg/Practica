@@ -10,8 +10,8 @@ public class Detective extends Personajes {
     private List<Objeto> inventario;
     private boolean tieneBala;
 
-    public Detective(String nombre, String imagen, String descripcion) {
-        super("Allyson Jayce", imagen, "Personajes.Personajes.Detective");
+    public Detective(String nombre, String ruta, String descripcion, List<Objeto> inventario, boolean tieneBala) {
+        super("Allyson Jayce", ruta, "Personajes.Personajes.Detective");
         this.inventario = new ArrayList<>();
         this.tieneBala = false;
     }
