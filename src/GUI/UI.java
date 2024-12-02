@@ -20,7 +20,7 @@ public class UI {
         JPanel panel = new JPanel();
 
 
-        // Cargar la imagen de fondo
+        // Cargar la imagen de Fondo
         ImageIcon originalIcon = new ImageIcon(getClass().getClassLoader().getResource("PANTALLA_TITULO.jpg"));
         Image originalImage = originalIcon.getImage();
         JLabel fondo = new JLabel();

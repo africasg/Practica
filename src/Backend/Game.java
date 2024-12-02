@@ -17,7 +17,7 @@ public class Game {
         Objeto movil= new Objeto("Movil","Movil de la victima.",true);
         ImageIcon iconomovil= new ImageIcon(getClass().getResource("/telefono_juego.png"));
 
-        //objeto detective
+        //objeto detective allyson
         String ruta="imagen_Allyson.png";
         List<Objeto> inventario=new ArrayList<>();
         Detective Allysson= new Detective("Allyson", ruta, "Detective", inventario, false);
