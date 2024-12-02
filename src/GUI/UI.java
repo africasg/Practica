@@ -19,6 +19,7 @@ public class UI {
 
         JPanel panel = new JPanel();
 
+
         // Cargar la imagen de fondo
         ImageIcon originalIcon = new ImageIcon(getClass().getClassLoader().getResource("PANTALLA_TITULO.jpg"));
         Image originalImage = originalIcon.getImage();
@@ -27,12 +28,6 @@ public class UI {
 
         // Añadir el fondo al panel, pero no dimensionarlo aún
         panel.add(fondo, BorderLayout.CENTER);
-
-
-
-
-
-
 
 
 
@@ -74,7 +69,7 @@ public class UI {
         //Se muestra el texto con lore, consigues movil(lees conver y tienes codigo)
 
         JFrame frame= new JFrame("Pantalla inicial");
-        frame.setSize(400, 300);
+        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         JPanel panel = new JPanel();
@@ -117,7 +112,7 @@ public class UI {
     public void mostrarPantJess(){
         //Te cuenta su parte de la historia
         JFrame frame= new JFrame("Pantalla Jess");
-        frame.setSize(400, 300);
+        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         JPanel panel = new JPanel();
@@ -145,7 +140,7 @@ public class UI {
     public void mostrarPantRyan(){
         //Te cuenta su parte de la historia
         JFrame frame= new JFrame("Pantalla Ryan");
-        frame.setSize(400, 300);
+        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         JPanel panel = new JPanel();
@@ -176,7 +171,7 @@ public class UI {
         //No vas(mostrarPantalla2b())
 
         JFrame frame= new JFrame("Pantalla 1");
-        frame.setSize(400, 300);
+        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         JPanel panel = new JPanel();
@@ -219,7 +214,7 @@ public class UI {
         //no coges pistola (mostrarPantalla3a())
 
         JFrame frame= new JFrame("Pantalla 2a");
-        frame.setSize(400, 300);
+        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         JPanel panel = new JPanel();
@@ -262,7 +257,7 @@ public class UI {
         //mostrarPantalla3b()
 
         JFrame frame= new JFrame("Pantalla 2b");
-        frame.setSize(400, 300);
+        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         JPanel panel = new JPanel();
