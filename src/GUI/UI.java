@@ -17,19 +17,18 @@ public class UI {
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        JPanel panel = new JPanel();
-
-
-        // Cargar la imagen de Fondo
-        ImageIcon originalIcon = new ImageIcon(getClass().getClassLoader().getResource("PANTALLA_TITULO.jpg"));
-        Image originalImage = originalIcon.getImage();
-        JLabel fondo = new JLabel();
-        fondo.setIcon(new ImageIcon(originalImage));
-
-        // Añadir el fondo al panel, pero no dimensionarlo aún
-        panel.add(fondo, BorderLayout.CENTER);
-
-
+        //Fondo imagen
+        JPanel panel = new JPanel(){
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                // Cargar la imagen de fondo
+                ImageIcon fondo = new ImageIcon(getClass().getResource("/PANTALLA_TITULO.jpg"));
+                Image img = fondo.getImage();
+                // Dibujar la imagen en el panel
+                g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
+            }
+        };
 
         JButton btnIniciar = new JButton("Jugar");
         btnIniciar.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -67,21 +66,32 @@ public class UI {
 
     public void mostrarPantallaInicial(){
         //Se muestra el texto con lore, consigues movil(lees conver y tienes codigo)
-
+        Game game= new Game();
         JFrame frame= new JFrame("Pantalla inicial");
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        JPanel panel = new JPanel();
+        JPanel panel = new JPanel(){
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                // Cargar la imagen de fondo
+                ImageIcon fondo = new ImageIcon(getClass().getResource("/interrogatorio.jpg"));
+                Image img = fondo.getImage();
+                // Dibujar la imagen en el panel
+                g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
+            }
+        };
         frame.add(panel);
 
         //mejorar este texto con lore
-        JLabel texto= new JLabel(" Bienvenida detective Alisson ");
+        game.Accion1();
+        JLabel texto= new JLabel(" ¿A quien vas a interrogar?");
         texto.setAlignmentX(Component.CENTER_ALIGNMENT);
         panel.add(texto);
 
-        Game game= new Game();
-        game.Decision1();
+
+        game.Accion2();
 
         JButton botonJess = new JButton("Hablar con Jess");
         botonJess.setBounds(50, 100, 150, 30);
@@ -115,11 +125,24 @@ public class UI {
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        JPanel panel = new JPanel();
+        Game game= new Game();
+
+        JPanel panel = new JPanel(){
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                // Cargar la imagen de fondo
+                ImageIcon fondo = new ImageIcon(getClass().getResource("/interrogatorio.jpg"));
+                Image img = fondo.getImage();
+                // Dibujar la imagen en el panel
+                g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
+            }
+        };
         frame.add(panel);
 
+        game.Accion3();
 
-        JLabel texto= new JLabel("Detective yo no fui");
+        JLabel texto= new JLabel("MMMM...Parece que el caso es mas complicado de lo que pensaba");
         texto.setAlignmentX(Component.CENTER_ALIGNMENT);
         panel.add(texto);
 
@@ -143,11 +166,25 @@ public class UI {
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        JPanel panel = new JPanel();
+        Game game= new Game();
+
+        JPanel panel = new JPanel(){
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                // Cargar la imagen de fondo
+                ImageIcon fondo = new ImageIcon(getClass().getResource("/interrogatorio.jpg"));
+                Image img = fondo.getImage();
+                // Dibujar la imagen en el panel
+                g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
+            }
+        };
         frame.add(panel);
 
+        game.Accion4();
 
-        JLabel texto= new JLabel("Detective fue Jess seguro");
+
+        JLabel texto= new JLabel("MMMM...Parece que el caso es mas complicado de lo que pensaba");
         texto.setAlignmentX(Component.CENTER_ALIGNMENT);
         panel.add(texto);
 
@@ -174,11 +211,24 @@ public class UI {
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        JPanel panel = new JPanel();
+        Game game= new Game();
+
+        JPanel panel = new JPanel(){
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                // Cargar la imagen de fondo
+                ImageIcon fondo = new ImageIcon(getClass().getResource("/despacho.jpg"));
+                Image img = fondo.getImage();
+                // Dibujar la imagen en el panel
+                g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
+            }
+        };
         frame.add(panel);
 
+        game.Accion5();
 
-        JLabel texto= new JLabel("¿Deberia de volver a investigar la casa?");
+        JLabel texto= new JLabel("¿Volveras a la escena del crimen?");
         texto.setAlignmentX(Component.CENTER_ALIGNMENT);
         panel.add(texto);
 
@@ -217,11 +267,24 @@ public class UI {
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        JPanel panel = new JPanel();
+        Game game= new Game();
+
+        JPanel panel = new JPanel(){
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                // Cargar la imagen de fondo
+                ImageIcon fondo = new ImageIcon(getClass().getResource("/casa.jpg"));
+                Image img = fondo.getImage();
+                // Dibujar la imagen en el panel
+                g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
+            }
+        };
         frame.add(panel);
 
+        game.Accion6();
 
-        JLabel texto= new JLabel("He venido y he encontrado una caja fuerte, la abro y hay unos papeles y una pistola. La cojo?");
+        JLabel texto= new JLabel("¿Qué hago?");
         texto.setAlignmentX(Component.CENTER_ALIGNMENT);
         panel.add(texto);
 
