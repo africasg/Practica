@@ -326,6 +326,9 @@ public class UI {
         JPanel panel = new JPanel();
         frame.add(panel);
 
+        Game game= new Game();
+
+        game.Accion7();
 
         JLabel texto= new JLabel("Mejor reviso el movil. En sus mails hay uno con unos papeles de una herencia. OH le ha llegado un mensaje");
         texto.setAlignmentX(Component.CENTER_ALIGNMENT);

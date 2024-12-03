@@ -309,7 +309,9 @@ public class Game {
         
         //Objeto papeles
         Objeto papeles= new Objeto("Papeles","Herencia del abuelo de la victima",true);
-        ImageIcon iconopapeles= new ImageIcon(getClass().getResource("/folios.jpg"));
+        ImageIcon iconopapelesOriginal= new ImageIcon(getClass().getResource("/papeles.jpg"));
+        Image imagenEscalada = iconopapelesOriginal.getImage().getScaledInstance(300, 200, Image.SCALE_SMOOTH);
+        ImageIcon iconopapeles = new ImageIcon(imagenEscalada);
 
         //FONFO DEL FRAME
         JFrame frame = new JFrame();
@@ -354,7 +356,7 @@ public class Game {
         dialog1.setLocationRelativeTo(frame);
         dialog1.setVisible(true);
 
-        //obtienes el movil
+        //obtienes los papeles
         Allysson.cogerObjeto(papeles);
 
         //Segundo dialogo
@@ -363,10 +365,89 @@ public class Game {
         dialog2.setLayout(new BorderLayout());
 
         JLabel iconoLabel = new JLabel(iconopapeles);
+
         JLabel mensaje2 = new JLabel("Enhorabuena, has obtenido unos papeles muy importantes para la victima!!!");
         mensaje2.setHorizontalAlignment(SwingConstants.CENTER);
 
         dialog2.add(iconoLabel, BorderLayout.WEST);
+        dialog2.add(mensaje2, BorderLayout.CENTER);
+
+        JButton botonCerrar2 = new JButton("Cerrar");
+        botonCerrar2.addActionListener(e -> {
+            dialog2.dispose();
+            frame.dispose();
+
+        });
+        dialog2.add(botonCerrar2, BorderLayout.SOUTH);
+
+
+        dialog2.setLocationRelativeTo(frame);
+        dialog2.setVisible(true);
+    }
+
+    public void Accion7(){
+
+        //objeto detective allyson
+        String ruta="imagen_Allyson.png";
+        List<Objeto> inventario=new ArrayList<>();
+        Detective Allysson= new Detective("Allyson", ruta, "Detective", inventario, false);
+
+
+        //FONFO DEL FRAME
+        JFrame frame = new JFrame();
+        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setVisible(true);
+        JPanel fondoPanel = new JPanel() {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                // Dibujar la imagen de fondo
+                ImageIcon fondo = new ImageIcon(getClass().getResource("/despacho.jpg"));
+                g.drawImage(fondo.getImage(), 0, 0, getWidth(), getHeight(), this);
+            }
+        };
+        fondoPanel.setLayout(new BorderLayout());
+        frame.add(fondoPanel);
+
+        frame.setVisible(true);
+
+        //primer texto
+
+        JDialog dialog1 = new JDialog(frame, null, true);
+        dialog1.setSize(800, 600);
+        dialog1.setLayout(new BorderLayout());
+
+        JTextArea mensaje1 = new JTextArea("Realmente creo que seria demasiado peligroso volver a la escena del crimen, ademas podría meterme en lios si alguien me pilla ahí.\n" +
+                "Despues de darle unas vueltas decido tirar de las pistas que ya tengo y repasar algo que haya podido pasar por alto\n\n" +
+                "Al final acabo revisando el movil de Emily otra vez, al meterme en sus mails encuentro uno reciente donde a la victima se le había entregado una gran cantidad de dinero por una herencia de su abuelo\n" +
+                "Será este el motivo real por el asesinato de Emily Carter...\n" +
+                "Mientras estaba dandole vueltas a la nueva información ocurrio algo sorprendente... Alguien le acababa de mandar un mensaje anonimo al movil de la victima!!!\n" +
+                "Igual deberia de abrirlo para ver si me puede ayudar con el caso, pero si por el contrario no es nada relacionado con el asesinato habre manipulado una pista para nada.....");
+        mensaje1.setEditable(false);
+        mensaje1.setLineWrap(true);
+        mensaje1.setWrapStyleWord(true);
+        dialog1.add(new JScrollPane(mensaje1), BorderLayout.CENTER);
+
+        JButton botonCerrar1 = new JButton("Cerrar");
+        botonCerrar1.addActionListener(e -> dialog1.dispose());
+        dialog1.add(botonCerrar1, BorderLayout.SOUTH);
+
+        dialog1.setLocationRelativeTo(frame);
+        dialog1.setVisible(true);
+
+
+        //Segundo dialogo
+        JDialog dialog2 = new JDialog(frame, null, true);
+        dialog2.setSize(800, 600);
+        dialog2.setLayout(new BorderLayout());
+
+
+
+        JLabel mensaje2 = new JLabel("Enhorabuena, has obtenido unos papeles muy importantes para la victima!!!");
+        mensaje2.setHorizontalAlignment(SwingConstants.CENTER);
+
         dialog2.add(mensaje2, BorderLayout.CENTER);
 
         JButton botonCerrar2 = new JButton("Cerrar");
