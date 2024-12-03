@@ -18,7 +18,7 @@ public class UI {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         //Fondo imagen
-        JPanel panel = new JPanel(){
+        JPanel panel = new JPanel() {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
@@ -29,36 +29,47 @@ public class UI {
                 g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
             }
         };
+        panel.setLayout(new GridBagLayout());
 
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.insets = new Insets(10, 0, 10, 0); // Espaciado entre componentes
+        gbc.anchor = GridBagConstraints.CENTER;
+
+        // Mensaje
+        JLabel mensaje = new JLabel("Bienvenido al juego detective ¿Qué quieres hacer?");
+        mensaje.setForeground(Color.WHITE); // Cambiar el color del texto
+        mensaje.setFont(new Font("Arial", Font.BOLD, 24)); // Estilo de la fuente
+        panel.add(mensaje, gbc);
+
+        // Botón "Jugar"
+        gbc.gridy++;
         JButton btnIniciar = new JButton("Jugar");
-        btnIniciar.setAlignmentX(Component.CENTER_ALIGNMENT);
+        btnIniciar.setPreferredSize(new Dimension(300, 80)); // Tamaño del botón
+        btnIniciar.setFont(new Font("Arial", Font.BOLD, 24)); // Texto más grande
         btnIniciar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                frame.dispose();  // Cerrar el menú
+                frame.dispose(); // Cerrar el menú
                 mostrarPantallaInicial();
             }
         });
-        panel.add(btnIniciar);
+        panel.add(btnIniciar, gbc);
 
-        // Crear el botón de "Salir"
+        // Botón "Salir"
+        gbc.gridy++;
         JButton btnSalir = new JButton("Salir");
-        btnSalir.setAlignmentX(Component.CENTER_ALIGNMENT);
+        btnSalir.setPreferredSize(new Dimension(300, 80)); // Tamaño del botón
+        btnSalir.setFont(new Font("Arial", Font.BOLD, 24)); // Texto más grande
         btnSalir.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JOptionPane.showMessageDialog(frame, "Gracias por jugar.");
-                System.exit(0);  // Cerrar el juego
+                System.exit(0); // Cerrar el juego
             }
         });
-        panel.add(btnSalir);
-
-
-        JLabel mensaje = new JLabel("Bienvenido al juego detective ¿Qué quieres hacer?");
-        mensaje.setAlignmentX(Component.CENTER_ALIGNMENT);
-        mensaje.setForeground(Color.WHITE); // Cambiar el color del texto
-        mensaje.setFont(new Font("Arial", Font.BOLD, 24)); // Estilo de la fuente
-        panel.add(mensaje);
+        panel.add(btnSalir, gbc);
 
         frame.add(panel);
         frame.setVisible(true);
