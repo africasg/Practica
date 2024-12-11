@@ -40,7 +40,7 @@ public class UI {
         // Mensaje
         JLabel mensaje = new JLabel("Bienvenido al juego detective ¿Qué quieres hacer?");
         mensaje.setForeground(Color.WHITE); // Cambiar el color del texto
-        mensaje.setFont(new Font("Arial", Font.BOLD, 24)); // Estilo de la fuente
+        mensaje.setFont(new Font("Verdana", Font.PLAIN, 24));// Estilo de la fuente
         panel.add(mensaje, gbc);
 
         // Botón "Jugar"
@@ -99,17 +99,29 @@ public class UI {
         game.Accion1();
         JLabel texto= new JLabel(" ¿A quien vas a interrogar?");
         texto.setAlignmentX(Component.CENTER_ALIGNMENT);
+        texto.setForeground(Color.WHITE);
+        texto.setFont(new Font("Verdana", Font.PLAIN, 24));// Estilo de la fuente
         panel.add(texto);
+        panel.setLayout(new GridBagLayout());
 
+        GridBagConstraints gbc = new GridBagConstraints(); //PARA PONER LOS BOTONES GRANDES Y EN EL MEDIO HAY QUE UTILIZAR EL GRIDY
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.insets = new Insets(10, 0, 10, 0); // Espaciado entre componentes
+        gbc.anchor = GridBagConstraints.CENTER;
 
         game.Accion2();
+        gbc.gridy++;
+
 
         JButton botonJess = new JButton("Hablar con Jess");
-        botonJess.setBounds(50, 100, 150, 30);
+        botonJess.setPreferredSize(new Dimension(300, 80)); // Tamaño del botón boton
+        botonJess.setFont(new Font("Arial", Font.BOLD, 24));
         panel.add(botonJess);
 
         JButton botonRyan = new JButton("Hablar con Ryan");
-        botonRyan.setBounds(50, 150, 150, 30);
+        botonRyan.setPreferredSize(new Dimension(300, 80)); // Tamaño del botón boton
+        botonRyan.setFont(new Font("Arial", Font.BOLD, 24));
         panel.add(botonRyan);
 
         botonJess.addActionListener(new ActionListener() {
@@ -155,10 +167,22 @@ public class UI {
 
         JLabel texto= new JLabel("MMMM...Parece que el caso es mas complicado de lo que pensaba");
         texto.setAlignmentX(Component.CENTER_ALIGNMENT);
+        texto.setForeground(Color.WHITE);
+        texto.setFont(new Font("Verdana", Font.PLAIN, 24));// Estilo de la fuente
         panel.add(texto);
+        panel.setLayout(new GridBagLayout());
 
+        GridBagConstraints gbc = new GridBagConstraints(); //PARA PONER LOS BOTONES GRANDES Y EN EL MEDIO HAY QUE UTILIZAR EL GRIDY
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.insets = new Insets(10, 0, 10, 0); // Espaciado entre componentes
+        gbc.anchor = GridBagConstraints.CENTER;
+
+        gbc.gridy++;
         JButton boton1 = new JButton("Ir a la oficina");
-        boton1.setBounds(50, 100, 150, 30);
+        boton1.setPreferredSize(new Dimension(300, 80)); // Tamaño del botón boton
+        boton1.setFont(new Font("Arial", Font.BOLD, 24));
+
         panel.add(boton1);
 
         boton1.addActionListener(new ActionListener() {
@@ -197,6 +221,7 @@ public class UI {
 
         JLabel texto= new JLabel("MMMM...Parece que el caso es mas complicado de lo que pensaba");
         texto.setAlignmentX(Component.CENTER_ALIGNMENT);
+        texto.setFont(new Font("Verdana", Font.PLAIN, 24));// Estilo de la fuente
         panel.add(texto);
 
         JButton boton1 = new JButton("Ir a la oficina");
@@ -241,6 +266,7 @@ public class UI {
 
         JLabel texto= new JLabel("¿Volveras a la escena del crimen?");
         texto.setAlignmentX(Component.CENTER_ALIGNMENT);
+        texto.setFont(new Font("Verdana", Font.PLAIN, 24));// Estilo de la fuente
         panel.add(texto);
 
         JButton botonsi = new JButton("Si vas");
@@ -297,9 +323,10 @@ public class UI {
 
         JLabel texto= new JLabel("¿Qué hago?");
         texto.setAlignmentX(Component.CENTER_ALIGNMENT);
+        texto.setFont(new Font("Verdana", Font.PLAIN, 24));// Estilo de la fuente
         panel.add(texto);
 
-        JButton botonCoger = new JButton("coges la pistola");
+        JButton botonCoger = new JButton("Coges la pistola");
         botonCoger.setBounds(50, 100, 150, 30);
         panel.add(botonCoger);
 
@@ -343,9 +370,10 @@ public class UI {
 
         JLabel texto= new JLabel("Mejor reviso el movil. En sus mails hay uno con unos papeles de una herencia. OH le ha llegado un mensaje");
         texto.setAlignmentX(Component.CENTER_ALIGNMENT);
+        texto.setFont(new Font("Verdana", Font.PLAIN, 24));// Estilo de la fuente
         panel.add(texto);
 
-        JButton botonMensaje = new JButton("abres el mensaje");
+        JButton botonMensaje = new JButton("Abres el mensaje");
         botonMensaje.setBounds(50, 100, 150, 30);
         panel.add(botonMensaje);
 
@@ -375,6 +403,7 @@ public class UI {
 
         JLabel texto= new JLabel(" Creo que acabo de ver a una persona sospechosa fuera, La sigo??");
         texto.setAlignmentX(Component.CENTER_ALIGNMENT);
+        texto.setFont(new Font("Verdana", Font.PLAIN, 24));// Estilo de la fuente
         panel.add(texto);
 
         JButton botonSeguir = new JButton("Le sigues");
@@ -415,15 +444,16 @@ public class UI {
         frame.add(panel);
 
 
-        JLabel texto= new JLabel("Lees el mensaje y pone que vayas a x sitio si quieres saber la verdad");
+        JLabel texto= new JLabel("Lees el mensaje y pone que vayas al lago si quieres saber la verdad");
         texto.setAlignmentX(Component.CENTER_ALIGNMENT);
+        texto.setFont(new Font("Verdana", Font.PLAIN, 24));// Estilo de la fuente
         panel.add(texto);
 
-        JButton botonVas= new JButton("Vas al lugar");
+        JButton botonVas= new JButton("Vas al lago");
         botonVas.setBounds(50, 100, 150, 30);
         panel.add(botonVas);
 
-        JButton botonNoVas = new JButton("No vas al lugar");
+        JButton botonNoVas = new JButton("No vas al lago");
         botonNoVas.setBounds(50, 150, 150, 30);
         panel.add(botonNoVas);
 
@@ -460,6 +490,7 @@ public class UI {
 
         JLabel texto= new JLabel("Le he perdido de vista. QUE ES ESE RUIDO. Sacas la pistola automaticamente");
         texto.setAlignmentX(Component.CENTER_ALIGNMENT);
+        texto.setFont(new Font("Verdana", Font.PLAIN, 24));// Estilo de la fuente
         panel.add(texto);
 
         JButton botonDisparas = new JButton("DISPARAS!!!");
@@ -503,6 +534,7 @@ public class UI {
 
         JLabel texto= new JLabel("Vaya era solo un conejo y ha salido corriendo. Espera... aqui hay una nota");
         texto.setAlignmentX(Component.CENTER_ALIGNMENT);
+        texto.setFont(new Font("Verdana", Font.PLAIN, 24));// Estilo de la fuente
         panel.add(texto);
 
         JButton botonLeer = new JButton("vas ");
@@ -545,6 +577,7 @@ public class UI {
 
         JLabel texto= new JLabel("Que susto solo era un conejo. espera... que es esa nota");
         texto.setAlignmentX(Component.CENTER_ALIGNMENT);
+        texto.setFont(new Font("Verdana", Font.PLAIN, 24));// Estilo de la fuente
         panel.add(texto);
 
         JButton botonLeer = new JButton("vas ");
@@ -586,6 +619,7 @@ public class UI {
 
         JLabel texto= new JLabel("Llegue al sitio y estaba... MIKE!!! (te cuenta el lore)");
         texto.setAlignmentX(Component.CENTER_ALIGNMENT);
+        texto.setFont(new Font("Verdana", Font.PLAIN, 24));// Estilo de la fuente
         panel.add(texto);
 
         JButton botonir = new JButton("Vas a ver a Ryan");
@@ -617,6 +651,7 @@ public class UI {
 
         JLabel texto= new JLabel("OH NO... el maldito ryan me ha atacado que hago??");
         texto.setAlignmentX(Component.CENTER_ALIGNMENT);
+        texto.setFont(new Font("Verdana", Font.PLAIN, 24));// Estilo de la fuente
         panel.add(texto);
 
         JButton botonDefenderte = new JButton("Defenderte con pistola");
@@ -694,6 +729,7 @@ public class UI {
 
         JLabel texto= new JLabel("Llegaste al final, quien crees que ha matado a emily carter??");
         texto.setAlignmentX(Component.CENTER_ALIGNMENT);
+        texto.setFont(new Font("Verdana", Font.PLAIN, 24));// Estilo de la fuente
         panel.add(texto);
 
         JTextField textField = new JTextField();
