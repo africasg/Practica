@@ -54,13 +54,16 @@ public class Game {
         mensaje1.setEditable(false);
         mensaje1.setLineWrap(true);
         mensaje1.setWrapStyleWord(true);
-
         mensaje1.setFont(new Font("Verdana", Font.PLAIN, 24));
         dialog1.add(new JScrollPane(mensaje1), BorderLayout.CENTER);
 
+        JPanel botonesPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         JButton botonCerrar1 = new JButton("Cerrar");
         botonCerrar1.addActionListener(e -> dialog1.dispose());
-        dialog1.add(botonCerrar1, BorderLayout.SOUTH);
+        botonesPanel.add(botonCerrar1);
+
+        dialog1.add(botonesPanel, BorderLayout.SOUTH);
+
 
         dialog1.setLocationRelativeTo(frame);
         dialog1.setVisible(true);
@@ -80,9 +83,9 @@ public class Game {
         //FONFO DEL FRAME
         JFrame frame = new JFrame();
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
+
         JPanel fondoPanel = new JPanel() {
             @Override
             protected void paintComponent(Graphics g) {
@@ -99,7 +102,6 @@ public class Game {
 
         //primer texto
 
-
         JDialog dialog1 = new JDialog(frame, null, true);
         dialog1.setSize(750, 500);
         dialog1.setResizable(false);
@@ -112,6 +114,7 @@ public class Game {
         mensaje1.setEditable(false);
         mensaje1.setLineWrap(true);
         mensaje1.setWrapStyleWord(true);
+        mensaje1.setFont(new Font("Verdana", Font.PLAIN, 24));
         dialog1.add(new JScrollPane(mensaje1), BorderLayout.CENTER);
 
         JButton botonCerrar1 = new JButton("Cerrar");
@@ -122,19 +125,19 @@ public class Game {
         dialog1.setVisible(true);
 
 
-        //obtienes el movil
+        //obtienes el movie
         Allysson.cogerObjeto(movil);
 
         //Segundo dialogo
         JDialog dialog2 = new JDialog(frame, null, true);
-        dialog1.setSize(750, 500);
-        dialog1.setResizable(false);
-        dialog1.setLayout(new BorderLayout());
+        dialog2.setSize(750, 500);
+        dialog2.setResizable(false);
+        dialog2.setLayout(new BorderLayout());
 
         JLabel iconoLabel = new JLabel(iconomovil);
         JLabel mensaje2 = new JLabel("Enhorabuena, has obtenido un movil!!!");
         mensaje2.setHorizontalAlignment(SwingConstants.CENTER);
-
+        mensaje1.setFont(new Font("Verdana", Font.PLAIN, 18));
         dialog2.add(iconoLabel, BorderLayout.WEST);
         dialog2.add(mensaje2, BorderLayout.CENTER);
 
@@ -196,6 +199,7 @@ public class Game {
         mensaje1.setEditable(false);
         mensaje1.setLineWrap(true);
         mensaje1.setWrapStyleWord(true);
+        mensaje1.setFont(new Font("Verdana", Font.PLAIN, 24));
         dialog1.add(new JScrollPane(mensaje1), BorderLayout.CENTER);
 
         JButton botonCerrar1 = new JButton("Cerrar");
@@ -249,6 +253,7 @@ public class Game {
         mensaje1.setEditable(false);
         mensaje1.setLineWrap(true);
         mensaje1.setWrapStyleWord(true);
+        mensaje1.setFont(new Font("Verdana", Font.PLAIN, 24));
         dialog1.add(new JScrollPane(mensaje1), BorderLayout.CENTER);
 
         JButton botonCerrar1 = new JButton("Cerrar");
@@ -298,6 +303,7 @@ public class Game {
         mensaje1.setEditable(false);
         mensaje1.setLineWrap(true);
         mensaje1.setWrapStyleWord(true);
+        mensaje1.setFont(new Font("Verdana", Font.PLAIN, 24));
         dialog1.add(new JScrollPane(mensaje1), BorderLayout.CENTER);
 
         JButton botonCerrar1 = new JButton("Cerrar");
@@ -356,6 +362,7 @@ public class Game {
         mensaje1.setEditable(false);
         mensaje1.setLineWrap(true);
         mensaje1.setWrapStyleWord(true);
+        mensaje1.setFont(new Font("Verdana", Font.PLAIN, 24));
         dialog1.add(new JScrollPane(mensaje1), BorderLayout.CENTER);
 
         JButton botonCerrar1 = new JButton("Cerrar");
@@ -377,6 +384,7 @@ public class Game {
         JLabel iconoLabel = new JLabel(iconopapeles);
 
         JLabel mensaje2 = new JLabel("Enhorabuena, has obtenido unos papeles muy importantes para la victima!!!");
+        mensaje2.setFont(new Font("Verdana", Font.PLAIN, 18));
         mensaje2.setHorizontalAlignment(SwingConstants.CENTER);
 
         dialog2.add(iconoLabel, BorderLayout.WEST);
@@ -439,6 +447,7 @@ public class Game {
         mensaje1.setEditable(false);
         mensaje1.setLineWrap(true);
         mensaje1.setWrapStyleWord(true);
+        mensaje1.setFont(new Font("Verdana", Font.PLAIN, 24));
         dialog1.add(new JScrollPane(mensaje1), BorderLayout.CENTER);
 
         JButton botonCerrar1 = new JButton("Cerrar");
@@ -458,6 +467,7 @@ public class Game {
 
 
         JLabel mensaje2 = new JLabel("Enhorabuena, has obtenido unos papeles muy importantes para la victima!!!");
+
         mensaje2.setHorizontalAlignment(SwingConstants.CENTER);
 
         dialog2.add(mensaje2, BorderLayout.CENTER);
