@@ -8,9 +8,12 @@ import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 import java.awt.image.BufferedImage;
 import Backend.Game;
+import Objetos.Pistola;
 
 
 public class UI {
+
+    Pistola pistola= new Pistola("pistola","Arma de la victima",false,true);
 
     public void mostrarMenu(){
         JFrame frame = new JFrame("Mistery Murder");
@@ -337,6 +340,7 @@ public class UI {
         botonCoger.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                game.cogePistola(pistola);
                 mostrarPantalla3a();
                 frame.dispose();
             }
@@ -345,6 +349,7 @@ public class UI {
             @Override
             public void actionPerformed(ActionEvent e) {
                 mostrarPantalla3a();
+
                 frame.dispose();
             }
         });
@@ -361,14 +366,24 @@ public class UI {
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        JPanel panel = new JPanel();
+        JPanel panel = new JPanel(){
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                // Cargar la imagen de fondo
+                ImageIcon fondo = new ImageIcon(getClass().getResource("/despacho.jpg"));
+                Image img = fondo.getImage();
+                // Dibujar la imagen en el panel
+                g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
+            }
+        };
         frame.add(panel);
 
         Game game= new Game();
 
         game.Accion7();
 
-        JLabel texto= new JLabel("Mejor reviso el movil. En sus mails hay uno con unos papeles de una herencia. OH le ha llegado un mensaje");
+        JLabel texto= new JLabel("Creo que si deberia abrirlo");
         texto.setAlignmentX(Component.CENTER_ALIGNMENT);
         texto.setFont(new Font("Verdana", Font.PLAIN, 24));// Estilo de la fuente
         panel.add(texto);
@@ -395,13 +410,28 @@ public class UI {
 
         JFrame frame= new JFrame("Pantalla 3a");
         frame.setSize(400, 300);
+        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        JPanel panel = new JPanel();
+        JPanel panel = new JPanel(){
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                // Cargar la imagen de fondo
+                ImageIcon fondo = new ImageIcon(getClass().getResource("/casa.jpg"));
+                Image img = fondo.getImage();
+                // Dibujar la imagen en el panel
+                g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
+            }
+        };
         frame.add(panel);
 
+        Game game= new Game();
 
-        JLabel texto= new JLabel(" Creo que acabo de ver a una persona sospechosa fuera, La sigo??");
+        game.Accion8();
+
+
+        JLabel texto= new JLabel(" ¿Debería seguir a la persona?");
         texto.setAlignmentX(Component.CENTER_ALIGNMENT);
         texto.setFont(new Font("Verdana", Font.PLAIN, 24));// Estilo de la fuente
         panel.add(texto);
@@ -438,22 +468,36 @@ public class UI {
 
         JFrame frame= new JFrame("Pantalla 3b");
         frame.setSize(400, 300);
+        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        JPanel panel = new JPanel();
+        JPanel panel = new JPanel(){
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                // Cargar la imagen de fondo
+                ImageIcon fondo = new ImageIcon(getClass().getResource("/oficina.jpg"));
+                Image img = fondo.getImage();
+                // Dibujar la imagen en el panel
+                g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
+            }
+        };
         frame.add(panel);
 
+        Game game= new Game();
+        game.Accion9();
 
-        JLabel texto= new JLabel("Lees el mensaje y pone que vayas al lago si quieres saber la verdad");
+
+        JLabel texto= new JLabel("¿Debería hacerle caso al mensaje?");
         texto.setAlignmentX(Component.CENTER_ALIGNMENT);
         texto.setFont(new Font("Verdana", Font.PLAIN, 24));// Estilo de la fuente
         panel.add(texto);
 
-        JButton botonVas= new JButton("Vas al lago");
+        JButton botonVas= new JButton("Vas al bosque");
         botonVas.setBounds(50, 100, 150, 30);
         panel.add(botonVas);
 
-        JButton botonNoVas = new JButton("No vas al lago");
+        JButton botonNoVas = new JButton("No vas al bosque");
         botonNoVas.setBounds(50, 150, 150, 30);
         panel.add(botonNoVas);
 
@@ -482,13 +526,27 @@ public class UI {
 
         JFrame frame= new JFrame("Pantalla 4");
         frame.setSize(400, 300);
+        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        JPanel panel = new JPanel();
+        JPanel panel = new JPanel(){
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                // Cargar la imagen de fondo
+                ImageIcon fondo = new ImageIcon(getClass().getResource("/BOSQUE.JPG"));
+                Image img = fondo.getImage();
+                // Dibujar la imagen en el panel
+                g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
+            }
+        };
         frame.add(panel);
 
+        Game game= new Game();
+        game.Accion10();
 
-        JLabel texto= new JLabel("Le he perdido de vista. QUE ES ESE RUIDO. Sacas la pistola automaticamente");
+
+        JLabel texto= new JLabel("RAPIDO QUE HACES");
         texto.setAlignmentX(Component.CENTER_ALIGNMENT);
         texto.setFont(new Font("Verdana", Font.PLAIN, 24));// Estilo de la fuente
         panel.add(texto);
@@ -504,6 +562,7 @@ public class UI {
         botonDisparas.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                game.disparas(pistola);
                 mostrarPantalla5a();
                 frame.dispose();
             }
@@ -526,13 +585,24 @@ public class UI {
 
         JFrame frame= new JFrame("Pantalla 5a");
         frame.setSize(400, 300);
+        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        JPanel panel = new JPanel();
+        JPanel panel = new JPanel(){
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                // Cargar la imagen de fondo
+                ImageIcon fondo = new ImageIcon(getClass().getResource("/BOSQUE.JPG"));
+                Image img = fondo.getImage();
+                // Dibujar la imagen en el panel
+                g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
+            }
+        };
         frame.add(panel);
 
 
-        JLabel texto= new JLabel("Vaya era solo un conejo y ha salido corriendo. Espera... aqui hay una nota");
+        JLabel texto= new JLabel("Que deberia de hacer con esta información");
         texto.setAlignmentX(Component.CENTER_ALIGNMENT);
         texto.setFont(new Font("Verdana", Font.PLAIN, 24));// Estilo de la fuente
         panel.add(texto);
@@ -569,9 +639,20 @@ public class UI {
 
         JFrame frame= new JFrame("Pantalla 5b");
         frame.setSize(400, 300);
+        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        JPanel panel = new JPanel();
+        JPanel panel = new JPanel(){
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                // Cargar la imagen de fondo
+                ImageIcon fondo = new ImageIcon(getClass().getResource("/BOSQUE.JPG"));
+                Image img = fondo.getImage();
+                // Dibujar la imagen en el panel
+                g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
+            }
+        };
         frame.add(panel);
 
 
@@ -611,9 +692,20 @@ public class UI {
 
         JFrame frame= new JFrame("Pantalla 6");
         frame.setSize(400, 300);
+        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        JPanel panel = new JPanel();
+        JPanel panel = new JPanel(){
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                // Cargar la imagen de fondo
+                ImageIcon fondo = new ImageIcon(getClass().getResource("/BOSQUE.JPG"));
+                Image img = fondo.getImage();
+                // Dibujar la imagen en el panel
+                g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
+            }
+        };
         frame.add(panel);
 
 
@@ -643,9 +735,20 @@ public class UI {
 
         JFrame frame= new JFrame("Pantalla 7");
         frame.setSize(400, 300);
+        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        JPanel panel = new JPanel();
+        JPanel panel = new JPanel(){
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                // Cargar la imagen de fondo
+                ImageIcon fondo = new ImageIcon(getClass().getResource("/casaryan.png"));
+                Image img = fondo.getImage();
+                // Dibujar la imagen en el panel
+                g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
+            }
+        };
         frame.add(panel);
 
 
@@ -683,9 +786,20 @@ public class UI {
         //te defiendes y has ganado. detienes a ryan
         JFrame frame= new JFrame("Pantalla 8");
         frame.setSize(400, 300);
+        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        JPanel panel = new JPanel();
+        JPanel panel = new JPanel(){
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                // Cargar la imagen de fondo
+                ImageIcon fondo = new ImageIcon(getClass().getResource("/HAS_CONSEGUIDO.jpg"));
+                Image img = fondo.getImage();
+                // Dibujar la imagen en el panel
+                g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
+            }
+        };
         frame.add(panel);
 
 
@@ -719,6 +833,7 @@ public class UI {
 
         JFrame frame= new JFrame("Pantalla Final");
         frame.setSize(400, 300);
+        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         JPanel panel = new JPanel();
@@ -779,6 +894,7 @@ public class UI {
 
         JFrame frame= new JFrame("Pantalla Extra");
         frame.setSize(400, 300);
+        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         JPanel panel = new JPanel();

@@ -135,7 +135,7 @@ public class Game {
         dialog2.setLayout(new BorderLayout());
 
         JLabel iconoLabel = new JLabel(iconomovil);
-        JLabel mensaje2 = new JLabel("Enhorabuena, has obtenido un movil!!!");
+        JLabel mensaje2 = new JLabel("Has obtenido un movil!!!");
         mensaje2.setHorizontalAlignment(SwingConstants.CENTER);
         mensaje1.setFont(new Font("Verdana", Font.PLAIN, 18));
         dialog2.add(iconoLabel, BorderLayout.WEST);
@@ -383,8 +383,8 @@ public class Game {
 
         JLabel iconoLabel = new JLabel(iconopapeles);
 
-        JLabel mensaje2 = new JLabel("Enhorabuena, has obtenido unos papeles muy importantes para la victima!!!");
-        mensaje2.setFont(new Font("Verdana", Font.PLAIN, 18));
+        JLabel mensaje2 = new JLabel("Has obtenido unos papeles muy importantes para la victima!!!");
+        mensaje2.setFont(new Font("Verdana", Font.PLAIN, 16));
         mensaje2.setHorizontalAlignment(SwingConstants.CENTER);
 
         dialog2.add(iconoLabel, BorderLayout.WEST);
@@ -403,12 +403,84 @@ public class Game {
         dialog2.setVisible(true);
     }
 
+    public void cogePistola(Pistola pistola){
+
+        //objeto detective allyson
+        String ruta="imagen_Allyson.png";
+        List<Objeto> inventario=new ArrayList<>();
+        Detective Allysson= new Detective("Allyson", ruta, "Detective", inventario, false);
+
+        ImageIcon iconopapelesOriginal= new ImageIcon(getClass().getResource("/pistola_juego.png"));
+        Image imagenEscalada = iconopapelesOriginal.getImage().getScaledInstance(300, 200, Image.SCALE_SMOOTH);
+        ImageIcon iconopapeles = new ImageIcon(imagenEscalada);
+
+        //coge pistola
+        pistola.setDisponible(true);
+        pistola.setTieneBala(true);
+        Allysson.cogerPistola(pistola);
+
+        //FONFO DEL FRAME
+        JFrame frame = new JFrame();
+        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setVisible(true);
+        JPanel fondoPanel = new JPanel() {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                // Dibujar la imagen de fondo
+                ImageIcon fondo = new ImageIcon(getClass().getResource("/casa.jpg"));
+                g.drawImage(fondo.getImage(), 0, 0, getWidth(), getHeight(), this);
+            }
+        };
+        fondoPanel.setLayout(new BorderLayout());
+        frame.add(fondoPanel);
+
+        frame.setVisible(true);
+
+        //Segundo dialogo
+        JDialog dialog2 = new JDialog(frame, null, true);
+        dialog2.setSize(750, 500);
+        dialog2.setResizable(false);
+        dialog2.setLayout(new BorderLayout());
+
+        JLabel iconoLabel = new JLabel(iconopapeles);
+        JLabel mensaje2 = new JLabel("Has obtenido una pistola!!!");
+
+        mensaje2.setHorizontalAlignment(SwingConstants.CENTER);
+
+        dialog2.add(iconoLabel, BorderLayout.WEST);
+        dialog2.add(mensaje2, BorderLayout.CENTER);
+
+        JButton botonCerrar2 = new JButton("Cerrar");
+        botonCerrar2.addActionListener(e -> {
+            dialog2.dispose();
+            frame.dispose();
+
+        });
+        dialog2.add(botonCerrar2, BorderLayout.SOUTH);
+
+
+        dialog2.setLocationRelativeTo(frame);
+        dialog2.setVisible(true);
+
+    }
+
+
+
     public void Accion7(){
 
         //objeto detective allyson
         String ruta="imagen_Allyson.png";
         List<Objeto> inventario=new ArrayList<>();
         Detective Allysson= new Detective("Allyson", ruta, "Detective", inventario, false);
+
+        //Objeto papeles
+        Objeto papeles= new Objeto("Papeles","Herencia del abuelo de la victima",true);
+        ImageIcon iconopapelesOriginal= new ImageIcon(getClass().getResource("/telefono_juego.png"));
+        Image imagenEscalada = iconopapelesOriginal.getImage().getScaledInstance(300, 200, Image.SCALE_SMOOTH);
+        ImageIcon iconopapeles = new ImageIcon(imagenEscalada);
 
 
         //FONFO DEL FRAME
@@ -464,12 +536,12 @@ public class Game {
         dialog2.setResizable(false);
         dialog2.setLayout(new BorderLayout());
 
-
-
-        JLabel mensaje2 = new JLabel("Enhorabuena, has obtenido unos papeles muy importantes para la victima!!!");
+        JLabel iconoLabel = new JLabel(iconopapeles);
+        JLabel mensaje2 = new JLabel("Has obtenido unos papeles muy importantes para la victima!!!");
 
         mensaje2.setHorizontalAlignment(SwingConstants.CENTER);
 
+        dialog2.add(iconoLabel, BorderLayout.WEST);
         dialog2.add(mensaje2, BorderLayout.CENTER);
 
         JButton botonCerrar2 = new JButton("Cerrar");
@@ -483,6 +555,232 @@ public class Game {
 
         dialog2.setLocationRelativeTo(frame);
         dialog2.setVisible(true);
+    }
+
+    public void Accion8(){
+
+        //objeto detective allyson
+        String ruta="imagen_Allyson.png";
+        List<Objeto> inventario=new ArrayList<>();
+        Detective Allysson= new Detective("Allyson", ruta, "Detective", inventario, false);
+
+        //FONFO DEL FRAME
+        JFrame frame = new JFrame();
+        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setVisible(true);
+        JPanel fondoPanel = new JPanel() {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                // Dibujar la imagen de fondo
+                ImageIcon fondo = new ImageIcon(getClass().getResource("/casa.jpg"));
+                g.drawImage(fondo.getImage(), 0, 0, getWidth(), getHeight(), this);
+            }
+        };
+        fondoPanel.setLayout(new BorderLayout());
+        frame.add(fondoPanel);
+
+        frame.setVisible(true);
+
+        //primer texto
+
+        JDialog dialog1 = new JDialog(frame, null, true);
+        dialog1.setSize(750, 500);
+        dialog1.setResizable(false);
+        dialog1.setLayout(new BorderLayout());
+
+        JTextArea mensaje1 = new JTextArea("Tras andar un poco mas por la casa escuchas un fuerte golpe fuera\n" +
+                "Corriendo te acercas a la ventana mas cercana al ruido y ves una silueta mirando a la casa, pero enseguida sale corriendo hacia el bosque...\n" +
+                "Creo que es demasiado arriesgado seguir a la persona de negro pero esto podría ser una gran pista." );
+        mensaje1.setEditable(false);
+        mensaje1.setLineWrap(true);
+        mensaje1.setWrapStyleWord(true);
+        mensaje1.setFont(new Font("Verdana", Font.PLAIN, 24));
+        dialog1.add(new JScrollPane(mensaje1), BorderLayout.CENTER);
+
+        JButton botonCerrar1 = new JButton("Cerrar");
+        botonCerrar1.addActionListener(e -> dialog1.dispose());
+        dialog1.add(botonCerrar1, BorderLayout.SOUTH);
+
+        dialog1.setLocationRelativeTo(frame);
+        dialog1.setVisible(true);
+    }
+
+    public void Accion9(){
+
+        //objeto detective allyson
+        String ruta="imagen_Allyson.png";
+        List<Objeto> inventario=new ArrayList<>();
+        Detective Allysson= new Detective("Allyson", ruta, "Detective", inventario, false);
+
+        //FONFO DEL FRAME
+        JFrame frame = new JFrame();
+        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setVisible(true);
+        JPanel fondoPanel = new JPanel() {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                // Dibujar la imagen de fondo
+                ImageIcon fondo = new ImageIcon(getClass().getResource("/despacho.jpg"));
+                g.drawImage(fondo.getImage(), 0, 0, getWidth(), getHeight(), this);
+            }
+        };
+        fondoPanel.setLayout(new BorderLayout());
+        frame.add(fondoPanel);
+
+        frame.setVisible(true);
+
+        //primer texto
+
+        JDialog dialog1 = new JDialog(frame, null, true);
+        dialog1.setSize(750, 500);
+        dialog1.setResizable(false);
+        dialog1.setLayout(new BorderLayout());
+
+        JTextArea mensaje1 = new JTextArea("Al final has decidido abrir el mensaje anonimo, ya estas demasiado implicada un poco mas no puede doler.\n\n" +
+                "MENSAJE:\n\n" +
+                "Ven mañana al bosque detras de la casa de Emily sola si quieres saber que paso.\n\n" +
+                "De quien sera este mensaje tan extraño? Querran ayudarme o sera una trampa?" );
+        mensaje1.setEditable(false);
+        mensaje1.setLineWrap(true);
+        mensaje1.setWrapStyleWord(true);
+        mensaje1.setFont(new Font("Verdana", Font.PLAIN, 24));
+        dialog1.add(new JScrollPane(mensaje1), BorderLayout.CENTER);
+
+        JButton botonCerrar1 = new JButton("Cerrar");
+        botonCerrar1.addActionListener(e -> dialog1.dispose());
+        dialog1.add(botonCerrar1, BorderLayout.SOUTH);
+
+        dialog1.setLocationRelativeTo(frame);
+        dialog1.setVisible(true);
+    }
+
+    public void Accion10(){
+
+        //objeto detective allyson
+        String ruta="imagen_Allyson.png";
+        List<Objeto> inventario=new ArrayList<>();
+        Detective Allysson= new Detective("Allyson", ruta, "Detective", inventario, false);
+
+        //FONFO DEL FRAME
+        JFrame frame = new JFrame();
+        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setVisible(true);
+        JPanel fondoPanel = new JPanel() {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                // Dibujar la imagen de fondo
+                ImageIcon fondo = new ImageIcon(getClass().getResource("/BOSQUE.JPG"));
+                g.drawImage(fondo.getImage(), 0, 0, getWidth(), getHeight(), this);
+            }
+        };
+        fondoPanel.setLayout(new BorderLayout());
+        frame.add(fondoPanel);
+
+        frame.setVisible(true);
+
+        //primer texto
+
+        JDialog dialog1 = new JDialog(frame, null, true);
+        dialog1.setSize(750, 500);
+        dialog1.setResizable(false);
+        dialog1.setLayout(new BorderLayout());
+
+        JTextArea mensaje1 = new JTextArea("Despues de seguir a la figura la pierdes de vista al entrar al bosque, igual esto ha sido una mala idea...\n" +
+                "De pronto escuchas un ruido detras del arbusto de detras tuya!!!" );
+        mensaje1.setEditable(false);
+        mensaje1.setLineWrap(true);
+        mensaje1.setWrapStyleWord(true);
+        mensaje1.setFont(new Font("Verdana", Font.PLAIN, 24));
+        dialog1.add(new JScrollPane(mensaje1), BorderLayout.CENTER);
+
+        JButton botonCerrar1 = new JButton("Cerrar");
+        botonCerrar1.addActionListener(e -> dialog1.dispose());
+        dialog1.add(botonCerrar1, BorderLayout.SOUTH);
+
+        dialog1.setLocationRelativeTo(frame);
+        dialog1.setVisible(true);
+    }
+
+    public void disparas(Pistola pistola){
+
+        //objeto detective allyson
+        String ruta="imagen_Allyson.png";
+        List<Objeto> inventario=new ArrayList<>();
+        Detective Allysson= new Detective("Allyson", ruta, "Detective", inventario, false);
+
+        //FONFO DEL FRAME
+        JFrame frame = new JFrame();
+        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setVisible(true);
+        JPanel fondoPanel = new JPanel() {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                // Dibujar la imagen de fondo
+                ImageIcon fondo = new ImageIcon(getClass().getResource("/BOSQUE.JPG"));
+                g.drawImage(fondo.getImage(), 0, 0, getWidth(), getHeight(), this);
+            }
+        };
+        fondoPanel.setLayout(new BorderLayout());
+        frame.add(fondoPanel);
+
+        frame.setVisible(true);
+
+        if(pistola.isDisponible()){
+           Allysson.dispararPistola(pistola);
+
+            JDialog dialog1 = new JDialog(frame, null, true);
+            dialog1.setSize(750, 500);
+            dialog1.setResizable(false);
+            dialog1.setLayout(new BorderLayout());
+
+            JTextArea mensaje1 = new JTextArea("Vaya solo era un conejo, menos mal que no le he dado. Espera... en ese arbol hay una nota\n" +
+                    "NOTA:\n\n" +
+                    "Hola detective si quieres saber que le ha pasado a Emily vuelve aqui mañana a la misma hora." );
+            mensaje1.setEditable(false);
+            mensaje1.setLineWrap(true);
+            mensaje1.setWrapStyleWord(true);
+            mensaje1.setFont(new Font("Verdana", Font.PLAIN, 24));
+            dialog1.add(new JScrollPane(mensaje1), BorderLayout.CENTER);
+
+            JButton botonCerrar1 = new JButton("Cerrar");
+            botonCerrar1.addActionListener(e -> dialog1.dispose());
+            dialog1.add(botonCerrar1, BorderLayout.SOUTH);
+
+            dialog1.setLocationRelativeTo(frame);
+            dialog1.setVisible(true);
+
+        }else{
+            JDialog dialog1 = new JDialog(frame, null, true);
+            dialog1.setSize(750, 500);
+            dialog1.setResizable(false);
+            dialog1.setLayout(new BorderLayout());
+
+            JTextArea mensaje1 = new JTextArea("OH NO NO TENGO LA PISTOLA!!" );
+            mensaje1.setEditable(false);
+            mensaje1.setLineWrap(true);
+            mensaje1.setWrapStyleWord(true);
+            mensaje1.setFont(new Font("Verdana", Font.PLAIN, 24));
+            dialog1.add(new JScrollPane(mensaje1), BorderLayout.CENTER);
+
+            JButton botonCerrar1 = new JButton("Cerrar");
+            botonCerrar1.addActionListener(e -> dialog1.dispose());
+            dialog1.add(botonCerrar1, BorderLayout.SOUTH);
+
+            dialog1.setLocationRelativeTo(frame);
+            dialog1.setVisible(true);
+        }
     }
 
 }

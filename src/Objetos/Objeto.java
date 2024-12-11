@@ -23,6 +23,10 @@ public  class Objeto {
         return disponible;
     }
 
+    public void setDisponible(boolean disponible){
+        this.disponible=disponible;
+    }
+
 }
 
 

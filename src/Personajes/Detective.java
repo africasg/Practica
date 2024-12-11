@@ -26,6 +26,15 @@ public class Detective extends Personajes {
         }
     }
 
+    public void cogerPistola(Pistola pistola) {
+        if (pistola.isDisponible()) {
+            inventario.add(pistola);
+            System.out.println(getNombre() + " ha cogido " + pistola.getNombreobj());
+        } else {
+            System.out.println("No puedes coger " + pistola.getNombreobj());
+        }
+    }
+
     public void mostrarInv() {
         System.out.println("Inventario");
         if (inventario.isEmpty()) {
@@ -42,7 +51,7 @@ public class Detective extends Personajes {
     }
 
     //Metodos propios de los objetos
-    private void dispararPistola(Pistola pistola) {
+   public void dispararPistola(Pistola pistola) {
         if (pistola.tieneBala()) {
             System.out.println("Disparas la pistola.");
             pistola.setTieneBala(false);
