@@ -42,17 +42,20 @@ public class Game {
 
 
         JDialog dialog1 = new JDialog(frame, null, true);
-        dialog1.setSize(800, 600);
+        dialog1.setSize(750, 500);
+        dialog1.setResizable(false);
         dialog1.setLayout(new BorderLayout());
 
         JTextArea mensaje1 = new JTextArea("Bienvenida detective Allysson, necesitamos que investigues este caso de asesinato\n" +
-                "De momento lo unico que sabemos es que la victima es Emily Carter, una estudiante universitaria. La reportaron como desaparecida en el trabajo y al" +
-                "llegar a su casa nos la encontramos asi en el baño.\n" +
-                "La ultima persona en verla con vida fue su amiga Jessica Smith, ademas la victima tenia un novio llamado Ryan white. Ambos tienen cuartadas\n" +
-                "Puedes investigar un poco mas la zona a ver si encuentras alguna pista de utilidad. ");
+                "De momento lo único que sabemos es que la víctima es Emily Carter, una estudiante universitaria. La reportaron como desaparecida en el trabajo y al" +
+                "llegar a su casa nos la encontramos así en el baño.\n" +
+                "La última persona en verla con vida fue su amiga Jessica Smith. Además la víctima tenía un novio llamado Ryan white. Ambos tienen coartadas\n" +
+                "Puedes investigar un poco más la zona a ver si encuentras alguna pista de utilidad. ");
         mensaje1.setEditable(false);
         mensaje1.setLineWrap(true);
         mensaje1.setWrapStyleWord(true);
+
+        mensaje1.setFont(new Font("Verdana", Font.PLAIN, 24));
         dialog1.add(new JScrollPane(mensaje1), BorderLayout.CENTER);
 
         JButton botonCerrar1 = new JButton("Cerrar");
@@ -98,7 +101,8 @@ public class Game {
 
 
         JDialog dialog1 = new JDialog(frame, null, true);
-        dialog1.setSize(800, 600);
+        dialog1.setSize(750, 500);
+        dialog1.setResizable(false);
         dialog1.setLayout(new BorderLayout());
 
         JTextArea mensaje1 = new JTextArea("Decides dar una vuelta por la casa a investigar la escena. Encuentras el movil de la victima y te lo guardas como pista\n" +
@@ -123,8 +127,9 @@ public class Game {
 
         //Segundo dialogo
         JDialog dialog2 = new JDialog(frame, null, true);
-        dialog2.setSize(800, 600);
-        dialog2.setLayout(new BorderLayout());
+        dialog1.setSize(750, 500);
+        dialog1.setResizable(false);
+        dialog1.setLayout(new BorderLayout());
 
         JLabel iconoLabel = new JLabel(iconomovil);
         JLabel mensaje2 = new JLabel("Enhorabuena, has obtenido un movil!!!");
@@ -178,7 +183,8 @@ public class Game {
 
 
         JDialog dialog1 = new JDialog(frame, null, true);
-        dialog1.setSize(800, 600);
+        dialog1.setSize(750, 500);
+        dialog1.setResizable(false);
         dialog1.setLayout(new BorderLayout());
 
         JTextArea mensaje1 = new JTextArea("Decides ir a interrogar a Jessica, tiene mucho en contra suya por el momento\n\n" +
@@ -230,7 +236,8 @@ public class Game {
         //primer texto
 
         JDialog dialog1 = new JDialog(frame, null, true);
-        dialog1.setSize(800, 600);
+        dialog1.setSize(750, 500);
+        dialog1.setResizable(false);
         dialog1.setLayout(new BorderLayout());
 
         JTextArea mensaje1 = new JTextArea("Decides ir a interrogar a Ryan el novio de Emily, a ver si puede aclararte un poco la relación entre ambas chicas.\n\n" +
@@ -282,7 +289,8 @@ public class Game {
         //primer texto
 
         JDialog dialog1 = new JDialog(frame, null, true);
-        dialog1.setSize(800, 600);
+        dialog1.setSize(750, 500);
+        dialog1.setResizable(false);
         dialog1.setLayout(new BorderLayout());
 
         JTextArea mensaje1 = new JTextArea("Ahora tengo un poco mas de informacion sobre el caso, pero no creo que sea suficiente.\n" +
@@ -336,7 +344,8 @@ public class Game {
         //primer texto
 
         JDialog dialog1 = new JDialog(frame, null, true);
-        dialog1.setSize(800, 600);
+        dialog1.setSize(750, 500);
+        dialog1.setResizable(false);
         dialog1.setLayout(new BorderLayout());
 
         JTextArea mensaje1 = new JTextArea("No deberia de estar aqui... Pero tengo que encontrar alguna pista importante que me ayude con el caso. Mirare en la habitacion de la victima, la ultima vez no pude entrar en ella por culpa de la policia\n\n" +
@@ -361,7 +370,8 @@ public class Game {
 
         //Segundo dialogo
         JDialog dialog2 = new JDialog(frame, null, true);
-        dialog2.setSize(800, 600);
+        dialog2.setSize(750, 500);
+        dialog2.setResizable(false);
         dialog2.setLayout(new BorderLayout());
 
         JLabel iconoLabel = new JLabel(iconopapeles);
@@ -416,7 +426,8 @@ public class Game {
         //primer texto
 
         JDialog dialog1 = new JDialog(frame, null, true);
-        dialog1.setSize(800, 600);
+        dialog1.setSize(750, 500);
+        dialog1.setResizable(false);
         dialog1.setLayout(new BorderLayout());
 
         JTextArea mensaje1 = new JTextArea("Realmente creo que seria demasiado peligroso volver a la escena del crimen, ademas podría meterme en lios si alguien me pilla ahí.\n" +
@@ -440,7 +451,8 @@ public class Game {
 
         //Segundo dialogo
         JDialog dialog2 = new JDialog(frame, null, true);
-        dialog2.setSize(800, 600);
+        dialog2.setSize(750, 500);
+        dialog2.setResizable(false);
         dialog2.setLayout(new BorderLayout());
 
 
