@@ -226,7 +226,15 @@ public class UI {
         texto.setAlignmentX(Component.CENTER_ALIGNMENT);
         texto.setFont(new Font("Verdana", Font.PLAIN, 24));// Estilo de la fuente
         panel.add(texto);
+        panel.setLayout(new GridBagLayout());
 
+        GridBagConstraints gbc = new GridBagConstraints(); //PARA PONER LOS BOTONES GRANDES Y EN EL MEDIO HAY QUE UTILIZAR EL GRIDY
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.insets = new Insets(10, 0, 10, 0); // Espaciado entre componentes
+        gbc.anchor = GridBagConstraints.CENTER;
+
+        gbc.gridy++;
         JButton boton1 = new JButton("Ir a la oficina");
         boton1.setBounds(50, 100, 150, 30);
         panel.add(boton1);
@@ -269,15 +277,20 @@ public class UI {
 
         JLabel texto= new JLabel("¿Volveras a la escena del crimen?");
         texto.setAlignmentX(Component.CENTER_ALIGNMENT);
+        texto.setForeground(Color.WHITE);
         texto.setFont(new Font("Verdana", Font.PLAIN, 24));// Estilo de la fuente
         panel.add(texto);
+        panel.setLayout(new GridBagLayout());
+
 
         JButton botonsi = new JButton("Si vas");
-        botonsi.setBounds(50, 100, 150, 30);
+        botonsi.setPreferredSize(new Dimension(300, 80)); // Tamaño del botón boton
+        botonsi.setFont(new Font("Arial", Font.BOLD, 24));
         panel.add(botonsi);
 
         JButton botonNo = new JButton("No vas");
-        botonNo.setBounds(50, 150, 150, 30);
+        botonNo.setPreferredSize(new Dimension(300, 80)); // Tamaño del botón boton
+        botonNo.setFont(new Font("Arial", Font.BOLD, 24));
         panel.add(botonNo);
 
         botonsi.addActionListener(new ActionListener() {
@@ -326,15 +339,19 @@ public class UI {
 
         JLabel texto= new JLabel("¿Qué hago?");
         texto.setAlignmentX(Component.CENTER_ALIGNMENT);
+        texto.setForeground(Color.WHITE);
         texto.setFont(new Font("Verdana", Font.PLAIN, 24));// Estilo de la fuente
         panel.add(texto);
+        panel.setLayout(new GridBagLayout());
 
         JButton botonCoger = new JButton("Coges la pistola");
-        botonCoger.setBounds(50, 100, 150, 30);
+        botonCoger.setPreferredSize(new Dimension(300, 80)); // Tamaño del botón boton
+        botonCoger.setFont(new Font("Arial", Font.BOLD, 24));
         panel.add(botonCoger);
 
         JButton botonNoCoger = new JButton("No coges la pistola");
-        botonNoCoger.setBounds(50, 150, 150, 30);
+        botonNoCoger.setPreferredSize(new Dimension(300, 80)); // Tamaño del botón boton
+        botonNoCoger.setFont(new Font("Arial", Font.BOLD, 24));
         panel.add(botonNoCoger);
 
         botonCoger.addActionListener(new ActionListener() {
@@ -385,11 +402,14 @@ public class UI {
 
         JLabel texto= new JLabel("Creo que si deberia abrirlo");
         texto.setAlignmentX(Component.CENTER_ALIGNMENT);
+        texto.setForeground(Color.WHITE);
         texto.setFont(new Font("Verdana", Font.PLAIN, 24));// Estilo de la fuente
         panel.add(texto);
+        panel.setLayout(new GridBagLayout());
 
         JButton botonMensaje = new JButton("Abres el mensaje");
-        botonMensaje.setBounds(50, 100, 150, 30);
+        botonMensaje.setPreferredSize(new Dimension(300, 80)); // Tamaño del botón boton
+        botonMensaje.setFont(new Font("Arial", Font.BOLD, 24));
         panel.add(botonMensaje);
 
 
@@ -433,15 +453,19 @@ public class UI {
 
         JLabel texto= new JLabel(" ¿Debería seguir a la persona?");
         texto.setAlignmentX(Component.CENTER_ALIGNMENT);
+        texto.setForeground(Color.WHITE);
         texto.setFont(new Font("Verdana", Font.PLAIN, 24));// Estilo de la fuente
         panel.add(texto);
+        panel.setLayout(new GridBagLayout());
 
         JButton botonSeguir = new JButton("Le sigues");
-        botonSeguir.setBounds(50, 100, 150, 30);
+        botonSeguir.setPreferredSize(new Dimension(300, 80)); // Tamaño del botón boton
+        botonSeguir.setFont(new Font("Arial", Font.BOLD, 24));
         panel.add(botonSeguir);
 
         JButton botonNoSeguir = new JButton("No le sigues");
-        botonNoSeguir.setBounds(50, 150, 150, 30);
+        botonNoSeguir.setPreferredSize(new Dimension(300, 80)); // Tamaño del botón boton
+        botonNoSeguir.setFont(new Font("Arial", Font.BOLD, 24));
         panel.add(botonNoSeguir);
 
         botonSeguir.addActionListener(new ActionListener() {
@@ -490,15 +514,19 @@ public class UI {
 
         JLabel texto= new JLabel("¿Debería hacerle caso al mensaje?");
         texto.setAlignmentX(Component.CENTER_ALIGNMENT);
+        texto.setForeground(Color.WHITE);
         texto.setFont(new Font("Verdana", Font.PLAIN, 24));// Estilo de la fuente
         panel.add(texto);
+        panel.setLayout(new GridBagLayout());
 
         JButton botonVas= new JButton("Vas al bosque");
-        botonVas.setBounds(50, 100, 150, 30);
+        botonVas.setPreferredSize(new Dimension(300, 80)); // Tamaño del botón boton
+        botonVas.setFont(new Font("Arial", Font.BOLD, 24));
         panel.add(botonVas);
 
         JButton botonNoVas = new JButton("No vas al bosque");
-        botonNoVas.setBounds(50, 150, 150, 30);
+        botonNoVas.setPreferredSize(new Dimension(300, 80)); // Tamaño del botón boton
+        botonNoVas.setFont(new Font("Arial", Font.BOLD, 24));
         panel.add(botonNoVas);
 
         botonVas.addActionListener(new ActionListener() {
@@ -548,15 +576,19 @@ public class UI {
 
         JLabel texto= new JLabel("RAPIDO QUE HACES");
         texto.setAlignmentX(Component.CENTER_ALIGNMENT);
+        texto.setForeground(Color.WHITE);
         texto.setFont(new Font("Verdana", Font.PLAIN, 24));// Estilo de la fuente
         panel.add(texto);
+        panel.setLayout(new GridBagLayout());
 
-        JButton botonDisparas = new JButton("DISPARAS!!!");
-        botonDisparas.setBounds(50, 100, 150, 30);
+        JButton botonDisparas = new JButton("Disparas");
+        botonDisparas.setPreferredSize(new Dimension(300, 80)); // Tamaño del botón boton
+        botonDisparas.setFont(new Font("Arial", Font.BOLD, 24));
         panel.add(botonDisparas);
 
         JButton botonNoDisparas = new JButton("No disparas");
-        botonNoDisparas.setBounds(50, 150, 150, 30);
+        botonNoDisparas.setPreferredSize(new Dimension(300, 80)); // Tamaño del botón boton
+        botonDisparas.setFont(new Font("Arial", Font.BOLD, 24));
         panel.add(botonNoDisparas);
 
         botonDisparas.addActionListener(new ActionListener() {
@@ -604,16 +636,20 @@ public class UI {
 
         JLabel texto= new JLabel("Que deberia de hacer con esta información");
         texto.setAlignmentX(Component.CENTER_ALIGNMENT);
+        texto.setForeground(Color.WHITE);
         texto.setFont(new Font("Verdana", Font.PLAIN, 24));// Estilo de la fuente
         panel.add(texto);
+        panel.setLayout(new GridBagLayout());
 
         JButton botonLeer = new JButton("vas ");
-        botonLeer.setBounds(50, 100, 150, 30);
+        botonLeer.setPreferredSize(new Dimension(300, 80)); // Tamaño del botón boton
+        botonLeer.setFont(new Font("Arial", Font.BOLD, 24));
         panel.add(botonLeer);
 
         JButton botonNoLeer = new JButton("No vas");
-        botonNoLeer.setBounds(50, 150, 150, 30);
-        panel.add(botonNoLeer);
+        botonNoLeer.setPreferredSize(new Dimension(300, 80)); // Tamaño del botón boton
+        botonLeer.setFont(new Font("Arial", Font.BOLD, 24));
+        panel.add(botonLeer);
 
         botonLeer.addActionListener(new ActionListener() {
             @Override
@@ -658,16 +694,20 @@ public class UI {
 
         JLabel texto= new JLabel("Que susto solo era un conejo. espera... que es esa nota");
         texto.setAlignmentX(Component.CENTER_ALIGNMENT);
+        texto.setForeground(Color.WHITE);
         texto.setFont(new Font("Verdana", Font.PLAIN, 24));// Estilo de la fuente
         panel.add(texto);
+        panel.setLayout(new GridBagLayout());
 
         JButton botonLeer = new JButton("vas ");
-        botonLeer.setBounds(50, 100, 150, 30);
+        botonLeer.setPreferredSize(new Dimension(300, 80)); // Tamaño del botón boton
+        botonLeer.setFont(new Font("Arial", Font.BOLD, 24));
         panel.add(botonLeer);
 
         JButton botonNoLeer = new JButton("No vas");
-        botonNoLeer.setBounds(50, 150, 150, 30);
-        panel.add(botonNoLeer);
+        botonNoLeer.setPreferredSize(new Dimension(300, 80)); // Tamaño del botón boton
+        botonLeer.setFont(new Font("Arial", Font.BOLD, 24));
+        panel.add(botonLeer);
 
         botonLeer.addActionListener(new ActionListener() {
             @Override
@@ -711,12 +751,17 @@ public class UI {
 
         JLabel texto= new JLabel("Llegue al sitio y estaba... MIKE!!! (te cuenta el lore)");
         texto.setAlignmentX(Component.CENTER_ALIGNMENT);
+        texto.setForeground(Color.WHITE);
         texto.setFont(new Font("Verdana", Font.PLAIN, 24));// Estilo de la fuente
         panel.add(texto);
+        panel.setLayout(new GridBagLayout());
 
         JButton botonir = new JButton("Vas a ver a Ryan");
-        botonir.setBounds(50, 100, 150, 30);
+        botonir.setPreferredSize(new Dimension(300, 80)); // Tamaño del botón boton
+        botonir.setFont(new Font("Arial", Font.BOLD, 24));
         panel.add(botonir);
+
+
 
         botonir.addActionListener(new ActionListener() {
             @Override
@@ -754,15 +799,19 @@ public class UI {
 
         JLabel texto= new JLabel("OH NO... el maldito ryan me ha atacado que hago??");
         texto.setAlignmentX(Component.CENTER_ALIGNMENT);
+        texto.setForeground(Color.WHITE);
         texto.setFont(new Font("Verdana", Font.PLAIN, 24));// Estilo de la fuente
         panel.add(texto);
+        panel.setLayout(new GridBagLayout());
 
         JButton botonDefenderte = new JButton("Defenderte con pistola");
-        botonDefenderte.setBounds(50, 100, 150, 30);
+        botonDefenderte.setPreferredSize(new Dimension(300, 80)); // Tamaño del botón boton
+        botonDefenderte.setFont(new Font("Arial", Font.BOLD, 24));
         panel.add(botonDefenderte);
 
         JButton botonNoDefenderte = new JButton("No te defiendes");
-        botonNoDefenderte.setBounds(50, 150, 150, 30);
+        botonNoDefenderte.setPreferredSize(new Dimension(300, 80)); // Tamaño del botón boton
+        botonNoDefenderte.setFont(new Font("Arial", Font.BOLD, 24));
         panel.add(botonNoDefenderte);
 
         botonDefenderte.addActionListener(new ActionListener() {
@@ -805,7 +854,10 @@ public class UI {
 
         JLabel texto= new JLabel("TE HAS DEFENDIDIO Y GANAS OLE OLE");
         texto.setAlignmentX(Component.CENTER_ALIGNMENT);
+        texto.setForeground(Color.WHITE);
+        texto.setFont(new Font("Verdana", Font.PLAIN, 24));// Estilo de la fuente
         panel.add(texto);
+        panel.setLayout(new GridBagLayout());
 
         JButton botonMenu = new JButton("Volver al menu");
         botonMenu.setBounds(50, 100, 150, 30);
@@ -844,8 +896,10 @@ public class UI {
 
         JLabel texto= new JLabel("Llegaste al final, quien crees que ha matado a emily carter??");
         texto.setAlignmentX(Component.CENTER_ALIGNMENT);
+        texto.setForeground(Color.WHITE);
         texto.setFont(new Font("Verdana", Font.PLAIN, 24));// Estilo de la fuente
         panel.add(texto);
+        panel.setLayout(new GridBagLayout());
 
         JTextField textField = new JTextField();
         textField.setBounds(50, 60, 200, 25);
@@ -903,10 +957,14 @@ public class UI {
 
         JLabel texto= new JLabel("QUE TE HAN MATADO Y NO SABES NA ");
         texto.setAlignmentX(Component.CENTER_ALIGNMENT);
+        texto.setForeground(Color.WHITE);
+        texto.setFont(new Font("Verdana", Font.PLAIN, 24));// Estilo de la fuente
         panel.add(texto);
+        panel.setLayout(new GridBagLayout());
 
         JButton botonMenu = new JButton("Volver al menu");
-        botonMenu.setBounds(50, 100, 150, 30);
+        botonMenu.setPreferredSize(new Dimension(300, 80)); // Tamaño del botón boton
+        botonMenu.setFont(new Font("Arial", Font.BOLD, 24));
         panel.add(botonMenu);
 
 
