@@ -4,9 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ComponentAdapter;
-import java.awt.event.ComponentEvent;
-import java.awt.image.BufferedImage;
+import java.util.Objects;
 import Backend.Game;
 import Objetos.Pistola;
 
@@ -20,19 +18,8 @@ public class UI {
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        //Fondo imagen
-        JPanel panel = new JPanel() {
-            @Override
-            protected void paintComponent(Graphics g) {
-                super.paintComponent(g);
-                // Cargar la imagen de fondo
-                ImageIcon fondo = new ImageIcon(getClass().getResource("/PANTALLA_TITULO.jpg"));
-                Image img = fondo.getImage();
-                // Dibujar la imagen en el panel
-                g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
-            }
-        };
-        panel.setLayout(new GridBagLayout());
+        //Fondo imagen (Metodo extraído)
+        JPanel panel = getjPanel();
 
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.gridx = 0;
@@ -78,8 +65,24 @@ public class UI {
         frame.setVisible(true);
     }
 
+    private JPanel getjPanel() {
+        JPanel panel = new JPanel() {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                // Cargar la imagen de fondo
+                ImageIcon fondo = new ImageIcon(Objects.requireNonNull(getClass().getResource("/PANTALLA_TITULO.jpg")));
+                Image img = fondo.getImage();
+                // Dibujar la imagen en el panel
+                g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
+            }
+        };
+        panel.setLayout(new GridBagLayout());
+        return panel;
+    }
+
     public void mostrarPantallaInicial(){
-        //Se muestra el texto con lore, consigues movil(lees conver y tienes codigo)
+        // Se muestra el texto con lore, consigues movil(lees conver y tienes codigo)
         Game game= new Game();
         JFrame frame= new JFrame("Pantalla inicial");
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -90,7 +93,7 @@ public class UI {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
                 // Cargar la imagen de fondo
-                ImageIcon fondo = new ImageIcon(getClass().getResource("/interrogatorio.jpg"));
+                ImageIcon fondo = new ImageIcon(Objects.requireNonNull(getClass().getResource("/interrogatorio.jpg")));
                 Image img = fondo.getImage();
                 // Dibujar la imagen en el panel
                 g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
@@ -98,7 +101,7 @@ public class UI {
         };
         frame.add(panel);
 
-        //mejorar este texto con lore
+        // mejorar este texto con lore
         game.Accion1();
         JLabel texto= new JLabel(" ¿A quien vas a interrogar?");
         texto.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -158,7 +161,7 @@ public class UI {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
                 // Cargar la imagen de fondo
-                ImageIcon fondo = new ImageIcon(getClass().getResource("/interrogatorio.jpg"));
+                ImageIcon fondo = new ImageIcon(Objects.requireNonNull(getClass().getResource("/interrogatorio.jpg")));
                 Image img = fondo.getImage();
                 // Dibujar la imagen en el panel
                 g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
@@ -211,7 +214,7 @@ public class UI {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
                 // Cargar la imagen de fondo
-                ImageIcon fondo = new ImageIcon(getClass().getResource("/interrogatorio.jpg"));
+                ImageIcon fondo = new ImageIcon(Objects.requireNonNull(getClass().getResource("/interrogatorio.jpg")));
                 Image img = fondo.getImage();
                 // Dibujar la imagen en el panel
                 g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
@@ -224,6 +227,7 @@ public class UI {
 
         JLabel texto= new JLabel("MMMM...Parece que el caso es mas complicado de lo que pensaba");
         texto.setAlignmentX(Component.CENTER_ALIGNMENT);
+        texto.setForeground(Color.WHITE);
         texto.setFont(new Font("Verdana", Font.PLAIN, 24));// Estilo de la fuente
         panel.add(texto);
         panel.setLayout(new GridBagLayout());
@@ -236,7 +240,9 @@ public class UI {
 
         gbc.gridy++;
         JButton boton1 = new JButton("Ir a la oficina");
-        boton1.setBounds(50, 100, 150, 30);
+        boton1.setPreferredSize(new Dimension(300, 80)); // Tamaño del botón boton
+        boton1.setFont(new Font("Arial", Font.BOLD, 24));
+
         panel.add(boton1);
 
         boton1.addActionListener(new ActionListener() {
@@ -248,8 +254,7 @@ public class UI {
         });
 
         frame.setVisible(true);
-    }
-    public void mostrarPantalla1(){
+    }    public void mostrarPantalla1(){
         //No sabes si volver a la escena del crimen
         //Vas (mostrarPantalla2a())
         //No vas(mostrarPantalla2b())
@@ -265,7 +270,7 @@ public class UI {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
                 // Cargar la imagen de fondo
-                ImageIcon fondo = new ImageIcon(getClass().getResource("/despacho.jpg"));
+                ImageIcon fondo = new ImageIcon(Objects.requireNonNull(getClass().getResource("/despacho.jpg")));
                 Image img = fondo.getImage();
                 // Dibujar la imagen en el panel
                 g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
@@ -327,7 +332,7 @@ public class UI {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
                 // Cargar la imagen de fondo
-                ImageIcon fondo = new ImageIcon(getClass().getResource("/casa.jpg"));
+                ImageIcon fondo = new ImageIcon(Objects.requireNonNull(getClass().getResource("/casa.jpg")));
                 Image img = fondo.getImage();
                 // Dibujar la imagen en el panel
                 g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
@@ -388,7 +393,7 @@ public class UI {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
                 // Cargar la imagen de fondo
-                ImageIcon fondo = new ImageIcon(getClass().getResource("/despacho.jpg"));
+                ImageIcon fondo = new ImageIcon(Objects.requireNonNull(getClass().getResource("/despacho.jpg")));
                 Image img = fondo.getImage();
                 // Dibujar la imagen en el panel
                 g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
@@ -438,7 +443,7 @@ public class UI {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
                 // Cargar la imagen de fondo
-                ImageIcon fondo = new ImageIcon(getClass().getResource("/casa.jpg"));
+                ImageIcon fondo = new ImageIcon(Objects.requireNonNull(getClass().getResource("/casa.jpg")));
                 Image img = fondo.getImage();
                 // Dibujar la imagen en el panel
                 g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
@@ -500,7 +505,7 @@ public class UI {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
                 // Cargar la imagen de fondo
-                ImageIcon fondo = new ImageIcon(getClass().getResource("/oficina.jpg"));
+                ImageIcon fondo = new ImageIcon(Objects.requireNonNull(getClass().getResource("/despacho.jpg")));
                 Image img = fondo.getImage();
                 // Dibujar la imagen en el panel
                 g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
@@ -562,7 +567,7 @@ public class UI {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
                 // Cargar la imagen de fondo
-                ImageIcon fondo = new ImageIcon(getClass().getResource("/BOSQUE.JPG"));
+                ImageIcon fondo = new ImageIcon(Objects.requireNonNull(getClass().getResource("/BOSQUE.JPG")));
                 Image img = fondo.getImage();
                 // Dibujar la imagen en el panel
                 g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
@@ -582,13 +587,13 @@ public class UI {
         panel.setLayout(new GridBagLayout());
 
         JButton botonDisparas = new JButton("Disparas");
-        botonDisparas.setPreferredSize(new Dimension(300, 80)); // Tamaño del botón boton
+        botonDisparas.setPreferredSize(new Dimension(300, 80)); // Tamaño del botón
         botonDisparas.setFont(new Font("Arial", Font.BOLD, 24));
         panel.add(botonDisparas);
 
         JButton botonNoDisparas = new JButton("No disparas");
-        botonNoDisparas.setPreferredSize(new Dimension(300, 80)); // Tamaño del botón boton
-        botonDisparas.setFont(new Font("Arial", Font.BOLD, 24));
+        botonNoDisparas.setPreferredSize(new Dimension(300, 80)); // Tamaño del botón
+        botonNoDisparas.setFont(new Font("Arial", Font.BOLD, 24));
         panel.add(botonNoDisparas);
 
         botonDisparas.addActionListener(new ActionListener() {
@@ -625,7 +630,7 @@ public class UI {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
                 // Cargar la imagen de fondo
-                ImageIcon fondo = new ImageIcon(getClass().getResource("/BOSQUE.JPG"));
+                ImageIcon fondo = new ImageIcon(Objects.requireNonNull(getClass().getResource("/BOSQUE.JPG")));
                 Image img = fondo.getImage();
                 // Dibujar la imagen en el panel
                 g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
@@ -683,7 +688,7 @@ public class UI {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
                 // Cargar la imagen de fondo
-                ImageIcon fondo = new ImageIcon(getClass().getResource("/BOSQUE.JPG"));
+                ImageIcon fondo = new ImageIcon(Objects.requireNonNull(getClass().getResource("/BOSQUE.JPG")));
                 Image img = fondo.getImage();
                 // Dibujar la imagen en el panel
                 g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
@@ -740,7 +745,7 @@ public class UI {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
                 // Cargar la imagen de fondo
-                ImageIcon fondo = new ImageIcon(getClass().getResource("/BOSQUE.JPG"));
+                ImageIcon fondo = new ImageIcon(Objects.requireNonNull(getClass().getResource("/BOSQUE.JPG")));
                 Image img = fondo.getImage();
                 // Dibujar la imagen en el panel
                 g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
@@ -788,7 +793,7 @@ public class UI {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
                 // Cargar la imagen de fondo
-                ImageIcon fondo = new ImageIcon(getClass().getResource("/casaryan.png"));
+                ImageIcon fondo = new ImageIcon(Objects.requireNonNull(getClass().getResource("/casaryan.png")));
                 Image img = fondo.getImage();
                 // Dibujar la imagen en el panel
                 g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
@@ -843,7 +848,7 @@ public class UI {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
                 // Cargar la imagen de fondo
-                ImageIcon fondo = new ImageIcon(getClass().getResource("/HAS_CONSEGUIDO.jpg"));
+                ImageIcon fondo = new ImageIcon(Objects.requireNonNull(getClass().getResource("/HAS_CONSEGUIDO.jpg")));
                 Image img = fondo.getImage();
                 // Dibujar la imagen en el panel
                 g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
@@ -859,9 +864,16 @@ public class UI {
         panel.add(texto);
         panel.setLayout(new GridBagLayout());
 
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.insets = new Insets(10, 0, 10, 0); // Espaciado entre componentes
+        gbc.anchor = GridBagConstraints.CENTER;
+
+        gbc.gridy++;
         JButton botonMenu = new JButton("Volver al menu");
-        botonMenu.setBounds(50, 100, 150, 30);
-        panel.add(botonMenu);
+        botonMenu.setPreferredSize(new Dimension(300, 80)); // Tamaño del botón
+        botonMenu.setFont(new Font("Arial", Font.BOLD, 24));
 
 
         botonMenu.addActionListener(new ActionListener() {
@@ -870,63 +882,75 @@ public class UI {
                 mostrarMenu();
                 frame.dispose();
             }
+
         });
 
+        panel.add(botonMenu, gbc);
 
         frame.setVisible(true);
     }
-    public  void mostrarFinal(){
-        //tienes que escribir el nombre del asesino
+    public void mostrarFinal() {
+        // Final de juego - elegir al asesino
 
-        //FALTA AÑADIR DONDE TE DICE SI GANAS O PIERDES PERO SE TIENE QUE HACER CUANDO TENGAMOS EL BACKEND LISTO
-        //ganas o pierdes
+        final String[] nom = {""};
 
-        final String[] nom={""};
-
-        JFrame frame= new JFrame("Pantalla Final");
+        // Configuración del marco
+        JFrame frame = new JFrame("Pantalla Final");
         frame.setSize(400, 300);
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        JPanel panel = new JPanel();
-        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
-        panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        // Panel principal con GridBagLayout
+        JPanel panel = new JPanel(){
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                // Cargar la imagen de fondo
+                ImageIcon fondo = new ImageIcon(Objects.requireNonNull(getClass().getResource("/PANTALLA_TITULO.png")));
+                Image img = fondo.getImage();
+                // Dibujar la imagen en el panel
+                g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
+            }
+        };
         frame.add(panel);
 
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.insets = new Insets(10, 0, 10, 0); // Espaciado entre componentes
+        gbc.anchor = GridBagConstraints.CENTER;
 
-        JLabel texto= new JLabel("Llegaste al final, quien crees que ha matado a emily carter??");
-        texto.setAlignmentX(Component.CENTER_ALIGNMENT);
+        // Etiqueta de texto
+        JLabel texto = new JLabel("Llegaste al final, ¿quién crees que ha matado a Emily Carter?");
         texto.setForeground(Color.WHITE);
-        texto.setFont(new Font("Verdana", Font.PLAIN, 24));// Estilo de la fuente
-        panel.add(texto);
-        panel.setLayout(new GridBagLayout());
+        texto.setFont(new Font("Verdana", Font.PLAIN, 24)); // Estilo de la fuente
+        panel.add(texto, gbc);
 
+        gbc.gridy++;
         JTextField textField = new JTextField();
-        textField.setBounds(50, 60, 200, 25);
-        frame.add(textField);
-        textField.setMaximumSize(new Dimension(300, 25));
-        panel.add(Box.createRigidArea(new Dimension(0, 10)));
-        panel.add(textField);
+        textField.setPreferredSize(new Dimension(300, 30)); // Tamaño del campo de texto
+        panel.add(textField, gbc);
 
+
+        gbc.gridy++;
         JButton button = new JButton("Guardar");
-        button.setBounds(50, 100, 100, 30);
-        frame.add(button);
-        button.setAlignmentX(Component.CENTER_ALIGNMENT);
-        panel.add(Box.createRigidArea(new Dimension(0, 10)));
-        panel.add(button);
+        button.setPreferredSize(new Dimension(150, 40)); // Tamaño del botón
+        button.setFont(new Font("Arial", Font.BOLD, 18));
+        panel.add(button, gbc);
 
-        JButton botonMenu = new JButton("Volver al menu");
-        botonMenu.setBounds(50, 150, 150, 30);
-        botonMenu.setAlignmentX(Component.CENTER_ALIGNMENT);
-        panel.add(Box.createRigidArea(new Dimension(0, 10)));
-        panel.add(botonMenu);
+
+        gbc.gridy++;
+        JButton botonMenu = new JButton("Volver al menú");
+        botonMenu.setPreferredSize(new Dimension(300, 60)); // Tamaño del botón
+        botonMenu.setFont(new Font("Arial", Font.BOLD, 24));
+        panel.add(botonMenu, gbc);
+
 
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                nom[0]= textField.getText();
+                nom[0] = textField.getText();
                 JOptionPane.showMessageDialog(frame, "Asesino elegido: " + nom[0]);
-                frame.dispose();
             }
         });
 
@@ -934,15 +958,13 @@ public class UI {
         botonMenu.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                mostrarMenu();
-
-                frame.dispose();
+                mostrarMenu(); // Cerrar la ventana actual
             }
         });
-
-
+ // Mostrar el marco
         frame.setVisible(true);
     }
+
     public  void mostrarPantaExtra(){
         //no te has podido defender y mueres dejando el caso sin resolver
 
@@ -951,7 +973,15 @@ public class UI {
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        JPanel panel = new JPanel();
+        JPanel panel = new JPanel(){
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                ImageIcon fondo = new ImageIcon(Objects.requireNonNull(getClass().getResource("/HAS_MUERTO.png")));
+                Image img = fondo.getImage();
+                g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
+            }
+        };
         frame.add(panel);
 
 
@@ -962,10 +992,16 @@ public class UI {
         panel.add(texto);
         panel.setLayout(new GridBagLayout());
 
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.insets = new Insets(10, 0, 10, 0); // Espaciado entre componentes
+        gbc.anchor = GridBagConstraints.CENTER;
+
+        gbc.gridy++;
         JButton botonMenu = new JButton("Volver al menu");
-        botonMenu.setPreferredSize(new Dimension(300, 80)); // Tamaño del botón boton
+        botonMenu.setPreferredSize(new Dimension(300, 80)); // Tamaño del botón
         botonMenu.setFont(new Font("Arial", Font.BOLD, 24));
-        panel.add(botonMenu);
 
 
         botonMenu.addActionListener(new ActionListener() {
@@ -974,7 +1010,10 @@ public class UI {
                 mostrarMenu();
                 frame.dispose();
             }
+
         });
+
+        panel.add(botonMenu, gbc);
 
 
         frame.setVisible(true);
