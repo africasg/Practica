@@ -377,7 +377,7 @@ public class Game {
 
         //Segundo dialogo
         JDialog dialog2 = new JDialog(frame, null, true);
-        dialog2.setSize(750, 500);
+        dialog2.setSize(900, 500);
         dialog2.setResizable(false);
         dialog2.setLayout(new BorderLayout());
 
@@ -537,7 +537,7 @@ public class Game {
         dialog2.setLayout(new BorderLayout());
 
         JLabel iconoLabel = new JLabel(iconopapeles);
-        JLabel mensaje2 = new JLabel("Has obtenido unos papeles muy importantes para la victima!!!");
+        JLabel mensaje2 = new JLabel("Has obtenido unos papeles muy importantes \n para la victima!!!");
 
         mensaje2.setHorizontalAlignment(SwingConstants.CENTER);
 
