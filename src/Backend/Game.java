@@ -46,11 +46,11 @@ public class Game {
         dialog1.setResizable(false);
         dialog1.setLayout(new BorderLayout());
 
-        JTextArea mensaje1 = new JTextArea("Bienvenida detective Allysson, necesitamos que investigues este caso de asesinato\n" +
-                "De momento lo único que sabemos es que la víctima es Emily Carter, una estudiante universitaria. La reportaron como desaparecida en el trabajo y al" +
-                "llegar a su casa nos la encontramos así en el baño.\n" +
-                "La última persona en verla con vida fue su amiga Jessica Smith. Además la víctima tenía un novio llamado Ryan white. Ambos tienen coartadas\n" +
-                "Puedes investigar un poco más la zona a ver si encuentras alguna pista de utilidad. ");
+        JTextArea mensaje1 = new JTextArea("Bienvenida detective Allysson, necesitamos que investigue este caso de asesinato\n" +
+                "De momento lo único que sabemos es que la víctima es Emily Carter, una estudiante universitaria. " +
+                "La reportaron como desaparecida en el trabajo y al llegar a su casa nos la encontramos así en el baño.\n" +
+                "La última persona en verla con vida fue su amiga Jessica Smith. Además la víctima tenía un novio llamado Ryan White.\nAmbos tienen coartadas\n" +
+                "Puedes investigar un poco más la zona, a ver si encuentras alguna pista de utilidad. ");
         mensaje1.setEditable(false);
         mensaje1.setLineWrap(true);
         mensaje1.setWrapStyleWord(true);
@@ -107,10 +107,10 @@ public class Game {
         dialog1.setResizable(false);
         dialog1.setLayout(new BorderLayout());
 
-        JTextArea mensaje1 = new JTextArea("Decides dar una vuelta por la casa a investigar la escena. Encuentras el movil de la victima y te lo guardas como pista\n" +
-                "Cuando enciendes el movil empiezas a buscar algo que te pueda decir que le paso a Emily carter y ahi encuentras una conversacion entre ella y su amiga Jess\n" +
-                "Parece una discusion entre ambas por... Ryan. En el mensaje Jess amenazaba a Emily por haber empezado a salir con el chico que la gustaba\n " +
-                "Esto es una gran pista. Jess pudo haber hecho daño a Emily por celos. Ademas de eso encuentras en la aplicacion de notas un codigo (40605) me pregunto que podre hacer con el.");
+        JTextArea mensaje1 = new JTextArea("Decides dar una vuelta por la casa a investigar la escena. \nEncuentras el móvil de la víctima y te lo guardas como pista\n" +
+                "Cuando enciendes el móvil, empiezas a buscar algo que te pueda dar una pista sobre lo que le pasó a Emily y ahí encuentras una conversación entre ella y su amiga Jess\n" +
+                "Parece una discusión entre ambas por... Ryan. \nEn el mensaje, Jess amenazaba a Emily por haber empezado a salir con el chico que le gustaba\n" +
+                "Esto es una gran pista. Jess pudo haber hecho daño a Emily por celos. \nAdemás de eso encuentras en la aplicación de notas un código (40605)\nMe pregunto que podré hacer con el.");
         mensaje1.setEditable(false);
         mensaje1.setLineWrap(true);
         mensaje1.setWrapStyleWord(true);
@@ -135,7 +135,7 @@ public class Game {
         dialog2.setLayout(new BorderLayout());
 
         JLabel iconoLabel = new JLabel(iconomovil);
-        JLabel mensaje2 = new JLabel("Has obtenido un movil!!!");
+        JLabel mensaje2 = new JLabel("¡¡¡Has obtenido el móvil!!!");
         mensaje2.setHorizontalAlignment(SwingConstants.CENTER);
         mensaje1.setFont(new Font("Verdana", Font.PLAIN, 18));
         dialog2.add(iconoLabel, BorderLayout.WEST);
@@ -156,8 +156,7 @@ public class Game {
     }
 
     public void Accion3(){
-        //FALTA AÑADIR A JESSICA PARA QUE APAREZCA SU PERSONAJE
-        //objeto detective allyson
+
         String ruta="imagen_Allyson.png";
         List<Objeto> inventario=new ArrayList<>();
         Detective Allysson= new Detective("Allyson", ruta, "Detective", inventario, false);
@@ -190,12 +189,12 @@ public class Game {
         dialog1.setResizable(false);
         dialog1.setLayout(new BorderLayout());
 
-        JTextArea mensaje1 = new JTextArea("Decides ir a interrogar a Jessica, tiene mucho en contra suya por el momento\n\n" +
-                "Detective Allyson: Bueno Jessica me gustaria Hablar contigo sobre tu amiga Emily, como ya sabes ha aparecido muerta en su casa y tengo motivos para pensar que has sido tu\n\n" +
-                "Jessica Smith: ESTAS LOCA??? YO JAMAS LE HARIA DAÑO A EMILY!!!!\n\n" +
-                "Detective Allysson: Tengo una conversacion en el movil de la victima donde la amenazabas por salir con el chico que te gustaba...\n\n" +
-                "Jessica Smith: Eso... Fue una pelea tonta nada mas, ella sabia que a mi me gustaba Ryan desde mucho antes y aun asi decidio salir con él... Pero no paso nada más que esa conversacion, al final hicimos las paces. Era mi mejor amiga...\n\n" +
-                "Detective Allysson: Bueno esto es suficiente por hoy Jessica muchas gracias por tu testimonio. ");
+        JTextArea mensaje1 = new JTextArea("Decides ir a interrogar a Jessica,la cual tiene mucho en su contra por el momento\n\n" +
+                "Detective Allyson: Bueno Jessica, me gustaría hablar contigo sobre Emily, la cual como ya sabes ha aparecido MUERTA en su casa\nTengo motivos para pensar que tú has estado detrás de esto\n\n" +
+                "Jessica Smith: ¿¿¿PERDONE??? ¡¡¡YO JAMAS LE HARIA DAÑO A EMILY!!!!\n\n" +
+                "Detective Allysson: Tengo una conversación en el móvil de la víctima que demuestra lo contrario... Le amenazabas por salir con el chico que te gustaba...\n\n" +
+                "Jessica Smith: Eso... Fue una pelea tonta, nada más. Ella sabía que me gustaba Ryan desde hace mucho, y aún así decidió salir con él...\nPero no pasó nada más que esa conversación, todo quedo aclarado. \nElla era mi mejor amiga...\n\n" +
+                "Detective Allysson: Bueno, suficiente por hoy Jessica\n Muchas gracias por tu testimonio. ");
         mensaje1.setEditable(false);
         mensaje1.setLineWrap(true);
         mensaje1.setWrapStyleWord(true);
@@ -211,13 +210,13 @@ public class Game {
     }
 
     public void Accion4(){
-    //FALTA AÑADIR A RYAN PARA QUE APAREZCA SU PERSONAJE
-        //objeto detective allyson
+
+
         String ruta="imagen_Allyson.png";
         List<Objeto> inventario=new ArrayList<>();
         Detective Allysson= new Detective("Allyson", ruta, "Detective", inventario, false);
 
-        //FONFO DEL FRAME
+
         JFrame frame = new JFrame();
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 
