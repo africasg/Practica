@@ -710,8 +710,8 @@ public class Game {
         dialog1.setVisible(true);
     }
 
-    public void disparas(Pistola pistola){
-
+    public int disparas(Pistola pistola){
+        int disparo=0;
         //objeto detective allyson
         String ruta="imagen_Allyson.png";
         List<Objeto> inventario=new ArrayList<>();
@@ -723,22 +723,12 @@ public class Game {
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
-        JPanel fondoPanel = new JPanel() {
-            @Override
-            protected void paintComponent(Graphics g) {
-                super.paintComponent(g);
-                // Dibujar la imagen de fondo
-                ImageIcon fondo = new ImageIcon(getClass().getResource("/BOSQUE.JPG"));
-                g.drawImage(fondo.getImage(), 0, 0, getWidth(), getHeight(), this);
-            }
-        };
-        fondoPanel.setLayout(new BorderLayout());
-        frame.add(fondoPanel);
 
-        frame.setVisible(true);
 
         if(pistola.isDisponible()){
            Allysson.dispararPistola(pistola);
+          disparo =1;
+          return disparo;
 
         }else{
             JDialog dialog1 = new JDialog(frame, null, true);
@@ -759,6 +749,7 @@ public class Game {
 
             dialog1.setLocationRelativeTo(frame);
             dialog1.setVisible(true);
+            return disparo;
         }
     }
 
@@ -920,5 +911,199 @@ public class Game {
         dialog1.setLocationRelativeTo(frame);
         dialog1.setVisible(true);
     }
+
+    public void Accion14(){
+
+        //objeto detective allyson
+        String ruta="imagen_Allyson.png";
+        List<Objeto> inventario=new ArrayList<>();
+        Detective Allysson= new Detective("Allyson", ruta, "Detective", inventario, false);
+
+        //FONFO DEL FRAME
+        JFrame frame = new JFrame();
+        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setVisible(true);
+        JPanel fondoPanel = new JPanel() {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                // Dibujar la imagen de fondo
+                ImageIcon fondo = new ImageIcon(getClass().getResource("/BOSQUE.JPG"));
+                g.drawImage(fondo.getImage(), 0, 0, getWidth(), getHeight(), this);
+            }
+        };
+        fondoPanel.setLayout(new BorderLayout());
+        frame.add(fondoPanel);
+
+        frame.setVisible(true);
+
+        //primer texto
+
+        JDialog dialog1 = new JDialog(frame, null, true);
+        dialog1.setSize(750, 500);
+        dialog1.setResizable(false);
+        dialog1.setLayout(new BorderLayout());
+
+        JTextArea mensaje1 = new JTextArea("Ahora que se que Ryan es el asesino tengo que ir con mucho cuidado para que no me pase nada malo a mi tampoco\n\n" +
+                "Cuando llamo a la puerta Ryan me recibe y deja pasar, nos sentamos en su sofa.\n" +
+                "Allysson: Bueno Ryan tengo algunas noticias sobre el caso de Emily...\n\n" +
+                "Ryan:Enserio??? menos mal, espero que pronto podais hacer justicia. Que es lo nuevo que has descubierto?\n\n" +
+                "Allysson: No se Ryan dimelo tu, merecia la pena la vida de Emily por un poco de dinero??\n\n" +
+                "Se hizo el silencio.\n" +
+                "Ryan:No se de que me estas hablando y no me gustan estas acusaciones.\n\n" +
+                "Allysson: No te hagas el tonto, ya se que fuiste tu el que mato a la victima y tengo pruebas Ryan.\n\n" +
+                "Ryan:Vaya Allysson no me esperaba que lo consiguieses... me temo que tendre que hacer algo contigo.\n\n" +
+                "Tras decir eso Allysson se levanta con la grabacion de la conversacion y se aleja de Ryan pero este saca un cuchillo de un cajon y se acerca a la detective\n" );
+        mensaje1.setEditable(false);
+        mensaje1.setLineWrap(true);
+        mensaje1.setWrapStyleWord(true);
+        mensaje1.setFont(new Font("Verdana", Font.PLAIN, 24));
+        dialog1.add(new JScrollPane(mensaje1), BorderLayout.CENTER);
+
+        JButton botonCerrar1 = new JButton("Cerrar");
+        botonCerrar1.addActionListener(e -> dialog1.dispose());
+        dialog1.add(botonCerrar1, BorderLayout.SOUTH);
+
+        dialog1.setLocationRelativeTo(frame);
+        dialog1.setVisible(true);
+    }
+
+    public void ganas(){
+
+        //FONFO DEL FRAME
+        JFrame frame = new JFrame();
+        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setVisible(true);
+        JPanel fondoPanel = new JPanel() {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                // Dibujar la imagen de fondo
+                ImageIcon fondo = new ImageIcon(getClass().getResource("/HAS_CONSEGUIDO.jpg"));
+                g.drawImage(fondo.getImage(), 0, 0, getWidth(), getHeight(), this);
+            }
+        };
+        fondoPanel.setLayout(new BorderLayout());
+        frame.add(fondoPanel);
+
+        frame.setVisible(true);
+
+        //primer texto
+
+        JDialog dialog1 = new JDialog(frame, null, true);
+        dialog1.setSize(750, 500);
+        dialog1.setResizable(false);
+        dialog1.setLayout(new BorderLayout());
+
+        JTextArea mensaje1 = new JTextArea("Conseguiste defenderte usando la pistola de la victima, gracias a la grabación que hiciste la policia pudo detener a Ryan despues de ser dado de alta en el hospital por el disparo\n\n" +
+                "GENIAL DETECTIVE LO CONSEGUISTE" );
+        mensaje1.setEditable(false);
+        mensaje1.setLineWrap(true);
+        mensaje1.setWrapStyleWord(true);
+        mensaje1.setFont(new Font("Verdana", Font.PLAIN, 24));
+        dialog1.add(new JScrollPane(mensaje1), BorderLayout.CENTER);
+
+        JButton botonCerrar1 = new JButton("Cerrar");
+        botonCerrar1.addActionListener(e -> dialog1.dispose());
+        dialog1.add(botonCerrar1, BorderLayout.SOUTH);
+
+        dialog1.setLocationRelativeTo(frame);
+        dialog1.setVisible(true);
+    }
+
+    public void decides( String nom){
+
+        //FONFO DEL FRAME
+        JFrame frame = new JFrame();
+        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setVisible(true);
+        JPanel fondoPanel = new JPanel() {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                // Dibujar la imagen de fondo
+                ImageIcon fondo = new ImageIcon(getClass().getResource("/PANTALLA TITULO.jpg"));
+                g.drawImage(fondo.getImage(), 0, 0, getWidth(), getHeight(), this);
+            }
+        };
+        fondoPanel.setLayout(new BorderLayout());
+        frame.add(fondoPanel);
+
+        frame.setVisible(true);
+
+        if(nom.equals("Ryan")){
+            JPanel fondoPanel1 = new JPanel() {
+                @Override
+                protected void paintComponent(Graphics g) {
+                    super.paintComponent(g);
+                    // Dibujar la imagen de fondo
+                    ImageIcon fondo = new ImageIcon(getClass().getResource("/HAS_CONSEGUIDO.jpg"));
+                    g.drawImage(fondo.getImage(), 0, 0, getWidth(), getHeight(), this);
+                }
+            };
+            fondoPanel.setLayout(new BorderLayout());
+            frame.add(fondoPanel);
+
+            JDialog dialog1 = new JDialog(frame, null, true);
+            dialog1.setSize(750, 500);
+            dialog1.setResizable(false);
+            dialog1.setLayout(new BorderLayout());
+
+            JTextArea mensaje1 = new JTextArea("Genial Detective has adivinado quien es el asesino" );
+            mensaje1.setEditable(false);
+            mensaje1.setLineWrap(true);
+            mensaje1.setWrapStyleWord(true);
+            mensaje1.setFont(new Font("Verdana", Font.PLAIN, 24));
+            dialog1.add(new JScrollPane(mensaje1), BorderLayout.CENTER);
+
+            JButton botonCerrar1 = new JButton("Cerrar");
+            botonCerrar1.addActionListener(e -> dialog1.dispose());
+            dialog1.add(botonCerrar1, BorderLayout.SOUTH);
+
+            dialog1.setLocationRelativeTo(frame);
+            dialog1.setVisible(true);
+        }
+        else{
+
+            JPanel fondoPanel2 = new JPanel() {
+                @Override
+                protected void paintComponent(Graphics g) {
+                    super.paintComponent(g);
+                    // Dibujar la imagen de fondo
+                    ImageIcon fondo = new ImageIcon(getClass().getResource("/NO_CONSEGUIDO.jpg"));
+                    g.drawImage(fondo.getImage(), 0, 0, getWidth(), getHeight(), this);
+                }
+            };
+            fondoPanel.setLayout(new BorderLayout());
+            frame.add(fondoPanel);
+            JDialog dialog1 = new JDialog(frame, null, true);
+            dialog1.setSize(750, 500);
+            dialog1.setResizable(false);
+            dialog1.setLayout(new BorderLayout());
+
+            JTextArea mensaje1 = new JTextArea("Vaya... No has resuelto el caso, ese no es el asesino." );
+            mensaje1.setEditable(false);
+            mensaje1.setLineWrap(true);
+            mensaje1.setWrapStyleWord(true);
+            mensaje1.setFont(new Font("Verdana", Font.PLAIN, 24));
+            dialog1.add(new JScrollPane(mensaje1), BorderLayout.CENTER);
+
+            JButton botonCerrar1 = new JButton("Cerrar");
+            botonCerrar1.addActionListener(e -> dialog1.dispose());
+            dialog1.add(botonCerrar1, BorderLayout.SOUTH);
+
+            dialog1.setLocationRelativeTo(frame);
+            dialog1.setVisible(true);
+        }
+
+    }
+
+
 
 }

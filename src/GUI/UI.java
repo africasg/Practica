@@ -12,6 +12,7 @@ import Objetos.Pistola;
 public class UI {
 
     Pistola pistola= new Pistola("pistola","Arma de la victima",false,true);
+    int disparo;
 
     public void mostrarMenu(){
         JFrame frame = new JFrame("Mistery Murder");
@@ -558,6 +559,7 @@ public class UI {
         //no disparas. SIGUES CON BALA (mostrarPantalla5b())
         //y si no hay pistola??????
 
+
         JFrame frame= new JFrame("Pantalla 4");
         frame.setSize(400, 300);
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -600,7 +602,7 @@ public class UI {
         botonDisparas.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                game.disparas(pistola);
+                disparo=game.disparas(pistola);
                 mostrarPantalla5a();
                 frame.dispose();
             }
@@ -810,10 +812,11 @@ public class UI {
         };
         frame.add(panel);
 
+        Game game= new Game();
+        game.Accion14();
 
 
-
-        JLabel texto= new JLabel("OH NO... el maldito ryan me ha atacado que hago??");
+        JLabel texto= new JLabel("Estoy en grabes problemas, que hago?");
         texto.setAlignmentX(Component.CENTER_ALIGNMENT);
         texto.setForeground(Color.WHITE);
         texto.setFont(new Font("Verdana", Font.PLAIN, 24));// Estilo de la fuente
@@ -833,8 +836,16 @@ public class UI {
         botonDefenderte.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                mostrarPantalla8();
-                frame.dispose();
+                disparo=game.disparas(pistola);
+                if(disparo==1){
+                    mostrarPantalla8();
+                    frame.dispose();
+                }else{
+                    mostrarPantaExtra();
+                    frame.dispose();
+                }
+
+
             }
         });
         botonNoDefenderte.addActionListener(new ActionListener() {
@@ -866,14 +877,9 @@ public class UI {
             }
         };
         frame.add(panel);
+        Game game= new Game();
+        game.ganas();
 
-
-        JLabel texto= new JLabel("TE HAS DEFENDIDIO Y GANAS OLE OLE");
-        texto.setAlignmentX(Component.CENTER_ALIGNMENT);
-        texto.setForeground(Color.WHITE);
-        texto.setFont(new Font("Verdana", Font.PLAIN, 24));// Estilo de la fuente
-        panel.add(texto);
-        panel.setLayout(new GridBagLayout());
 
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.gridx = 0;
@@ -925,6 +931,9 @@ public class UI {
         };
         frame.add(panel);
 
+        Game game= new Game();
+
+
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.gridx = 0;
         gbc.gridy = 0;
@@ -961,7 +970,7 @@ public class UI {
             @Override
             public void actionPerformed(ActionEvent e) {
                 nom[0] = textField.getText();
-                JOptionPane.showMessageDialog(frame, "Asesino elegido: " + nom[0]);
+                game.decides(nom[0]);
             }
         });
 
@@ -996,7 +1005,7 @@ public class UI {
         frame.add(panel);
 
 
-        JLabel texto= new JLabel("QUE TE HAN MATADO Y NO SABES NA ");
+        JLabel texto= new JLabel("No pudiste defenderte de Ryan y has muerto ");
         texto.setAlignmentX(Component.CENTER_ALIGNMENT);
         texto.setForeground(Color.WHITE);
         texto.setFont(new Font("Verdana", Font.PLAIN, 24));// Estilo de la fuente
