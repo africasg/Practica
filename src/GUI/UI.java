@@ -906,7 +906,7 @@ public class UI {
 
         frame.setVisible(true);
     }
-    public void mostrarFinal() {
+ public void mostrarFinal() {
         // Final de juego - elegir al asesino
 
         final String[] nom = {""};
@@ -918,25 +918,15 @@ public class UI {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         // Panel principal con GridBagLayout
-        JPanel panel = new JPanel(){
-            @Override
-            protected void paintComponent(Graphics g) {
-                super.paintComponent(g);
-                // Cargar la imagen de fondo
-                ImageIcon fondo = new ImageIcon(Objects.requireNonNull(getClass().getResource("/PANTALLA_TITULO.png")));
-                Image img = fondo.getImage();
-                // Dibujar la imagen en el panel
-                g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
-            }
-        };
+        JPanel panel = new JPanel();
+        panel.setLayout(new GridBagLayout());
+        panel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+        panel.setBackground(Color.DARK_GRAY); // Fondo oscuro para contraste
         frame.add(panel);
 
-        Game game= new Game();
-
-
         GridBagConstraints gbc = new GridBagConstraints();
-        gbc.gridx = 0;
-        gbc.gridy = 0;
+        gbc.gridx = 0; // Centrar los componentes horizontalmente
+        gbc.gridy = 0; // Iniciar en la fila 0
         gbc.insets = new Insets(10, 0, 10, 0); // Espaciado entre componentes
         gbc.anchor = GridBagConstraints.CENTER;
 
@@ -946,42 +936,45 @@ public class UI {
         texto.setFont(new Font("Verdana", Font.PLAIN, 24)); // Estilo de la fuente
         panel.add(texto, gbc);
 
-        gbc.gridy++;
+        // Campo de texto para ingresar el nombre del sospechoso
+        gbc.gridy++; // Mover a la siguiente fila
         JTextField textField = new JTextField();
         textField.setPreferredSize(new Dimension(300, 30)); // Tamaño del campo de texto
         panel.add(textField, gbc);
 
-
+        // Botón "Guardar"
         gbc.gridy++;
         JButton button = new JButton("Guardar");
         button.setPreferredSize(new Dimension(150, 40)); // Tamaño del botón
         button.setFont(new Font("Arial", Font.BOLD, 18));
         panel.add(button, gbc);
 
-
+        // Botón "Volver al menú"
         gbc.gridy++;
         JButton botonMenu = new JButton("Volver al menú");
         botonMenu.setPreferredSize(new Dimension(300, 60)); // Tamaño del botón
         botonMenu.setFont(new Font("Arial", Font.BOLD, 24));
         panel.add(botonMenu, gbc);
 
-
+        // Acción del botón "Guardar"
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                nom[0] = textField.getText();
-                game.decides(nom[0]);
+                nom[0] = textField.getText(); // Capturar el nombre ingresado
+                JOptionPane.showMessageDialog(frame, "Asesino elegido: " + nom[0]);
             }
         });
 
-
+        // Acción del botón "Volver al menú"
         botonMenu.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                mostrarMenu(); // Cerrar la ventana actual
+                mostrarMenu(); // Regresar al menú principal
+                frame.dispose(); // Cerrar la ventana actual
             }
         });
- // Mostrar el marco
+
+        // Mostrar el marco
         frame.setVisible(true);
     }
 
