@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 import java.util.Objects;
 import Backend.Game;
 import Objetos.Pistola;
-import Backend.Game;
+
 
 public class UI {
 
@@ -34,7 +34,7 @@ public class UI {
         mensaje.setFont(new Font("Verdana", Font.PLAIN, 24));// Estilo de la fuente
         panel.add(mensaje, gbc);
 
-        // Botón "Jugar"
+        // Botón Jugar
         gbc.gridy++;
         JButton btnIniciar = new JButton("Jugar");
         btnIniciar.setPreferredSize(new Dimension(300, 80)); // Tamaño del botón
@@ -48,11 +48,11 @@ public class UI {
         });
         panel.add(btnIniciar, gbc);
 
-        // Botón "Salir"
+        // Botón Salir
         gbc.gridy++;
         JButton btnSalir = new JButton("Salir");
-        btnSalir.setPreferredSize(new Dimension(300, 80)); // Tamaño del botón
-        btnSalir.setFont(new Font("Arial", Font.BOLD, 24)); // Texto más grande
+        btnSalir.setPreferredSize(new Dimension(300, 80));
+        btnSalir.setFont(new Font("Arial", Font.BOLD, 24));
         btnSalir.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -83,7 +83,7 @@ public class UI {
     }
 
     public void mostrarPantallaInicial(){
-        // Se muestra el texto con lore, consigues movil(lees conver y tienes codigo)
+        //Se muestra el texto con lore, consigues movil(lees conver y tienes codigo)
         Game game= new Game();
         JFrame frame= new JFrame("Pantalla inicial");
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -93,28 +93,26 @@ public class UI {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                // Cargar la imagen de fondo
                 ImageIcon fondo = new ImageIcon(Objects.requireNonNull(getClass().getResource("/interrogatorio.jpg")));
                 Image img = fondo.getImage();
-                // Dibujar la imagen en el panel
                 g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
             }
         };
         frame.add(panel);
 
-        // mejorar este texto con lore
+
         game.Accion1();
-        JLabel texto= new JLabel(" ¿A quien vas a interrogar?");
+        JLabel texto= new JLabel(" ¿A quién vas a interrogar?");
         texto.setAlignmentX(Component.CENTER_ALIGNMENT);
         texto.setForeground(Color.WHITE);
-        texto.setFont(new Font("Verdana", Font.PLAIN, 24));// Estilo de la fuente
+        texto.setFont(new Font("Verdana", Font.PLAIN, 24));
         panel.add(texto);
         panel.setLayout(new GridBagLayout());
 
         GridBagConstraints gbc = new GridBagConstraints(); //PARA PONER LOS BOTONES GRANDES Y EN EL MEDIO HAY QUE UTILIZAR EL GRIDY
         gbc.gridx = 0;
         gbc.gridy = 0;
-        gbc.insets = new Insets(10, 0, 10, 0); // Espaciado entre componentes
+        gbc.insets = new Insets(10, 0, 10, 0);
         gbc.anchor = GridBagConstraints.CENTER;
 
         game.Accion2();
@@ -122,12 +120,12 @@ public class UI {
 
 
         JButton botonJess = new JButton("Hablar con Jess");
-        botonJess.setPreferredSize(new Dimension(300, 80)); // Tamaño del botón boton
+        botonJess.setPreferredSize(new Dimension(300, 80));
         botonJess.setFont(new Font("Arial", Font.BOLD, 24));
         panel.add(botonJess);
 
         JButton botonRyan = new JButton("Hablar con Ryan");
-        botonRyan.setPreferredSize(new Dimension(300, 80)); // Tamaño del botón boton
+        botonRyan.setPreferredSize(new Dimension(300, 80));
         botonRyan.setFont(new Font("Arial", Font.BOLD, 24));
         panel.add(botonRyan);
 
@@ -161,10 +159,10 @@ public class UI {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                // Cargar la imagen de fondo
+
                 ImageIcon fondo = new ImageIcon(Objects.requireNonNull(getClass().getResource("/interrogatorio.jpg")));
                 Image img = fondo.getImage();
-                // Dibujar la imagen en el panel
+
                 g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
             }
         };
@@ -172,22 +170,22 @@ public class UI {
 
         game.Accion3();
 
-        JLabel texto= new JLabel("MMMM...Parece que el caso es mas complicado de lo que pensaba");
+        JLabel texto= new JLabel("MMMM...Parece que el caso es más complicado de lo que pensabas");
         texto.setAlignmentX(Component.CENTER_ALIGNMENT);
         texto.setForeground(Color.WHITE);
-        texto.setFont(new Font("Verdana", Font.PLAIN, 24));// Estilo de la fuente
+        texto.setFont(new Font("Verdana", Font.PLAIN, 24));
         panel.add(texto);
         panel.setLayout(new GridBagLayout());
 
-        GridBagConstraints gbc = new GridBagConstraints(); //PARA PONER LOS BOTONES GRANDES Y EN EL MEDIO HAY QUE UTILIZAR EL GRIDY
+        GridBagConstraints gbc = new GridBagConstraints();
         gbc.gridx = 0;
         gbc.gridy = 0;
-        gbc.insets = new Insets(10, 0, 10, 0); // Espaciado entre componentes
+        gbc.insets = new Insets(10, 0, 10, 0);
         gbc.anchor = GridBagConstraints.CENTER;
 
         gbc.gridy++;
         JButton boton1 = new JButton("Ir a la oficina");
-        boton1.setPreferredSize(new Dimension(300, 80)); // Tamaño del botón boton
+        boton1.setPreferredSize(new Dimension(300, 80));
         boton1.setFont(new Font("Arial", Font.BOLD, 24));
 
         panel.add(boton1);
@@ -226,22 +224,22 @@ public class UI {
         game.Accion4();
 
 
-        JLabel texto= new JLabel("MMMM...Parece que el caso es mas complicado de lo que pensaba");
+        JLabel texto= new JLabel("MMMM...Parece que el caso es más complicado de lo que pensabas");
         texto.setAlignmentX(Component.CENTER_ALIGNMENT);
         texto.setForeground(Color.WHITE);
-        texto.setFont(new Font("Verdana", Font.PLAIN, 24));// Estilo de la fuente
+        texto.setFont(new Font("Verdana", Font.PLAIN, 24));
         panel.add(texto);
         panel.setLayout(new GridBagLayout());
 
-        GridBagConstraints gbc = new GridBagConstraints(); //PARA PONER LOS BOTONES GRANDES Y EN EL MEDIO HAY QUE UTILIZAR EL GRIDY
+        GridBagConstraints gbc = new GridBagConstraints();
         gbc.gridx = 0;
         gbc.gridy = 0;
-        gbc.insets = new Insets(10, 0, 10, 0); // Espaciado entre componentes
+        gbc.insets = new Insets(10, 0, 10, 0);
         gbc.anchor = GridBagConstraints.CENTER;
 
         gbc.gridy++;
         JButton boton1 = new JButton("Ir a la oficina");
-        boton1.setPreferredSize(new Dimension(300, 80)); // Tamaño del botón boton
+        boton1.setPreferredSize(new Dimension(300, 80));
         boton1.setFont(new Font("Arial", Font.BOLD, 24));
 
         panel.add(boton1);
@@ -282,21 +280,21 @@ public class UI {
 
         game.Accion5();
 
-        JLabel texto= new JLabel("¿Volveras a la escena del crimen?");
+        JLabel texto= new JLabel("¿Volverás a la escena del crimen?");
         texto.setAlignmentX(Component.CENTER_ALIGNMENT);
         texto.setForeground(Color.WHITE);
-        texto.setFont(new Font("Verdana", Font.PLAIN, 24));// Estilo de la fuente
+        texto.setFont(new Font("Verdana", Font.PLAIN, 24));
         panel.add(texto);
         panel.setLayout(new GridBagLayout());
 
 
-        JButton botonsi = new JButton("Si vas");
-        botonsi.setPreferredSize(new Dimension(300, 80)); // Tamaño del botón boton
+        JButton botonsi = new JButton("Volver");
+        botonsi.setPreferredSize(new Dimension(300, 80));
         botonsi.setFont(new Font("Arial", Font.BOLD, 24));
         panel.add(botonsi);
 
-        JButton botonNo = new JButton("No vas");
-        botonNo.setPreferredSize(new Dimension(300, 80)); // Tamaño del botón boton
+        JButton botonNo = new JButton("No volver");
+        botonNo.setPreferredSize(new Dimension(300, 80));
         botonNo.setFont(new Font("Arial", Font.BOLD, 24));
         panel.add(botonNo);
 
@@ -333,10 +331,10 @@ public class UI {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                // Cargar la imagen de fondo
+
                 ImageIcon fondo = new ImageIcon(Objects.requireNonNull(getClass().getResource("/casa.jpg")));
                 Image img = fondo.getImage();
-                // Dibujar la imagen en el panel
+
                 g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
             }
         };
@@ -344,20 +342,20 @@ public class UI {
 
         game.Accion6();
 
-        JLabel texto= new JLabel("¿Qué hago?");
+        JLabel texto= new JLabel("¿Qué harás?");
         texto.setAlignmentX(Component.CENTER_ALIGNMENT);
         texto.setForeground(Color.WHITE);
-        texto.setFont(new Font("Verdana", Font.PLAIN, 24));// Estilo de la fuente
+        texto.setFont(new Font("Verdana", Font.PLAIN, 24));
         panel.add(texto);
         panel.setLayout(new GridBagLayout());
 
         JButton botonCoger = new JButton("Coges la pistola");
-        botonCoger.setPreferredSize(new Dimension(300, 80)); // Tamaño del botón boton
+        botonCoger.setPreferredSize(new Dimension(300, 80));
         botonCoger.setFont(new Font("Arial", Font.BOLD, 24));
         panel.add(botonCoger);
 
         JButton botonNoCoger = new JButton("No coges la pistola");
-        botonNoCoger.setPreferredSize(new Dimension(300, 80)); // Tamaño del botón boton
+        botonNoCoger.setPreferredSize(new Dimension(300, 80));
         botonNoCoger.setFont(new Font("Arial", Font.BOLD, 24));
         panel.add(botonNoCoger);
 
@@ -407,14 +405,14 @@ public class UI {
 
         game.Accion7();
 
-        JLabel texto= new JLabel("Creo que si deberia abrirlo");
+        JLabel texto= new JLabel("Creo que sí debería abrir el mensaje");
         texto.setAlignmentX(Component.CENTER_ALIGNMENT);
         texto.setForeground(Color.WHITE);
-        texto.setFont(new Font("Verdana", Font.PLAIN, 24));// Estilo de la fuente
+        texto.setFont(new Font("Verdana", Font.PLAIN, 24));
         panel.add(texto);
         panel.setLayout(new GridBagLayout());
 
-        JButton botonMensaje = new JButton("Abres el mensaje");
+        JButton botonMensaje = new JButton("*Abrir mensaje*");
         botonMensaje.setPreferredSize(new Dimension(300, 80)); // Tamaño del botón boton
         botonMensaje.setFont(new Font("Arial", Font.BOLD, 24));
         panel.add(botonMensaje);
@@ -444,10 +442,10 @@ public class UI {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                // Cargar la imagen de fondo
+
                 ImageIcon fondo = new ImageIcon(Objects.requireNonNull(getClass().getResource("/casa.jpg")));
                 Image img = fondo.getImage();
-                // Dibujar la imagen en el panel
+
                 g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
             }
         };
@@ -458,20 +456,20 @@ public class UI {
         game.Accion8();
 
 
-        JLabel texto= new JLabel(" ¿Debería seguir a la persona?");
+        JLabel texto= new JLabel(" ¿Seguirás a la persona?");
         texto.setAlignmentX(Component.CENTER_ALIGNMENT);
         texto.setForeground(Color.WHITE);
-        texto.setFont(new Font("Verdana", Font.PLAIN, 24));// Estilo de la fuente
+        texto.setFont(new Font("Verdana", Font.PLAIN, 24));
         panel.add(texto);
         panel.setLayout(new GridBagLayout());
 
         JButton botonSeguir = new JButton("Le sigues");
-        botonSeguir.setPreferredSize(new Dimension(300, 80)); // Tamaño del botón boton
+        botonSeguir.setPreferredSize(new Dimension(300, 80));
         botonSeguir.setFont(new Font("Arial", Font.BOLD, 24));
         panel.add(botonSeguir);
 
         JButton botonNoSeguir = new JButton("No le sigues");
-        botonNoSeguir.setPreferredSize(new Dimension(300, 80)); // Tamaño del botón boton
+        botonNoSeguir.setPreferredSize(new Dimension(300, 80));
         botonNoSeguir.setFont(new Font("Arial", Font.BOLD, 24));
         panel.add(botonNoSeguir);
 
@@ -519,20 +517,20 @@ public class UI {
         game.Accion9();
 
 
-        JLabel texto= new JLabel("¿Debería hacerle caso al mensaje?");
+        JLabel texto= new JLabel("¿Le harás caso al mensaje?");
         texto.setAlignmentX(Component.CENTER_ALIGNMENT);
         texto.setForeground(Color.WHITE);
-        texto.setFont(new Font("Verdana", Font.PLAIN, 24));// Estilo de la fuente
+        texto.setFont(new Font("Verdana", Font.PLAIN, 24));
         panel.add(texto);
         panel.setLayout(new GridBagLayout());
 
-        JButton botonVas= new JButton("Vas al bosque");
-        botonVas.setPreferredSize(new Dimension(300, 80)); // Tamaño del botón boton
+        JButton botonVas= new JButton("Ir al bosque");
+        botonVas.setPreferredSize(new Dimension(300, 80));
         botonVas.setFont(new Font("Arial", Font.BOLD, 24));
         panel.add(botonVas);
 
-        JButton botonNoVas = new JButton("No vas al bosque");
-        botonNoVas.setPreferredSize(new Dimension(300, 80)); // Tamaño del botón boton
+        JButton botonNoVas = new JButton("No ir al bosque");
+        botonNoVas.setPreferredSize(new Dimension(300, 80));
         botonNoVas.setFont(new Font("Arial", Font.BOLD, 24));
         panel.add(botonNoVas);
 
@@ -569,10 +567,10 @@ public class UI {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                // Cargar la imagen de fondo
+
                 ImageIcon fondo = new ImageIcon(Objects.requireNonNull(getClass().getResource("/BOSQUE.JPG")));
                 Image img = fondo.getImage();
-                // Dibujar la imagen en el panel
+
                 g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
             }
         };
@@ -582,20 +580,20 @@ public class UI {
         game.Accion10();
 
 
-        JLabel texto= new JLabel("RAPIDO QUE HACES");
+        JLabel texto= new JLabel("¡OH NO! ¿QUE HARÁS?");
         texto.setAlignmentX(Component.CENTER_ALIGNMENT);
         texto.setForeground(Color.WHITE);
-        texto.setFont(new Font("Verdana", Font.PLAIN, 24));// Estilo de la fuente
+        texto.setFont(new Font("Verdana", Font.PLAIN, 24));
         panel.add(texto);
         panel.setLayout(new GridBagLayout());
 
-        JButton botonDisparas = new JButton("Disparas");
-        botonDisparas.setPreferredSize(new Dimension(300, 80)); // Tamaño del botón
+        JButton botonDisparas = new JButton("DISPARAR");
+        botonDisparas.setPreferredSize(new Dimension(300, 80));
         botonDisparas.setFont(new Font("Arial", Font.BOLD, 24));
         panel.add(botonDisparas);
 
-        JButton botonNoDisparas = new JButton("No disparas");
-        botonNoDisparas.setPreferredSize(new Dimension(300, 80)); // Tamaño del botón
+        JButton botonNoDisparas = new JButton("NO DISPARAR");
+        botonNoDisparas.setPreferredSize(new Dimension(300, 80));
         botonNoDisparas.setFont(new Font("Arial", Font.BOLD, 24));
         panel.add(botonNoDisparas);
 
@@ -645,20 +643,20 @@ public class UI {
         game.Accion11();
 
 
-        JLabel texto= new JLabel("Que deberia de hacer con esta información? vuelvo aqui mañana?");
+        JLabel texto= new JLabel("¿Que harás con esta información? ¿Volverás aquí mañana?");
         texto.setAlignmentX(Component.CENTER_ALIGNMENT);
         texto.setForeground(Color.WHITE);
-        texto.setFont(new Font("Verdana", Font.PLAIN, 24));// Estilo de la fuente
+        texto.setFont(new Font("Verdana", Font.PLAIN, 24));
         panel.add(texto);
         panel.setLayout(new GridBagLayout());
 
-        JButton botonLeer = new JButton("vas ");
-        botonLeer.setPreferredSize(new Dimension(300, 80)); // Tamaño del botón boton
+        JButton botonLeer = new JButton("Volveré");
+        botonLeer.setPreferredSize(new Dimension(300, 80));
         botonLeer.setFont(new Font("Arial", Font.BOLD, 24));
         panel.add(botonLeer);
 
-        JButton botonNoLeer = new JButton("No vas");
-        botonNoLeer.setPreferredSize(new Dimension(300, 80)); // Tamaño del botón boton
+        JButton botonNoLeer = new JButton("No volveré");
+        botonNoLeer.setPreferredSize(new Dimension(300, 80));
         botonLeer.setFont(new Font("Arial", Font.BOLD, 24));
         panel.add(botonLeer);
 
@@ -706,20 +704,20 @@ public class UI {
         game.Accion12();
 
 
-        JLabel texto= new JLabel("Que deberia de hacer con esta información? vuelvo aqui mañana?");
+        JLabel texto= new JLabel("¿Que harás con esta información? ¿Volverás aquí mañana?");
         texto.setAlignmentX(Component.CENTER_ALIGNMENT);
         texto.setForeground(Color.WHITE);
-        texto.setFont(new Font("Verdana", Font.PLAIN, 24));// Estilo de la fuente
+        texto.setFont(new Font("Verdana", Font.PLAIN, 24));
         panel.add(texto);
         panel.setLayout(new GridBagLayout());
 
-        JButton botonLeer = new JButton("vas ");
-        botonLeer.setPreferredSize(new Dimension(300, 80)); // Tamaño del botón boton
+        JButton botonLeer = new JButton(" Volveré ");
+        botonLeer.setPreferredSize(new Dimension(300, 80));
         botonLeer.setFont(new Font("Arial", Font.BOLD, 24));
         panel.add(botonLeer);
 
-        JButton botonNoLeer = new JButton("No vas");
-        botonNoLeer.setPreferredSize(new Dimension(300, 80)); // Tamaño del botón boton
+        JButton botonNoLeer = new JButton("No volveré");
+        botonNoLeer.setPreferredSize(new Dimension(300, 80));
         botonLeer.setFont(new Font("Arial", Font.BOLD, 24));
         panel.add(botonNoLeer);
 
@@ -765,15 +763,15 @@ public class UI {
         Game game= new Game();
         game.Accion13();
 
-        JLabel texto= new JLabel("Esto lo cambia todo, necesito una confesion por su parte.");
+        JLabel texto= new JLabel("Esto lo cambia todo, necesito una confesión por su parte.");
         texto.setAlignmentX(Component.CENTER_ALIGNMENT);
         texto.setForeground(Color.WHITE);
-        texto.setFont(new Font("Verdana", Font.PLAIN, 24));// Estilo de la fuente
+        texto.setFont(new Font("Verdana", Font.PLAIN, 24));
         panel.add(texto);
         panel.setLayout(new GridBagLayout());
 
         JButton botonir = new JButton("Vas a ver a Ryan");
-        botonir.setPreferredSize(new Dimension(300, 80)); // Tamaño del botón boton
+        botonir.setPreferredSize(new Dimension(300, 80));
         botonir.setFont(new Font("Arial", Font.BOLD, 24));
         panel.add(botonir);
 
@@ -816,20 +814,20 @@ public class UI {
         game.Accion14();
 
 
-        JLabel texto= new JLabel("Estoy en grabes problemas, que hago?");
+        JLabel texto= new JLabel("Estoy en graves problemas, ¿Qué hago?");
         texto.setAlignmentX(Component.CENTER_ALIGNMENT);
         texto.setForeground(Color.WHITE);
-        texto.setFont(new Font("Verdana", Font.PLAIN, 24));// Estilo de la fuente
+        texto.setFont(new Font("Verdana", Font.PLAIN, 24));
         panel.add(texto);
         panel.setLayout(new GridBagLayout());
 
         JButton botonDefenderte = new JButton("Defenderte con pistola");
-        botonDefenderte.setPreferredSize(new Dimension(300, 80)); // Tamaño del botón boton
+        botonDefenderte.setPreferredSize(new Dimension(300, 80));
         botonDefenderte.setFont(new Font("Arial", Font.BOLD, 24));
         panel.add(botonDefenderte);
 
         JButton botonNoDefenderte = new JButton("No te defiendes");
-        botonNoDefenderte.setPreferredSize(new Dimension(300, 80)); // Tamaño del botón boton
+        botonNoDefenderte.setPreferredSize(new Dimension(300, 80));
         botonNoDefenderte.setFont(new Font("Arial", Font.BOLD, 24));
         panel.add(botonNoDefenderte);
 
@@ -928,13 +926,14 @@ public class UI {
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.gridx = 0; // Centrar los componentes horizontalmente
         gbc.gridy = 0; // Iniciar en la fila 0
-        gbc.insets = new Insets(10, 0, 10, 0); // Espaciado entre componentes
+        gbc.insets = new Insets(10, 0, 10, 0);
         gbc.anchor = GridBagConstraints.CENTER;
 
         // Etiqueta de texto
         JLabel texto = new JLabel("Llegaste al final, ¿quién crees que ha matado a Emily Carter?");
         texto.setForeground(Color.WHITE);
-        texto.setFont(new Font("Verdana", Font.PLAIN, 24)); // Estilo de la fuente
+        texto.setFont(new Font("Verdana", Font.PLAIN, 24));
+        panel.add(texto);
         panel.add(texto, gbc);
 
         // Campo de texto para ingresar el nombre del sospechoso
@@ -946,14 +945,14 @@ public class UI {
         // Botón "Guardar"
         gbc.gridy++;
         JButton button = new JButton("Guardar");
-        button.setPreferredSize(new Dimension(150, 40)); // Tamaño del botón
+        button.setPreferredSize(new Dimension(150, 40));
         button.setFont(new Font("Arial", Font.BOLD, 18));
         panel.add(button, gbc);
 
         // Botón "Volver al menú"
         gbc.gridy++;
         JButton botonMenu = new JButton("Volver al menú");
-        botonMenu.setPreferredSize(new Dimension(300, 60)); // Tamaño del botón
+        botonMenu.setPreferredSize(new Dimension(300, 60));
         botonMenu.setFont(new Font("Arial", Font.BOLD, 24));
         panel.add(botonMenu, gbc);
         // Acción del botón "Guardar"
@@ -1006,22 +1005,22 @@ public class UI {
         frame.add(panel);
 
 
-        JLabel texto= new JLabel("No pudiste defenderte de Ryan y has muerto ");
+        JLabel texto= new JLabel("No pudiste defenderte de Ryan y has muerto");
         texto.setAlignmentX(Component.CENTER_ALIGNMENT);
         texto.setForeground(Color.WHITE);
-        texto.setFont(new Font("Verdana", Font.PLAIN, 24));// Estilo de la fuente
+        texto.setFont(new Font("Verdana", Font.PLAIN, 24));
         panel.add(texto);
         panel.setLayout(new GridBagLayout());
 
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.gridx = 0;
         gbc.gridy = 0;
-        gbc.insets = new Insets(10, 0, 10, 0); // Espaciado entre componentes
+        gbc.insets = new Insets(10, 0, 10, 0);
         gbc.anchor = GridBagConstraints.CENTER;
 
         gbc.gridy++;
         JButton botonMenu = new JButton("Volver al menu");
-        botonMenu.setPreferredSize(new Dimension(300, 80)); // Tamaño del botón
+        botonMenu.setPreferredSize(new Dimension(300, 80));
         botonMenu.setFont(new Font("Arial", Font.BOLD, 24));
 
 
