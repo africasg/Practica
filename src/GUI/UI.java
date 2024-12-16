@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 import java.util.Objects;
 import Backend.Game;
 import Objetos.Pistola;
-
+import Backend.Game;
 
 public class UI {
 
@@ -906,10 +906,11 @@ public class UI {
 
         frame.setVisible(true);
     }
- public void mostrarFinal() {
-        // Final de juego - elegir al asesino
 
-        final String[] nom = {""};
+
+
+    public void mostrarFinal() {
+        final String[] nom = {""}; // Arreglo para almacenar el nombre del asesino ingresado
 
         // Configuración del marco
         JFrame frame = new JFrame("Pantalla Final");
@@ -955,13 +956,19 @@ public class UI {
         botonMenu.setPreferredSize(new Dimension(300, 60)); // Tamaño del botón
         botonMenu.setFont(new Font("Arial", Font.BOLD, 24));
         panel.add(botonMenu, gbc);
-
         // Acción del botón "Guardar"
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                nom[0] = textField.getText(); // Capturar el nombre ingresado
-                JOptionPane.showMessageDialog(frame, "Asesino elegido: " + nom[0]);
+                nom[0] = textField.getText().trim(); // Capturar el nombre ingresado
+                if (nom[0].isEmpty()) {
+                    JOptionPane.showMessageDialog(frame, "Por favor, ingresa un nombre.", "Error", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    // Llamar al método del paquete "Game"
+                    Game game = new Game(); // Asegúrate de que esta clase exista y sea accesible
+                    game.decides(nom[0]); // Pasar el nombre ingresado al método correspondiente
+                    frame.dispose(); // Cerrar la ventana actual
+                }
             }
         });
 
@@ -977,6 +984,7 @@ public class UI {
         // Mostrar el marco
         frame.setVisible(true);
     }
+
 
     public  void mostrarPantaExtra(){
         //no te has podido defender y mueres dejando el caso sin resolver

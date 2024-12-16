@@ -320,7 +320,7 @@ public class Game {
         String ruta="imagen_Allyson.png";
         List<Objeto> inventario=new ArrayList<>();
         Detective Allysson= new Detective("Allyson", ruta, "Detective", inventario, false);
-        
+
         //Objeto papeles
         Objeto papeles= new Objeto("Papeles","Herencia del abuelo de la victima",true);
         ImageIcon iconopapelesOriginal= new ImageIcon(getClass().getResource("/papeles.jpg"));
@@ -1015,95 +1015,59 @@ public class Game {
         dialog1.setVisible(true);
     }
 
-    public void decides( String nom){
-
-        //FONFO DEL FRAME
-        JFrame frame = new JFrame();
+    public void decides(String nom) {
+        // Crear el marco principal
+        JFrame frame = new JFrame("Resultado Final");
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setVisible(true);
-        JPanel fondoPanel = new JPanel() {
-            @Override
-            protected void paintComponent(Graphics g) {
-                super.paintComponent(g);
-                // Dibujar la imagen de fondo
-                ImageIcon fondo = new ImageIcon(getClass().getResource("/PANTALLA TITULO.jpg"));
-                g.drawImage(fondo.getImage(), 0, 0, getWidth(), getHeight(), this);
-            }
+
+        // Método auxiliar para configurar los paneles y mostrar mensajes
+        Runnable mostrarResultado = () -> {
+            JPanel fondoPanel = new JPanel() {
+                @Override
+                protected void paintComponent(Graphics g) {
+                    super.paintComponent(g);
+                    // Determinar qué imagen cargar según el resultado
+                    String imagePath = nom.equals("Ryan") ? "/HAS_CONSEGUIDO.jpg" : "/NO_CONSEGUIDO.jpg";
+                    ImageIcon fondo = new ImageIcon(getClass().getResource(imagePath));
+                    g.drawImage(fondo.getImage(), 0, 0, getWidth(), getHeight(), this);
+                }
+            };
+
+            fondoPanel.setLayout(new BorderLayout());
+            frame.setContentPane(fondoPanel); // Actualizar el panel de contenido del marco
+
+            // Crear el diálogo con el mensaje adecuado
+            JDialog dialog = new JDialog(frame, null, true);
+            dialog.setSize(750, 500);
+            dialog.setResizable(false);
+            dialog.setLayout(new BorderLayout());
+
+            // Determinar mensaje según el resultado
+            String mensaje = nom.equals("Ryan")
+                    ? "Genial Detective, has adivinado quién es el asesino."
+                    : "Vaya... No has resuelto el caso, ese no es el asesino.";
+            JTextArea mensajeArea = new JTextArea(mensaje);
+            mensajeArea.setEditable(false);
+            mensajeArea.setLineWrap(true);
+            mensajeArea.setWrapStyleWord(true);
+            mensajeArea.setFont(new Font("Verdana", Font.PLAIN, 24));
+            dialog.add(new JScrollPane(mensajeArea), BorderLayout.CENTER);
+
+            // Botón para cerrar el diálogo
+            JButton botonCerrar = new JButton("Cerrar");
+            botonCerrar.addActionListener(e -> dialog.dispose());
+            dialog.add(botonCerrar, BorderLayout.SOUTH);
+
+            dialog.setLocationRelativeTo(frame); // Centrar el diálogo en el marco
+            dialog.setVisible(true);
         };
-        fondoPanel.setLayout(new BorderLayout());
-        frame.add(fondoPanel);
 
+        // Mostrar el resultado
+        mostrarResultado.run();
+
+        // Hacer visible el marco principal
         frame.setVisible(true);
-
-        if(nom.equals("Ryan")){
-            JPanel fondoPanel1 = new JPanel() {
-                @Override
-                protected void paintComponent(Graphics g) {
-                    super.paintComponent(g);
-                    // Dibujar la imagen de fondo
-                    ImageIcon fondo = new ImageIcon(getClass().getResource("/HAS_CONSEGUIDO.jpg"));
-                    g.drawImage(fondo.getImage(), 0, 0, getWidth(), getHeight(), this);
-                }
-            };
-            fondoPanel.setLayout(new BorderLayout());
-            frame.add(fondoPanel);
-
-            JDialog dialog1 = new JDialog(frame, null, true);
-            dialog1.setSize(750, 500);
-            dialog1.setResizable(false);
-            dialog1.setLayout(new BorderLayout());
-
-            JTextArea mensaje1 = new JTextArea("Genial Detective has adivinado quien es el asesino" );
-            mensaje1.setEditable(false);
-            mensaje1.setLineWrap(true);
-            mensaje1.setWrapStyleWord(true);
-            mensaje1.setFont(new Font("Verdana", Font.PLAIN, 24));
-            dialog1.add(new JScrollPane(mensaje1), BorderLayout.CENTER);
-
-            JButton botonCerrar1 = new JButton("Cerrar");
-            botonCerrar1.addActionListener(e -> dialog1.dispose());
-            dialog1.add(botonCerrar1, BorderLayout.SOUTH);
-
-            dialog1.setLocationRelativeTo(frame);
-            dialog1.setVisible(true);
-        }
-        else{
-
-            JPanel fondoPanel2 = new JPanel() {
-                @Override
-                protected void paintComponent(Graphics g) {
-                    super.paintComponent(g);
-                    // Dibujar la imagen de fondo
-                    ImageIcon fondo = new ImageIcon(getClass().getResource("/NO_CONSEGUIDO.jpg"));
-                    g.drawImage(fondo.getImage(), 0, 0, getWidth(), getHeight(), this);
-                }
-            };
-            fondoPanel.setLayout(new BorderLayout());
-            frame.add(fondoPanel);
-            JDialog dialog1 = new JDialog(frame, null, true);
-            dialog1.setSize(750, 500);
-            dialog1.setResizable(false);
-            dialog1.setLayout(new BorderLayout());
-
-            JTextArea mensaje1 = new JTextArea("Vaya... No has resuelto el caso, ese no es el asesino." );
-            mensaje1.setEditable(false);
-            mensaje1.setLineWrap(true);
-            mensaje1.setWrapStyleWord(true);
-            mensaje1.setFont(new Font("Verdana", Font.PLAIN, 24));
-            dialog1.add(new JScrollPane(mensaje1), BorderLayout.CENTER);
-
-            JButton botonCerrar1 = new JButton("Cerrar");
-            botonCerrar1.addActionListener(e -> dialog1.dispose());
-            dialog1.add(botonCerrar1, BorderLayout.SOUTH);
-
-            dialog1.setLocationRelativeTo(frame);
-            dialog1.setVisible(true);
-        }
-
     }
-
-
 
 }
