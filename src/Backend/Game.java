@@ -740,27 +740,6 @@ public class Game {
         if(pistola.isDisponible()){
            Allysson.dispararPistola(pistola);
 
-            JDialog dialog1 = new JDialog(frame, null, true);
-            dialog1.setSize(750, 500);
-            dialog1.setResizable(false);
-            dialog1.setLayout(new BorderLayout());
-
-            JTextArea mensaje1 = new JTextArea("Vaya solo era un conejo, menos mal que no le he dado. Espera... en ese arbol hay una nota\n" +
-                    "NOTA:\n\n" +
-                    "Hola detective si quieres saber que le ha pasado a Emily vuelve aqui mañana a la misma hora." );
-            mensaje1.setEditable(false);
-            mensaje1.setLineWrap(true);
-            mensaje1.setWrapStyleWord(true);
-            mensaje1.setFont(new Font("Verdana", Font.PLAIN, 24));
-            dialog1.add(new JScrollPane(mensaje1), BorderLayout.CENTER);
-
-            JButton botonCerrar1 = new JButton("Cerrar");
-            botonCerrar1.addActionListener(e -> dialog1.dispose());
-            dialog1.add(botonCerrar1, BorderLayout.SOUTH);
-
-            dialog1.setLocationRelativeTo(frame);
-            dialog1.setVisible(true);
-
         }else{
             JDialog dialog1 = new JDialog(frame, null, true);
             dialog1.setSize(750, 500);
@@ -781,6 +760,165 @@ public class Game {
             dialog1.setLocationRelativeTo(frame);
             dialog1.setVisible(true);
         }
+    }
+
+    public void Accion11(){
+
+        //objeto detective allyson
+        String ruta="imagen_Allyson.png";
+        List<Objeto> inventario=new ArrayList<>();
+        Detective Allysson= new Detective("Allyson", ruta, "Detective", inventario, false);
+
+        //FONFO DEL FRAME
+        JFrame frame = new JFrame();
+        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setVisible(true);
+        JPanel fondoPanel = new JPanel() {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                // Dibujar la imagen de fondo
+                ImageIcon fondo = new ImageIcon(getClass().getResource("/BOSQUE.JPG"));
+                g.drawImage(fondo.getImage(), 0, 0, getWidth(), getHeight(), this);
+            }
+        };
+        fondoPanel.setLayout(new BorderLayout());
+        frame.add(fondoPanel);
+
+        frame.setVisible(true);
+
+        //primer texto
+
+        JDialog dialog1 = new JDialog(frame, null, true);
+        dialog1.setSize(750, 500);
+        dialog1.setResizable(false);
+        dialog1.setLayout(new BorderLayout());
+
+        JTextArea mensaje1 = new JTextArea("Del arbusto sale un conejo corriendo muy asustado por el disparo... menos mal que no le he llegado a dar.\n" +
+                "Cuando te acercas al arbusto de donde salio el conejo ves que en el arbol de al lado hay una nota, posiblemente dejada por la persona a la que seguia.\n\n" +
+                "NOTA:\n" +
+                "Hola detective si quieres saber que le ha pasado a Emily vuelve aqui mañana a la misma hora." );
+        mensaje1.setEditable(false);
+        mensaje1.setLineWrap(true);
+        mensaje1.setWrapStyleWord(true);
+        mensaje1.setFont(new Font("Verdana", Font.PLAIN, 24));
+        dialog1.add(new JScrollPane(mensaje1), BorderLayout.CENTER);
+
+        JButton botonCerrar1 = new JButton("Cerrar");
+        botonCerrar1.addActionListener(e -> dialog1.dispose());
+        dialog1.add(botonCerrar1, BorderLayout.SOUTH);
+
+        dialog1.setLocationRelativeTo(frame);
+        dialog1.setVisible(true);
+    }
+
+    public void Accion12(){
+
+        //objeto detective allyson
+        String ruta="imagen_Allyson.png";
+        List<Objeto> inventario=new ArrayList<>();
+        Detective Allysson= new Detective("Allyson", ruta, "Detective", inventario, false);
+
+        //FONFO DEL FRAME
+        JFrame frame = new JFrame();
+        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setVisible(true);
+        JPanel fondoPanel = new JPanel() {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                // Dibujar la imagen de fondo
+                ImageIcon fondo = new ImageIcon(getClass().getResource("/BOSQUE.JPG"));
+                g.drawImage(fondo.getImage(), 0, 0, getWidth(), getHeight(), this);
+            }
+        };
+        fondoPanel.setLayout(new BorderLayout());
+        frame.add(fondoPanel);
+
+        frame.setVisible(true);
+
+        //primer texto
+
+        JDialog dialog1 = new JDialog(frame, null, true);
+        dialog1.setSize(750, 500);
+        dialog1.setResizable(false);
+        dialog1.setLayout(new BorderLayout());
+
+        JTextArea mensaje1 = new JTextArea("Del arbusto sale un conejo corriendo, menos mal que no he disparado... \n" +
+                "Cuando te acercas al arbusto de donde salio el conejo ves que en el arbol de al lado hay una nota, posiblemente dejada por la persona a la que seguia.\n\n" +
+                "NOTA:\n" +
+                "Hola detective si quieres saber que le ha pasado a Emily vuelve aqui mañana a la misma hora." );
+        mensaje1.setEditable(false);
+        mensaje1.setLineWrap(true);
+        mensaje1.setWrapStyleWord(true);
+        mensaje1.setFont(new Font("Verdana", Font.PLAIN, 24));
+        dialog1.add(new JScrollPane(mensaje1), BorderLayout.CENTER);
+
+        JButton botonCerrar1 = new JButton("Cerrar");
+        botonCerrar1.addActionListener(e -> dialog1.dispose());
+        dialog1.add(botonCerrar1, BorderLayout.SOUTH);
+
+        dialog1.setLocationRelativeTo(frame);
+        dialog1.setVisible(true);
+    }
+
+    public void Accion13(){
+
+        //objeto detective allyson
+        String ruta="imagen_Allyson.png";
+        List<Objeto> inventario=new ArrayList<>();
+        Detective Allysson= new Detective("Allyson", ruta, "Detective", inventario, false);
+
+        //FONFO DEL FRAME
+        JFrame frame = new JFrame();
+        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setVisible(true);
+        JPanel fondoPanel = new JPanel() {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                // Dibujar la imagen de fondo
+                ImageIcon fondo = new ImageIcon(getClass().getResource("/BOSQUE.JPG"));
+                g.drawImage(fondo.getImage(), 0, 0, getWidth(), getHeight(), this);
+            }
+        };
+        fondoPanel.setLayout(new BorderLayout());
+        frame.add(fondoPanel);
+
+        frame.setVisible(true);
+
+        //primer texto
+
+        JDialog dialog1 = new JDialog(frame, null, true);
+        dialog1.setSize(750, 500);
+        dialog1.setResizable(false);
+        dialog1.setLayout(new BorderLayout());
+
+        JTextArea mensaje1 = new JTextArea("Al final decidi hacerle caso a la nota de ayer y he venido aqui tal y como me ha pedido, espero no arrepentirme\n\n" +
+                "???: Hola detective Alysson me alegro de que hayas venido.\n\n" +
+                "Alysson: Espera... tu eres Mike el amigo de Ryan... No entiendo, que haces tu aqui.\n\n" +
+                "Mike:Asies soy yo, pero no podia mantenerme callado por mucho mas. La verdad es que en mi declaracion a la policia dije que Ryan estuvo conmigo el dia de la muerte de Emily pero no fue asi\n" +
+                "El me pidio que mintiese por el, pero eso fue antes de saber lo que le habia pasado a Emily. Cuando lo supe la culpabilidad me estaba matando y es cuando contacte contigo.\n" +
+                "La verdad es que Ryan es el asesino, me lo confeso borracho el otro dia... Dijo que estaba sin dinero y que cuando se entero de lo de la herencia del abuelo de Emily lo planeo todo.\n\n" +
+                "Allysson: Mike... si lo que dices es cierto... esto podria ayudarme a detener a Ryan aunque primero tendria que ir a hablar con el y despues de su confesión delatarle a la policia." );
+        mensaje1.setEditable(false);
+        mensaje1.setLineWrap(true);
+        mensaje1.setWrapStyleWord(true);
+        mensaje1.setFont(new Font("Verdana", Font.PLAIN, 24));
+        dialog1.add(new JScrollPane(mensaje1), BorderLayout.CENTER);
+
+        JButton botonCerrar1 = new JButton("Cerrar");
+        botonCerrar1.addActionListener(e -> dialog1.dispose());
+        dialog1.add(botonCerrar1, BorderLayout.SOUTH);
+
+        dialog1.setLocationRelativeTo(frame);
+        dialog1.setVisible(true);
     }
 
 }

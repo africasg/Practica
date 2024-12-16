@@ -254,7 +254,8 @@ public class UI {
         });
 
         frame.setVisible(true);
-    }    public void mostrarPantalla1(){
+    }
+    public void mostrarPantalla1(){
         //No sabes si volver a la escena del crimen
         //Vas (mostrarPantalla2a())
         //No vas(mostrarPantalla2b())
@@ -638,8 +639,11 @@ public class UI {
         };
         frame.add(panel);
 
+        Game game= new Game();
+        game.Accion11();
 
-        JLabel texto= new JLabel("Que deberia de hacer con esta información");
+
+        JLabel texto= new JLabel("Que deberia de hacer con esta información? vuelvo aqui mañana?");
         texto.setAlignmentX(Component.CENTER_ALIGNMENT);
         texto.setForeground(Color.WHITE);
         texto.setFont(new Font("Verdana", Font.PLAIN, 24));// Estilo de la fuente
@@ -696,8 +700,11 @@ public class UI {
         };
         frame.add(panel);
 
+        Game game= new Game();
+        game.Accion12();
 
-        JLabel texto= new JLabel("Que susto solo era un conejo. espera... que es esa nota");
+
+        JLabel texto= new JLabel("Que deberia de hacer con esta información? vuelvo aqui mañana?");
         texto.setAlignmentX(Component.CENTER_ALIGNMENT);
         texto.setForeground(Color.WHITE);
         texto.setFont(new Font("Verdana", Font.PLAIN, 24));// Estilo de la fuente
@@ -712,7 +719,7 @@ public class UI {
         JButton botonNoLeer = new JButton("No vas");
         botonNoLeer.setPreferredSize(new Dimension(300, 80)); // Tamaño del botón boton
         botonLeer.setFont(new Font("Arial", Font.BOLD, 24));
-        panel.add(botonLeer);
+        panel.add(botonNoLeer);
 
         botonLeer.addActionListener(new ActionListener() {
             @Override
@@ -753,8 +760,10 @@ public class UI {
         };
         frame.add(panel);
 
+        Game game= new Game();
+        game.Accion13();
 
-        JLabel texto= new JLabel("Llegue al sitio y estaba... MIKE!!! (te cuenta el lore)");
+        JLabel texto= new JLabel("Esto lo cambia todo, necesito una confesion por su parte.");
         texto.setAlignmentX(Component.CENTER_ALIGNMENT);
         texto.setForeground(Color.WHITE);
         texto.setFont(new Font("Verdana", Font.PLAIN, 24));// Estilo de la fuente
@@ -800,6 +809,8 @@ public class UI {
             }
         };
         frame.add(panel);
+
+
 
 
         JLabel texto= new JLabel("OH NO... el maldito ryan me ha atacado que hago??");
