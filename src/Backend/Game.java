@@ -3,13 +3,12 @@ package Backend;
 import Objetos.Objeto;
 import Objetos.Pistola;
 import Personajes.Detective;
-import GUI.UI;
+
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Game {
 
@@ -17,7 +16,7 @@ public class Game {
         //objeto detective allyson
         String ruta="imagen_Allyson.png";
         List<Objeto> inventario=new ArrayList<>();
-        Detective Allysson= new Detective("Allyson", ruta, "Detective", inventario, false);
+        new Detective("Allyson", ruta, "Detective", inventario, false);
 
         //FONFO DEL FRAME
         JFrame frame = new JFrame();
@@ -30,7 +29,7 @@ public class Game {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
                 // Dibujar la imagen de fondo
-                ImageIcon fondo = new ImageIcon(getClass().getResource("/escena1.jpg"));
+                ImageIcon fondo = new ImageIcon(Objects.requireNonNull(getClass().getResource("/escena1.jpg")));
                 g.drawImage(fondo.getImage(), 0, 0, getWidth(), getHeight(), this);
             }
         };
@@ -47,11 +46,13 @@ public class Game {
         dialog1.setResizable(false);
         dialog1.setLayout(new BorderLayout());
 
-        JTextArea mensaje1 = new JTextArea("Bienvenida detective Allysson, necesitamos que investigue este caso de asesinato\n" +
-                "De momento lo único que sabemos es que la víctima es Emily Carter, una estudiante universitaria. " +
-                "La reportaron como desaparecida en el trabajo y al llegar a su casa nos la encontramos así en el baño.\n" +
-                "La última persona en verla con vida fue su amiga Jessica Smith. Además la víctima tenía un novio llamado Ryan White.\nAmbos tienen coartadas\n" +
-                "Puedes investigar un poco más la zona, a ver si encuentras alguna pista de utilidad. ");
+        JTextArea mensaje1 = new JTextArea("""
+                Bienvenida detective Allysson, necesitamos que investigue este caso de asesinato
+                De momento lo único que sabemos es que la víctima es Emily Carter, una estudiante universitaria. \n
+                La reportaron como desaparecida en el trabajo y al llegar a su casa nos la encontramos así en el baño.
+                La última persona en verla con vida fue su amiga Jessica Smith. Además la víctima tenía un novio llamado Ryan White.
+                Ambos tienen coartadas
+                Puedes investigar un poco más la zona, a ver si encuentras alguna pista de utilidad.\s""");
         mensaje1.setEditable(false);
         mensaje1.setLineWrap(true);
         mensaje1.setWrapStyleWord(true);
@@ -60,7 +61,7 @@ public class Game {
 
         JPanel botonesPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         JButton botonCerrar1 = new JButton("Cerrar");
-        botonCerrar1.addActionListener(e -> dialog1.dispose());
+        botonCerrar1.addActionListener(_ -> dialog1.dispose());
         botonesPanel.add(botonCerrar1);
 
         dialog1.add(botonesPanel, BorderLayout.SOUTH);
@@ -74,7 +75,7 @@ public class Game {
     public void Accion2(){
         //objeto movil
         Objeto movil= new Objeto("Movil","Movil de la victima.",true);
-        ImageIcon iconomovil= new ImageIcon(getClass().getResource("/telefono_juego.png"));
+        ImageIcon iconomovil= new ImageIcon(Objects.requireNonNull(getClass().getResource("/telefono_juego.png")));
 
         //objeto detective allyson
         String ruta="imagen_Allyson.png";
@@ -92,7 +93,7 @@ public class Game {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
                 // Dibujar la imagen de fondo
-                ImageIcon fondo = new ImageIcon(getClass().getResource("/escena1.jpg"));
+                ImageIcon fondo = new ImageIcon(Objects.requireNonNull(getClass().getResource("/escena1.jpg")));
                 g.drawImage(fondo.getImage(), 0, 0, getWidth(), getHeight(), this);
             }
         };
@@ -108,10 +109,15 @@ public class Game {
         dialog1.setResizable(false);
         dialog1.setLayout(new BorderLayout());
 
-        JTextArea mensaje1 = new JTextArea("Decides dar una vuelta por la casa a investigar la escena. \nEncuentras el móvil de la víctima y te lo guardas como pista\n" +
-                "Cuando enciendes el móvil, empiezas a buscar algo que te pueda dar una pista sobre lo que le pasó a Emily y ahí encuentras una conversación entre ella y su amiga Jess\n" +
-                "Parece una discusión entre ambas por... Ryan. \nEn el mensaje, Jess amenazaba a Emily por haber empezado a salir con el chico que le gustaba\n" +
-                "Esto es una gran pista. Jess pudo haber hecho daño a Emily por celos. \nAdemás de eso encuentras en la aplicación de notas un código (40605)\nMe pregunto que podré hacer con el.");
+        JTextArea mensaje1 = new JTextArea("""
+                Decides dar una vuelta por la casa a investigar la escena.\s
+                Encuentras el móvil de la víctima y te lo guardas como pista
+                Cuando enciendes el móvil, empiezas a buscar algo que te pueda dar una pista sobre lo que le pasó a Emily y ahí encuentras una conversación entre ella y su amiga Jess
+                Parece una discusión entre ambas por... Ryan.\s
+                En el mensaje, Jess amenazaba a Emily por haber empezado a salir con el chico que le gustaba
+                Esto es una gran pista. Jess pudo haber hecho daño a Emily por celos.\s
+                Además de eso encuentras en la aplicación de notas un código (40605)
+                Me pregunto que podré hacer con el.""");
         mensaje1.setEditable(false);
         mensaje1.setLineWrap(true);
         mensaje1.setWrapStyleWord(true);
@@ -119,7 +125,7 @@ public class Game {
         dialog1.add(new JScrollPane(mensaje1), BorderLayout.CENTER);
 
         JButton botonCerrar1 = new JButton("Cerrar");
-        botonCerrar1.addActionListener(e -> dialog1.dispose());
+        botonCerrar1.addActionListener(_ -> dialog1.dispose());
         dialog1.add(botonCerrar1, BorderLayout.SOUTH);
 
         dialog1.setLocationRelativeTo(frame);
@@ -143,7 +149,7 @@ public class Game {
         dialog2.add(mensaje2, BorderLayout.CENTER);
 
         JButton botonCerrar2 = new JButton("Cerrar");
-        botonCerrar2.addActionListener(e -> {
+        botonCerrar2.addActionListener(_ -> {
             dialog2.dispose();
             frame.dispose();
 
@@ -160,7 +166,7 @@ public class Game {
 
         String ruta="imagen_Allyson.png";
         List<Objeto> inventario=new ArrayList<>();
-        Detective Allysson= new Detective("Allyson", ruta, "Detective", inventario, false);
+        new Detective("Allyson", ruta, "Detective", inventario, false);
 
         //FONFO DEL FRAME
         JFrame frame = new JFrame();
@@ -173,7 +179,7 @@ public class Game {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
                 // Dibujar la imagen de fondo
-                ImageIcon fondo = new ImageIcon(getClass().getResource("/interrogatorio.jpg"));
+                ImageIcon fondo = new ImageIcon(Objects.requireNonNull(getClass().getResource("/interrogatorio.jpg")));
                 g.drawImage(fondo.getImage(), 0, 0, getWidth(), getHeight(), this);
             }
         };
@@ -190,12 +196,22 @@ public class Game {
         dialog1.setResizable(false);
         dialog1.setLayout(new BorderLayout());
 
-        JTextArea mensaje1 = new JTextArea("Decides ir a interrogar a Jessica,la cual tiene mucho en su contra por el momento\n\n" +
-                "Detective Allyson: Bueno Jessica, me gustaría hablar contigo sobre Emily, la cual como ya sabes ha aparecido MUERTA en su casa\nTengo motivos para pensar que tú has estado detrás de esto\n\n" +
-                "Jessica Smith: ¿¿¿PERDONE??? ¡¡¡YO JAMAS LE HARIA DAÑO A EMILY!!!!\n\n" +
-                "Detective Allysson: Tengo una conversación en el móvil de la víctima que demuestra lo contrario... Le amenazabas por salir con el chico que te gustaba...\n\n" +
-                "Jessica Smith: Eso... Fue una pelea tonta, nada más. Ella sabía que me gustaba Ryan desde hace mucho, y aún así decidió salir con él...\nPero no pasó nada más que esa conversación, todo quedo aclarado. \nElla era mi mejor amiga...\n\n" +
-                "Detective Allysson: Bueno, suficiente por hoy Jessica\n Muchas gracias por tu testimonio. ");
+        JTextArea mensaje1 = new JTextArea("""
+                Decides ir a interrogar a Jessica,la cual tiene mucho en su contra por el momento
+                
+                Detective Allyson: Bueno Jessica, me gustaría hablar contigo sobre Emily, la cual como ya sabes ha aparecido MUERTA en su casa
+                Tengo motivos para pensar que tú has estado detrás de esto
+                
+                Jessica Smith: ¿¿¿PERDONE??? ¡¡¡YO JAMAS LE HARIA DAÑO A EMILY!!!!
+                
+                Detective Allysson: Tengo una conversación en el móvil de la víctima que demuestra lo contrario... Le amenazabas por salir con el chico que te gustaba...
+                
+                Jessica Smith: Eso... Fue una pelea tonta, nada más. Ella sabía que me gustaba Ryan desde hace mucho, y aún así decidió salir con él...
+                Pero no pasó nada más que esa conversación, todo quedo aclarado.\s
+                Ella era mi mejor amiga...
+                
+                Detective Allysson: Bueno, suficiente por hoy Jessica
+                 Muchas gracias por tu testimonio.\s""");
         mensaje1.setEditable(false);
         mensaje1.setLineWrap(true);
         mensaje1.setWrapStyleWord(true);
@@ -203,7 +219,7 @@ public class Game {
         dialog1.add(new JScrollPane(mensaje1), BorderLayout.CENTER);
 
         JButton botonCerrar1 = new JButton("Cerrar");
-        botonCerrar1.addActionListener(e -> dialog1.dispose());
+        botonCerrar1.addActionListener(_ -> dialog1.dispose());
         dialog1.add(botonCerrar1, BorderLayout.SOUTH);
 
         dialog1.setLocationRelativeTo(frame);
@@ -215,7 +231,7 @@ public class Game {
 
         String ruta="imagen_Allyson.png";
         List<Objeto> inventario=new ArrayList<>();
-        Detective Allysson= new Detective("Allyson", ruta, "Detective", inventario, false);
+        new Detective("Allyson", ruta, "Detective", inventario, false);
 
 
         JFrame frame = new JFrame();
@@ -228,7 +244,7 @@ public class Game {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
                 // Dibujar la imagen de fondo
-                ImageIcon fondo = new ImageIcon(getClass().getResource("/interrogatorio.jpg"));
+                ImageIcon fondo = new ImageIcon(Objects.requireNonNull(getClass().getResource("/interrogatorio.jpg")));
                 g.drawImage(fondo.getImage(), 0, 0, getWidth(), getHeight(), this);
             }
         };
@@ -244,12 +260,18 @@ public class Game {
         dialog1.setResizable(false);
         dialog1.setLayout(new BorderLayout());
 
-        JTextArea mensaje1 = new JTextArea("Decides ir a interrogar a Ryan el novio de Emily, a ver si puede aclararte un poco la relación entre ambas chicas.\n\n" +
-                "Detective Allyson: Hola Ryan gracias por venir, como sabes estoy investigando la muerte de tu novia Emily. He encontrado algo y me gustaria que me aclarases una cosa.\n\n" +
-                "Ryan White: Por supuesto detective, hare lo que sea con tal de saber quien le hizo esto a mi pobre Emily...\n\n" +
-                "Detective Allysson: Tengo una conversacion en el movil de la victima donde Jessica y Emily discutian por ti, me gustaria saber como era su relacion ultimamente.\n\n" +
-                "Ryan White: ESA LOCA DE JESSICA!!! Ella y Emily ultimamente no se juntaban mucho porque Jessica estaba obsesionada conmigo...\n\n" +
-                "Detective Allysson: OH? Muchas gracias por esta informacion me ayudara mucho con la investigacion");
+        JTextArea mensaje1 = new JTextArea("""
+                Decides ir a interrogar a Ryan, el novio de Emily, a ver si puede aclararte un poco la relación entre ambas chicas.
+                
+                Detective Allyson: Hola Ryan, gracias por venir. \nComo sabrás, estoy investigando la muerte de tu novia Emily. He encontrado algo y me gustaría que me aclarases una par de cosas.
+                
+                Ryan White: Por supuesto detective, haré lo que sea con tal de saber quién le hizo esto a mi pobre Emily...
+                
+                Detective Allysson: Tengo una conversación en el móvil de Emily donde ella y Jessica discutían por ti, ¿Podrías ayudarme a esclarecer la relación entre ambas?.
+                
+                Ryan White: ¡¡¡ESA LOCA DE JESSICA!!! Ella y Emily últimamente no se juntaban mucho porque Jessica estaba obsesionada conmigo...
+                
+                Detective Allysson: OH... Muchas gracias por esta información Ryan, me ayudará mucho con la investigación""");
         mensaje1.setEditable(false);
         mensaje1.setLineWrap(true);
         mensaje1.setWrapStyleWord(true);
@@ -257,7 +279,7 @@ public class Game {
         dialog1.add(new JScrollPane(mensaje1), BorderLayout.CENTER);
 
         JButton botonCerrar1 = new JButton("Cerrar");
-        botonCerrar1.addActionListener(e -> dialog1.dispose());
+        botonCerrar1.addActionListener(_ -> dialog1.dispose());
         dialog1.add(botonCerrar1, BorderLayout.SOUTH);
 
         dialog1.setLocationRelativeTo(frame);
@@ -269,7 +291,7 @@ public class Game {
         //objeto detective allyson
         String ruta="imagen_Allyson.png";
         List<Objeto> inventario=new ArrayList<>();
-        Detective Allysson= new Detective("Allyson", ruta, "Detective", inventario, false);
+        new Detective("Allyson", ruta, "Detective", inventario, false);
 
         //FONFO DEL FRAME
         JFrame frame = new JFrame();
@@ -282,7 +304,7 @@ public class Game {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
                 // Dibujar la imagen de fondo
-                ImageIcon fondo = new ImageIcon(getClass().getResource("/despacho.jpg"));
+                ImageIcon fondo = new ImageIcon(Objects.requireNonNull(getClass().getResource("/despacho.jpg")));
                 g.drawImage(fondo.getImage(), 0, 0, getWidth(), getHeight(), this);
             }
         };
@@ -298,8 +320,9 @@ public class Game {
         dialog1.setResizable(false);
         dialog1.setLayout(new BorderLayout());
 
-        JTextArea mensaje1 = new JTextArea("Ahora tengo un poco mas de informacion sobre el caso, pero no creo que sea suficiente.\n" +
-                "Es un poco tarde para ir sola a la escena del crimen y ademas podria ser peligroso, pero necesito encontrar algo mas... algo que me diga quien le hizo esto a Emily Carter");
+        JTextArea mensaje1 = new JTextArea("Ahora tengo un poco más de información sobre el caso, pero no creo que sea suficiente.\n" +
+                "Es un poco tarde para ir sola a la escena del crimen y, además, podría ser peligroso, pero necesito encontrar algo más... algo que me diga quién le hizo esto a Emily Carter."
+        );
         mensaje1.setEditable(false);
         mensaje1.setLineWrap(true);
         mensaje1.setWrapStyleWord(true);
@@ -307,7 +330,7 @@ public class Game {
         dialog1.add(new JScrollPane(mensaje1), BorderLayout.CENTER);
 
         JButton botonCerrar1 = new JButton("Cerrar");
-        botonCerrar1.addActionListener(e -> dialog1.dispose());
+        botonCerrar1.addActionListener(_ -> dialog1.dispose());
         dialog1.add(botonCerrar1, BorderLayout.SOUTH);
 
         dialog1.setLocationRelativeTo(frame);
@@ -323,7 +346,7 @@ public class Game {
 
         //Objeto papeles
         Objeto papeles= new Objeto("Papeles","Herencia del abuelo de la victima",true);
-        ImageIcon iconopapelesOriginal= new ImageIcon(getClass().getResource("/papeles.jpg"));
+        ImageIcon iconopapelesOriginal= new ImageIcon(Objects.requireNonNull(getClass().getResource("/papeles.jpg")));
         Image imagenEscalada = iconopapelesOriginal.getImage().getScaledInstance(300, 200, Image.SCALE_SMOOTH);
         ImageIcon iconopapeles = new ImageIcon(imagenEscalada);
 
@@ -338,7 +361,7 @@ public class Game {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
                 // Dibujar la imagen de fondo
-                ImageIcon fondo = new ImageIcon(getClass().getResource("/casa.jpg"));
+                ImageIcon fondo = new ImageIcon(Objects.requireNonNull(getClass().getResource("/casa.jpg")));
                 g.drawImage(fondo.getImage(), 0, 0, getWidth(), getHeight(), this);
             }
         };
@@ -354,11 +377,16 @@ public class Game {
         dialog1.setResizable(false);
         dialog1.setLayout(new BorderLayout());
 
-        JTextArea mensaje1 = new JTextArea("No deberia de estar aqui... Pero tengo que encontrar alguna pista importante que me ayude con el caso. Mirare en la habitacion de la victima, la ultima vez no pude entrar en ella por culpa de la policia\n\n" +
-                "Al entrar empiezas a mirar por todas partes... hasta que abres el armario y encuentras una caja fuerte que parece cerrada, al parecer necesita un codigo de 5 digitos.\n" +
-                "¡YA LO TENGO, USARE EL CODIGO QUE HABIA EN EL MOVIL DE EMILY!\n\n" +
-                "La caja fuerte se ha abierto y dentro encuentras un par de objetos. Primero coges unos papeles que parecen el testamento de alguien. Parece que el abuelo de Emily murio hace poco y le dejo una gran suma de dinero como herencia, interesante.\n" +
-                "Debajo de los papeles parece haber algo mas... es una pistola... Estara bien si me la llevo?");
+        JTextArea mensaje1 = new JTextArea("""
+                "No debería estar aquí... Pero tengo que encontrar alguna pista importante que me ayude con el caso. Miraré en la habitación de la víctima,ya que la última vez no pude entrar en ella por culpa de la policía."
+                *Entras en la habitación*
+                Al entrar, empiezas a mirar por todas partes... hasta que abres el armario y encuentras una caja fuerte que parece cerrada. Al parecer, necesita un código de 5 dígitos. \s
+                "¡Ya lo tengo, usaré el código que había en el móvil de Emily!"
+                
+                La caja fuerte se ha abierto y dentro encuentras un par de objetos. Primero coges unos papeles que parecen el testamento de alguien.Por lo que parece, el abuelo de Emily murió hace poco y le dejó una gran suma de dinero como herencia. \s
+                
+                "Debajo de los papeles parece haber algo más... es ¡una pistola! ¿Estará bien si me la llevo?"
+                """);
         mensaje1.setEditable(false);
         mensaje1.setLineWrap(true);
         mensaje1.setWrapStyleWord(true);
@@ -366,7 +394,7 @@ public class Game {
         dialog1.add(new JScrollPane(mensaje1), BorderLayout.CENTER);
 
         JButton botonCerrar1 = new JButton("Cerrar");
-        botonCerrar1.addActionListener(e -> dialog1.dispose());
+        botonCerrar1.addActionListener(_ -> dialog1.dispose());
         dialog1.add(botonCerrar1, BorderLayout.SOUTH);
 
         dialog1.setLocationRelativeTo(frame);
@@ -383,7 +411,7 @@ public class Game {
 
         JLabel iconoLabel = new JLabel(iconopapeles);
 
-        JLabel mensaje2 = new JLabel("Has obtenido unos papeles muy importantes para la victima!!!");
+        JLabel mensaje2 = new JLabel("¡¡¡Has obtenido unos papeles muy importantes para la victima!!!");
         mensaje2.setFont(new Font("Verdana", Font.PLAIN, 16));
         mensaje2.setHorizontalAlignment(SwingConstants.CENTER);
 
@@ -391,7 +419,7 @@ public class Game {
         dialog2.add(mensaje2, BorderLayout.CENTER);
 
         JButton botonCerrar2 = new JButton("Cerrar");
-        botonCerrar2.addActionListener(e -> {
+        botonCerrar2.addActionListener(_ -> {
             dialog2.dispose();
             frame.dispose();
 
@@ -410,7 +438,7 @@ public class Game {
         List<Objeto> inventario=new ArrayList<>();
         Detective Allysson= new Detective("Allyson", ruta, "Detective", inventario, false);
 
-        ImageIcon iconopapelesOriginal= new ImageIcon(getClass().getResource("/pistola_juego.png"));
+        ImageIcon iconopapelesOriginal= new ImageIcon(Objects.requireNonNull(getClass().getResource("/pistola_juego.png")));
         Image imagenEscalada = iconopapelesOriginal.getImage().getScaledInstance(300, 200, Image.SCALE_SMOOTH);
         ImageIcon iconopapeles = new ImageIcon(imagenEscalada);
 
@@ -430,7 +458,7 @@ public class Game {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
                 // Dibujar la imagen de fondo
-                ImageIcon fondo = new ImageIcon(getClass().getResource("/casa.jpg"));
+                ImageIcon fondo = new ImageIcon(Objects.requireNonNull(getClass().getResource("/casa.jpg")));
                 g.drawImage(fondo.getImage(), 0, 0, getWidth(), getHeight(), this);
             }
         };
@@ -446,7 +474,7 @@ public class Game {
         dialog2.setLayout(new BorderLayout());
 
         JLabel iconoLabel = new JLabel(iconopapeles);
-        JLabel mensaje2 = new JLabel("Has obtenido una pistola!!!");
+        JLabel mensaje2 = new JLabel("¡¡¡Has obtenido una pistola!!!");
 
         mensaje2.setHorizontalAlignment(SwingConstants.CENTER);
 
@@ -454,7 +482,7 @@ public class Game {
         dialog2.add(mensaje2, BorderLayout.CENTER);
 
         JButton botonCerrar2 = new JButton("Cerrar");
-        botonCerrar2.addActionListener(e -> {
+        botonCerrar2.addActionListener(_ -> {
             dialog2.dispose();
             frame.dispose();
 
@@ -474,11 +502,10 @@ public class Game {
         //objeto detective allyson
         String ruta="imagen_Allyson.png";
         List<Objeto> inventario=new ArrayList<>();
-        Detective Allysson= new Detective("Allyson", ruta, "Detective", inventario, false);
+        new Detective("Allyson", ruta, "Detective", inventario, false);
 
         //Objeto papeles
-        Objeto papeles= new Objeto("Papeles","Herencia del abuelo de la victima",true);
-        ImageIcon iconopapelesOriginal= new ImageIcon(getClass().getResource("/telefono_juego.png"));
+        ImageIcon iconopapelesOriginal= new ImageIcon(Objects.requireNonNull(getClass().getResource("/telefono_juego.png")));
         Image imagenEscalada = iconopapelesOriginal.getImage().getScaledInstance(300, 200, Image.SCALE_SMOOTH);
         ImageIcon iconopapeles = new ImageIcon(imagenEscalada);
 
@@ -494,7 +521,7 @@ public class Game {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
                 // Dibujar la imagen de fondo
-                ImageIcon fondo = new ImageIcon(getClass().getResource("/despacho.jpg"));
+                ImageIcon fondo = new ImageIcon(Objects.requireNonNull(getClass().getResource("/despacho.jpg")));
                 g.drawImage(fondo.getImage(), 0, 0, getWidth(), getHeight(), this);
             }
         };
@@ -510,12 +537,16 @@ public class Game {
         dialog1.setResizable(false);
         dialog1.setLayout(new BorderLayout());
 
-        JTextArea mensaje1 = new JTextArea("Realmente creo que seria demasiado peligroso volver a la escena del crimen, ademas podría meterme en lios si alguien me pilla ahí.\n" +
-                "Despues de darle unas vueltas decido tirar de las pistas que ya tengo y repasar algo que haya podido pasar por alto\n\n" +
-                "Al final acabo revisando el movil de Emily otra vez, al meterme en sus mails encuentro uno reciente donde a la victima se le había entregado una gran cantidad de dinero por una herencia de su abuelo\n" +
-                "Será este el motivo real por el asesinato de Emily Carter...\n" +
-                "Mientras estaba dandole vueltas a la nueva información ocurrio algo sorprendente... Alguien le acababa de mandar un mensaje anonimo al movil de la victima!!!\n" +
-                "Igual deberia de abrirlo para ver si me puede ayudar con el caso, pero si por el contrario no es nada relacionado con el asesinato habre manipulado una pista para nada.....");
+        JTextArea mensaje1 = new JTextArea("""
+                "Realmente creo que sería demasiado peligroso volver a la escena del crimen, además podría meterme en líos si alguien me pilla ahí." \s
+                Después de darle vueltas, decides arreglartelas con las pistas que ya tienes y repasar algo que hayas podido pasar por alto.
+                
+                Acabas revisando el móvil de Emily otra vez. Al meterte en sus mails, encuentras uno reciente donde a la víctima se le había entregado una gran cantidad de dinero por una herencia de su abuelo. \s
+                ¿Será este el motivo real por el asesinato de Emily Carter?
+                
+                Mientras le dabas vueltas a esta nueva información, ocurrió algo sorprendente... \n¡Alguien le acababa de mandar un mensaje anónimo al móvil de la víctima! \s
+                "Igual debería abrirlo para ver si me puede ayudar con el caso, pero si por el contrario no es nada relacionado con el asesinato, habré manipulado una pista para nada..."
+                """);
         mensaje1.setEditable(false);
         mensaje1.setLineWrap(true);
         mensaje1.setWrapStyleWord(true);
@@ -523,7 +554,7 @@ public class Game {
         dialog1.add(new JScrollPane(mensaje1), BorderLayout.CENTER);
 
         JButton botonCerrar1 = new JButton("Cerrar");
-        botonCerrar1.addActionListener(e -> dialog1.dispose());
+        botonCerrar1.addActionListener(_ -> dialog1.dispose());
         dialog1.add(botonCerrar1, BorderLayout.SOUTH);
 
         dialog1.setLocationRelativeTo(frame);
@@ -537,7 +568,7 @@ public class Game {
         dialog2.setLayout(new BorderLayout());
 
         JLabel iconoLabel = new JLabel(iconopapeles);
-        JLabel mensaje2 = new JLabel("Has obtenido unos papeles muy importantes \n para la victima!!!");
+        JLabel mensaje2 = new JLabel("¡¡¡Has obtenido unos papeles muy importantes \n para la victima!!!");
 
         mensaje2.setHorizontalAlignment(SwingConstants.CENTER);
 
@@ -545,7 +576,7 @@ public class Game {
         dialog2.add(mensaje2, BorderLayout.CENTER);
 
         JButton botonCerrar2 = new JButton("Cerrar");
-        botonCerrar2.addActionListener(e -> {
+        botonCerrar2.addActionListener(_ -> {
             dialog2.dispose();
             frame.dispose();
 
@@ -562,7 +593,7 @@ public class Game {
         //objeto detective allyson
         String ruta="imagen_Allyson.png";
         List<Objeto> inventario=new ArrayList<>();
-        Detective Allysson= new Detective("Allyson", ruta, "Detective", inventario, false);
+        new Detective("Allyson", ruta, "Detective", inventario, false);
 
         //FONFO DEL FRAME
         JFrame frame = new JFrame();
@@ -575,7 +606,7 @@ public class Game {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
                 // Dibujar la imagen de fondo
-                ImageIcon fondo = new ImageIcon(getClass().getResource("/casa.jpg"));
+                ImageIcon fondo = new ImageIcon(Objects.requireNonNull(getClass().getResource("/casa.jpg")));
                 g.drawImage(fondo.getImage(), 0, 0, getWidth(), getHeight(), this);
             }
         };
@@ -591,9 +622,11 @@ public class Game {
         dialog1.setResizable(false);
         dialog1.setLayout(new BorderLayout());
 
-        JTextArea mensaje1 = new JTextArea("Tras andar un poco mas por la casa escuchas un fuerte golpe fuera\n" +
-                "Corriendo te acercas a la ventana mas cercana al ruido y ves una silueta mirando a la casa, pero enseguida sale corriendo hacia el bosque...\n" +
-                "Creo que es demasiado arriesgado seguir a la persona de negro pero esto podría ser una gran pista." );
+        JTextArea mensaje1 = new JTextArea("""
+                "Tras andar un poco más por la casa, escuchas un fuerte golpe fuera.  
+                Corriendo, te acercas a la ventana más cercana al ruido y ves una silueta mirando hacia la casa, pero enseguida sale corriendo hacia el bosque...  
+                "Creo que es demasiado arriesgado seguir a la persona de negro, pero esto podría ser una gran pista.
+                """);
         mensaje1.setEditable(false);
         mensaje1.setLineWrap(true);
         mensaje1.setWrapStyleWord(true);
@@ -601,7 +634,7 @@ public class Game {
         dialog1.add(new JScrollPane(mensaje1), BorderLayout.CENTER);
 
         JButton botonCerrar1 = new JButton("Cerrar");
-        botonCerrar1.addActionListener(e -> dialog1.dispose());
+        botonCerrar1.addActionListener(_ -> dialog1.dispose());
         dialog1.add(botonCerrar1, BorderLayout.SOUTH);
 
         dialog1.setLocationRelativeTo(frame);
@@ -613,7 +646,7 @@ public class Game {
         //objeto detective allyson
         String ruta="imagen_Allyson.png";
         List<Objeto> inventario=new ArrayList<>();
-        Detective Allysson= new Detective("Allyson", ruta, "Detective", inventario, false);
+        new Detective("Allyson", ruta, "Detective", inventario, false);
 
         //FONFO DEL FRAME
         JFrame frame = new JFrame();
@@ -626,7 +659,7 @@ public class Game {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
                 // Dibujar la imagen de fondo
-                ImageIcon fondo = new ImageIcon(getClass().getResource("/despacho.jpg"));
+                ImageIcon fondo = new ImageIcon(Objects.requireNonNull(getClass().getResource("/despacho.jpg")));
                 g.drawImage(fondo.getImage(), 0, 0, getWidth(), getHeight(), this);
             }
         };
@@ -642,10 +675,16 @@ public class Game {
         dialog1.setResizable(false);
         dialog1.setLayout(new BorderLayout());
 
-        JTextArea mensaje1 = new JTextArea("Al final has decidido abrir el mensaje anonimo, ya estas demasiado implicada un poco mas no puede doler.\n\n" +
-                "MENSAJE:\n\n" +
-                "Ven mañana al bosque detras de la casa de Emily sola si quieres saber que paso.\n\n" +
-                "De quien sera este mensaje tan extraño? Querran ayudarme o sera una trampa?" );
+        JTextArea mensaje1 = new JTextArea("""
+                "Al final decides abrir el mensaje anónimo; ya estás demasiado implicada, un poco más no hará daño.
+                
+                 **MENSAJE:**
+                
+                -Ven mañana al bosque detrás de la casa de Emily, sola, si quieres saber qué pasó.
+                -M
+                
+                ¿De quién será este mensaje tan extraño? ¿Querrán ayudarme o será una trampa?
+                """);
         mensaje1.setEditable(false);
         mensaje1.setLineWrap(true);
         mensaje1.setWrapStyleWord(true);
@@ -653,7 +692,7 @@ public class Game {
         dialog1.add(new JScrollPane(mensaje1), BorderLayout.CENTER);
 
         JButton botonCerrar1 = new JButton("Cerrar");
-        botonCerrar1.addActionListener(e -> dialog1.dispose());
+        botonCerrar1.addActionListener(_ -> dialog1.dispose());
         dialog1.add(botonCerrar1, BorderLayout.SOUTH);
 
         dialog1.setLocationRelativeTo(frame);
@@ -665,7 +704,7 @@ public class Game {
         //objeto detective allyson
         String ruta="imagen_Allyson.png";
         List<Objeto> inventario=new ArrayList<>();
-        Detective Allysson= new Detective("Allyson", ruta, "Detective", inventario, false);
+        new Detective("Allyson", ruta, "Detective", inventario, false);
 
         //FONFO DEL FRAME
         JFrame frame = new JFrame();
@@ -678,7 +717,7 @@ public class Game {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
                 // Dibujar la imagen de fondo
-                ImageIcon fondo = new ImageIcon(getClass().getResource("/BOSQUE.JPG"));
+                ImageIcon fondo = new ImageIcon(Objects.requireNonNull(getClass().getResource("/BOSQUE.JPG")));
                 g.drawImage(fondo.getImage(), 0, 0, getWidth(), getHeight(), this);
             }
         };
@@ -694,8 +733,9 @@ public class Game {
         dialog1.setResizable(false);
         dialog1.setLayout(new BorderLayout());
 
-        JTextArea mensaje1 = new JTextArea("Despues de seguir a la figura la pierdes de vista al entrar al bosque, igual esto ha sido una mala idea...\n" +
-                "De pronto escuchas un ruido detras del arbusto de detras tuya!!!" );
+        JTextArea mensaje1 = new JTextArea("\"Después de seguir a la figura, la pierdes de vista al entrar al bosque. Igual esto ha sido una mala idea...\n" +
+                "\n" +
+                "De pronto, escuchas un ruido detrás del arbusto que está justo detrás de ti.\"\n" );
         mensaje1.setEditable(false);
         mensaje1.setLineWrap(true);
         mensaje1.setWrapStyleWord(true);
@@ -703,7 +743,7 @@ public class Game {
         dialog1.add(new JScrollPane(mensaje1), BorderLayout.CENTER);
 
         JButton botonCerrar1 = new JButton("Cerrar");
-        botonCerrar1.addActionListener(e -> dialog1.dispose());
+        botonCerrar1.addActionListener(_ -> dialog1.dispose());
         dialog1.add(botonCerrar1, BorderLayout.SOUTH);
 
         dialog1.setLocationRelativeTo(frame);
@@ -711,7 +751,6 @@ public class Game {
     }
 
     public void disparas(Pistola pistola){
-
         //objeto detective allyson
         String ruta="imagen_Allyson.png";
         List<Objeto> inventario=new ArrayList<>();
@@ -728,14 +767,13 @@ public class Game {
         if(pistola.isDisponible()){
            Allysson.dispararPistola(pistola);
 
-
         }else{
             JDialog dialog1 = new JDialog(frame, null, true);
             dialog1.setSize(750, 500);
             dialog1.setResizable(false);
             dialog1.setLayout(new BorderLayout());
 
-            JTextArea mensaje1 = new JTextArea("OH NO NO TENGO LA PISTOLA!!" );
+            JTextArea mensaje1 = new JTextArea("¡¡OH NO!! ¡¡NO TENGO LA PISTOLA!!" );
             mensaje1.setEditable(false);
             mensaje1.setLineWrap(true);
             mensaje1.setWrapStyleWord(true);
@@ -743,12 +781,11 @@ public class Game {
             dialog1.add(new JScrollPane(mensaje1), BorderLayout.CENTER);
 
             JButton botonCerrar1 = new JButton("Cerrar");
-            botonCerrar1.addActionListener(e -> dialog1.dispose());
+            botonCerrar1.addActionListener(_ -> dialog1.dispose());
             dialog1.add(botonCerrar1, BorderLayout.SOUTH);
 
             dialog1.setLocationRelativeTo(frame);
             dialog1.setVisible(true);
-
         }
     }
 
@@ -757,7 +794,7 @@ public class Game {
         //objeto detective allyson
         String ruta="imagen_Allyson.png";
         List<Objeto> inventario=new ArrayList<>();
-        Detective Allysson= new Detective("Allyson", ruta, "Detective", inventario, false);
+        new Detective("Allyson", ruta, "Detective", inventario, false);
 
         //FONFO DEL FRAME
         JFrame frame = new JFrame();
@@ -770,7 +807,7 @@ public class Game {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
                 // Dibujar la imagen de fondo
-                ImageIcon fondo = new ImageIcon(getClass().getResource("/BOSQUE.JPG"));
+                ImageIcon fondo = new ImageIcon(Objects.requireNonNull(getClass().getResource("/BOSQUE.JPG")));
                 g.drawImage(fondo.getImage(), 0, 0, getWidth(), getHeight(), this);
             }
         };
@@ -786,10 +823,13 @@ public class Game {
         dialog1.setResizable(false);
         dialog1.setLayout(new BorderLayout());
 
-        JTextArea mensaje1 = new JTextArea("Del arbusto sale un conejo corriendo muy asustado por el disparo... menos mal que no le he llegado a dar.\n" +
-                "Cuando te acercas al arbusto de donde salio el conejo ves que en el arbol de al lado hay una nota, posiblemente dejada por la persona a la que seguia.\n\n" +
-                "NOTA:\n" +
-                "Hola detective si quieres saber que le ha pasado a Emily vuelve aqui mañana a la misma hora." );
+        JTextArea mensaje1 = new JTextArea("""
+                "Del arbusto sale un conejo corriendo, muy asustado por el disparo... Menos mal que no le has llegado a dar. \s
+                Cuando te acercas al arbusto de donde salió el conejo, ves que en el árbol de al lado hay una nota, posiblemente dejada por la persona a la que seguías. \s
+                
+                **NOTA:** \s
+                *Hola, detective. Si quieres sabe qué le ha pasado a Emily, vuelva aquí mañana a la misma hora.*
+                """);
         mensaje1.setEditable(false);
         mensaje1.setLineWrap(true);
         mensaje1.setWrapStyleWord(true);
@@ -797,7 +837,7 @@ public class Game {
         dialog1.add(new JScrollPane(mensaje1), BorderLayout.CENTER);
 
         JButton botonCerrar1 = new JButton("Cerrar");
-        botonCerrar1.addActionListener(e -> dialog1.dispose());
+        botonCerrar1.addActionListener(_ -> dialog1.dispose());
         dialog1.add(botonCerrar1, BorderLayout.SOUTH);
 
         dialog1.setLocationRelativeTo(frame);
@@ -809,7 +849,7 @@ public class Game {
         //objeto detective allyson
         String ruta="imagen_Allyson.png";
         List<Objeto> inventario=new ArrayList<>();
-        Detective Allysson= new Detective("Allyson", ruta, "Detective", inventario, false);
+        new Detective("Allyson", ruta, "Detective", inventario, false);
 
         //FONFO DEL FRAME
         JFrame frame = new JFrame();
@@ -822,7 +862,7 @@ public class Game {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
                 // Dibujar la imagen de fondo
-                ImageIcon fondo = new ImageIcon(getClass().getResource("/BOSQUE.JPG"));
+                ImageIcon fondo = new ImageIcon(Objects.requireNonNull(getClass().getResource("/BOSQUE.JPG")));
                 g.drawImage(fondo.getImage(), 0, 0, getWidth(), getHeight(), this);
             }
         };
@@ -838,10 +878,13 @@ public class Game {
         dialog1.setResizable(false);
         dialog1.setLayout(new BorderLayout());
 
-        JTextArea mensaje1 = new JTextArea("Del arbusto sale un conejo corriendo, menos mal que no he disparado... \n" +
-                "Cuando te acercas al arbusto de donde salio el conejo ves que en el arbol de al lado hay una nota, posiblemente dejada por la persona a la que seguia.\n\n" +
-                "NOTA:\n" +
-                "Hola detective si quieres saber que le ha pasado a Emily vuelve aqui mañana a la misma hora." );
+        JTextArea mensaje1 = new JTextArea("""
+                Del arbusto sale un conejo corriendo, muy asustado por el disparo... Menos mal que no le has llegado a dar. \s
+                Cuando te acercas al arbusto de donde salió el conejo, ves que en el árbol de al lado hay una nota, posiblemente dejada por la persona a la que seguías. \s
+                
+                **NOTA:** \s
+                *Hola, detective. Si quiere saber qué le ha pasado a Emily, vuelva aquí mañana a la misma hora.*
+                """);
         mensaje1.setEditable(false);
         mensaje1.setLineWrap(true);
         mensaje1.setWrapStyleWord(true);
@@ -849,7 +892,7 @@ public class Game {
         dialog1.add(new JScrollPane(mensaje1), BorderLayout.CENTER);
 
         JButton botonCerrar1 = new JButton("Cerrar");
-        botonCerrar1.addActionListener(e -> dialog1.dispose());
+        botonCerrar1.addActionListener(_ -> dialog1.dispose());
         dialog1.add(botonCerrar1, BorderLayout.SOUTH);
 
         dialog1.setLocationRelativeTo(frame);
@@ -861,7 +904,7 @@ public class Game {
         //objeto detective allyson
         String ruta="imagen_Allyson.png";
         List<Objeto> inventario=new ArrayList<>();
-        Detective Allysson= new Detective("Allyson", ruta, "Detective", inventario, false);
+        new Detective("Allyson", ruta, "Detective", inventario, false);
 
         //FONFO DEL FRAME
         JFrame frame = new JFrame();
@@ -874,7 +917,7 @@ public class Game {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
                 // Dibujar la imagen de fondo
-                ImageIcon fondo = new ImageIcon(getClass().getResource("/BOSQUE.JPG"));
+                ImageIcon fondo = new ImageIcon(Objects.requireNonNull(getClass().getResource("/BOSQUE.JPG")));
                 g.drawImage(fondo.getImage(), 0, 0, getWidth(), getHeight(), this);
             }
         };
@@ -890,13 +933,20 @@ public class Game {
         dialog1.setResizable(false);
         dialog1.setLayout(new BorderLayout());
 
-        JTextArea mensaje1 = new JTextArea("Al final decidi hacerle caso a la nota de ayer y he venido aqui tal y como me ha pedido, espero no arrepentirme\n\n" +
-                "???: Hola detective Alysson me alegro de que hayas venido.\n\n" +
-                "Alysson: Espera... tu eres Mike el amigo de Ryan... No entiendo, que haces tu aqui.\n\n" +
-                "Mike:Asies soy yo, pero no podia mantenerme callado por mucho mas. La verdad es que en mi declaracion a la policia dije que Ryan estuvo conmigo el dia de la muerte de Emily pero no fue asi\n" +
-                "El me pidio que mintiese por el, pero eso fue antes de saber lo que le habia pasado a Emily. Cuando lo supe la culpabilidad me estaba matando y es cuando contacte contigo.\n" +
-                "La verdad es que Ryan es el asesino, me lo confeso borracho el otro dia... Dijo que estaba sin dinero y que cuando se entero de lo de la herencia del abuelo de Emily lo planeo todo.\n\n" +
-                "Allysson: Mike... si lo que dices es cierto... esto podria ayudarme a detener a Ryan aunque primero tendria que ir a hablar con el y despues de su confesión delatarle a la policia." );
+        JTextArea mensaje1 = new JTextArea("""
+              "Al final decides hacerle caso a la nota de ayer y vas al lugar, tal y como se te pidió. Esperas no arrepentirte. \s
+                
+              **???**: Hola, detective Allysson. Me alegro de que haya venido. \s
+                
+              **Allysson**:Hola... Espera... Tú eres Mike, el amigo de Ryan... No entiendo, ¿qué haces tú aquí? \s
+                
+              **Mike**: Así es, soy yo, pero no podía mantenerme callado por mucho más tiempo. La verdad es que, en mi declaración a la policía, dije que Ryan estuvo conmigo el día de la muerte de Emily, pero no fue así. \s
+               Él me pidió que mintiese por él, pero eso fue antes de saber lo que le había pasado a Emily. Cuando lo supe, la culpabilidad me estaba matando, y es cuando contacté con usted. \s
+                
+              La verdad es que Ryan es el asesino. Me lo confesó borracho el otro día... Dijo que estaba sin dinero y que, cuando se enteró de la herencia del abuelo de Emily, lo planeó todo. \s
+                
+             **Allysson**: Mike... Si lo que dices es cierto, esto podría ayudarme a detener a Ryan. Aunque primero tendré que ir a hablar con él y, después de su confesión, delatarle a la policía.
+                """);
         mensaje1.setEditable(false);
         mensaje1.setLineWrap(true);
         mensaje1.setWrapStyleWord(true);
@@ -904,7 +954,7 @@ public class Game {
         dialog1.add(new JScrollPane(mensaje1), BorderLayout.CENTER);
 
         JButton botonCerrar1 = new JButton("Cerrar");
-        botonCerrar1.addActionListener(e -> dialog1.dispose());
+        botonCerrar1.addActionListener(_ -> dialog1.dispose());
         dialog1.add(botonCerrar1, BorderLayout.SOUTH);
 
         dialog1.setLocationRelativeTo(frame);
@@ -916,7 +966,7 @@ public class Game {
         //objeto detective allyson
         String ruta="imagen_Allyson.png";
         List<Objeto> inventario=new ArrayList<>();
-        Detective Allysson= new Detective("Allyson", ruta, "Detective", inventario, false);
+        new Detective("Allyson", ruta, "Detective", inventario, false);
 
         //FONFO DEL FRAME
         JFrame frame = new JFrame();
@@ -929,7 +979,7 @@ public class Game {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
                 // Dibujar la imagen de fondo
-                ImageIcon fondo = new ImageIcon(getClass().getResource("/casaryan.png"));
+                ImageIcon fondo = new ImageIcon(Objects.requireNonNull(getClass().getResource("/BOSQUE.JPG")));
                 g.drawImage(fondo.getImage(), 0, 0, getWidth(), getHeight(), this);
             }
         };
@@ -945,16 +995,28 @@ public class Game {
         dialog1.setResizable(false);
         dialog1.setLayout(new BorderLayout());
 
-        JTextArea mensaje1 = new JTextArea("Ahora que se que Ryan es el asesino tengo que ir con mucho cuidado para que no me pase nada malo a mi tampoco\n\n" +
-                "Cuando llamo a la puerta Ryan me recibe y deja pasar, nos sentamos en su sofa.\n" +
-                "Allysson: Bueno Ryan tengo algunas noticias sobre el caso de Emily...\n\n" +
-                "Ryan:Enserio??? menos mal, espero que pronto podais hacer justicia. Que es lo nuevo que has descubierto?\n\n" +
-                "Allysson: No se Ryan dimelo tu, merecia la pena la vida de Emily por un poco de dinero??\n\n" +
-                "Se hizo el silencio.\n" +
-                "Ryan:No se de que me estas hablando y no me gustan estas acusaciones.\n\n" +
-                "Allysson: No te hagas el tonto, ya se que fuiste tu el que mato a la victima y tengo pruebas Ryan.\n\n" +
-                "Ryan:Vaya Allysson no me esperaba que lo consiguieses... me temo que tendre que hacer algo contigo.\n\n" +
-                "Tras decir eso Allysson se levanta con la grabacion de la conversacion y se aleja de Ryan pero este saca un cuchillo de un cajon y se acerca a la detective\n" );
+        JTextArea mensaje1 = new JTextArea("""
+               "Ahora que sabes que Ryan es el asesino, tienes que ir con mucho cuidado para que no te pase nada malo a ti tampoco. \s
+                
+               Cuando llamas a la puerta, Ryan te recibe y te deja pasar. Nos sentamos en su sofá. \s
+                
+               **Allysson**: Bueno, Ryan, tengo algunas noticias sobre el caso de Emily... \s
+                
+               **Ryan**: ¿En serio? Menos mal, espero que pronto podáis hacer justicia. ¿Qué es lo nuevo que han descubierto? \s
+                
+               **Allysson**: No lo sé, Ryan, dímelo tú.\n ¿Merecía la pena la vida de Emily por un poco de dinero? \s
+                
+               Se hizo el silencio. \s
+                
+               **Ryan**: No sé de qué me está hablando, pero no me está gustando nada esta conversación. \s
+                
+               **Allysson**: No te hagas el tonto, ya sé que fuiste tú quien mató a Emily.\n Tengo pruebas, Ryan. \s
+                
+               **Ryan**: Vaya, Allysson... No me esperaba que lo consiguieses. Me temo que tendré que hacer algo contigo. Lo siento, me caías bien \s
+                
+               Tras decir eso, te levantas con la grabación de la conversación y te alejas de Ryan. Pero él saca un cuchillo de un cajón y se acerca a ti.
+                
+                """);
         mensaje1.setEditable(false);
         mensaje1.setLineWrap(true);
         mensaje1.setWrapStyleWord(true);
@@ -962,7 +1024,7 @@ public class Game {
         dialog1.add(new JScrollPane(mensaje1), BorderLayout.CENTER);
 
         JButton botonCerrar1 = new JButton("Cerrar");
-        botonCerrar1.addActionListener(e -> dialog1.dispose());
+        botonCerrar1.addActionListener(_ -> dialog1.dispose());
         dialog1.add(botonCerrar1, BorderLayout.SOUTH);
 
         dialog1.setLocationRelativeTo(frame);
@@ -982,7 +1044,7 @@ public class Game {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
                 // Dibujar la imagen de fondo
-                ImageIcon fondo = new ImageIcon(getClass().getResource("/HAS_CONSEGUIDO.jpg"));
+                ImageIcon fondo = new ImageIcon(Objects.requireNonNull(getClass().getResource("/HAS_CONSEGUIDO.jpg")));
                 g.drawImage(fondo.getImage(), 0, 0, getWidth(), getHeight(), this);
             }
         };
@@ -998,8 +1060,11 @@ public class Game {
         dialog1.setResizable(false);
         dialog1.setLayout(new BorderLayout());
 
-        JTextArea mensaje1 = new JTextArea("Conseguiste defenderte usando la pistola de la victima, gracias a la grabación que hiciste la policia pudo detener a Ryan despues de ser dado de alta en el hospital por el disparo\n\n" +
-                "GENIAL DETECTIVE LO CONSEGUISTE" );
+        JTextArea mensaje1 = new JTextArea("""
+                Conseguiste defenderte usando la pistola de la víctima. Gracias a la grabación que hiciste, la policía pudo detener a Ryan después de que fuera dado de alta en el hospital por el disparo. \s
+                
+                **¡GENIAL, DETECTIVE, LO CONSEGUISTE!**
+                """);
         mensaje1.setEditable(false);
         mensaje1.setLineWrap(true);
         mensaje1.setWrapStyleWord(true);
@@ -1007,7 +1072,7 @@ public class Game {
         dialog1.add(new JScrollPane(mensaje1), BorderLayout.CENTER);
 
         JButton botonCerrar1 = new JButton("Cerrar");
-        botonCerrar1.addActionListener(e -> dialog1.dispose());
+        botonCerrar1.addActionListener(_ -> dialog1.dispose());
         dialog1.add(botonCerrar1, BorderLayout.SOUTH);
 
         dialog1.setLocationRelativeTo(frame);
@@ -1028,48 +1093,38 @@ public class Game {
                     super.paintComponent(g);
                     // Determinar qué imagen cargar según el resultado
                     String imagePath = nom.equals("Ryan") ? "/HAS_CONSEGUIDO.jpg" : "/NO_CONSEGUIDO.jpg";
-                    ImageIcon fondo = new ImageIcon(getClass().getResource(imagePath));
+                    ImageIcon fondo = new ImageIcon(Objects.requireNonNull(getClass().getResource(imagePath)));
                     g.drawImage(fondo.getImage(), 0, 0, getWidth(), getHeight(), this);
                 }
             };
 
-            // Usar GridBagLayout para organizar los elementos
-            fondoPanel.setLayout(new GridBagLayout());
+            fondoPanel.setLayout(new BorderLayout());
             frame.setContentPane(fondoPanel); // Actualizar el panel de contenido del marco
 
-            // Configurar los constraints para los elementos
-            GridBagConstraints gbc = new GridBagConstraints();
-            gbc.gridx = 0;
-            gbc.gridy = 0;
-            gbc.insets = new Insets(20, 0, 20, 0);
-            gbc.anchor = GridBagConstraints.CENTER;
+            // Crear el diálogo con el mensaje adecuado
+            JDialog dialog = new JDialog(frame, null, true);
+            dialog.setSize(750, 500);
+            dialog.setResizable(false);
+            dialog.setLayout(new BorderLayout());
 
             // Determinar mensaje según el resultado
             String mensaje = nom.equals("Ryan")
-                    ? "<html><center>¡Genial Detective!<br>Has adivinado quién es el asesino.</center></html>"
-                    : "<html><center>Vaya...<br>No has resuelto el caso, ese no es el asesino.</center></html>";
-            JLabel mensajeLabel = new JLabel(mensaje);
-            mensajeLabel.setHorizontalAlignment(SwingConstants.CENTER);
-            mensajeLabel.setFont(new Font("Verdana", Font.BOLD, 28));
-            mensajeLabel.setForeground(Color.WHITE); // Para mejor visibilidad sobre el fondo
-            fondoPanel.add(mensajeLabel, gbc);
+                    ? "Genial Detective, has adivinado quién es el asesino."
+                    : "Vaya... No has resuelto el caso, ese no es el asesino.";
+            JTextArea mensajeArea = new JTextArea(mensaje);
+            mensajeArea.setEditable(false);
+            mensajeArea.setLineWrap(true);
+            mensajeArea.setWrapStyleWord(true);
+            mensajeArea.setFont(new Font("Verdana", Font.PLAIN, 24));
+            dialog.add(new JScrollPane(mensajeArea), BorderLayout.CENTER);
 
-            // Añadir botón "Volver al menú"
-            gbc.gridy++; // Cambiar a la siguiente fila
-            JButton botonMenu = new JButton("Volver al menú");
-            botonMenu.setPreferredSize(new Dimension(300, 80));
-            botonMenu.setFont(new Font("Arial", Font.BOLD, 24));
-            fondoPanel.add(botonMenu, gbc);
+            // Botón para cerrar el diálogo
+            JButton botonCerrar = new JButton("Cerrar");
+            botonCerrar.addActionListener(_ -> dialog.dispose());
+            dialog.add(botonCerrar, BorderLayout.SOUTH);
 
-            // Acción del botón "Volver al menú"
-            botonMenu.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    UI menu = new UI(); // Crear instancia de tu clase UI
-                    menu.mostrarMenu(); // Llamar al método mostrarMenu()
-                    frame.dispose(); // Cerrar la ventana actual
-                }
-            });
+            dialog.setLocationRelativeTo(frame); // Centrar el diálogo en el marco
+            dialog.setVisible(true);
         };
 
         // Mostrar el resultado
@@ -1078,7 +1133,5 @@ public class Game {
         // Hacer visible el marco principal
         frame.setVisible(true);
     }
-
-
 
 }

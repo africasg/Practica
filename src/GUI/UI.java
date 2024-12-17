@@ -39,12 +39,9 @@ public class UI {
         JButton btnIniciar = new JButton("Jugar");
         btnIniciar.setPreferredSize(new Dimension(300, 80)); // Tamaño del botón
         btnIniciar.setFont(new Font("Arial", Font.BOLD, 24)); // Texto más grande
-        btnIniciar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                frame.dispose(); // Cerrar el menú
-                mostrarPantallaInicial();
-            }
+        btnIniciar.addActionListener(_ -> {
+            frame.dispose(); // Cerrar el menú
+            mostrarPantallaInicial();
         });
         panel.add(btnIniciar, gbc);
 
@@ -53,12 +50,9 @@ public class UI {
         JButton btnSalir = new JButton("Salir");
         btnSalir.setPreferredSize(new Dimension(300, 80));
         btnSalir.setFont(new Font("Arial", Font.BOLD, 24));
-        btnSalir.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(frame, "Gracias por jugar.");
-                System.exit(0); // Cerrar el juego
-            }
+        btnSalir.addActionListener(_ -> {
+            JOptionPane.showMessageDialog(frame, "Gracias por jugar.");
+            System.exit(0); // Cerrar el juego
         });
         panel.add(btnSalir, gbc);
 
@@ -129,12 +123,9 @@ public class UI {
         botonRyan.setFont(new Font("Arial", Font.BOLD, 24));
         panel.add(botonRyan);
 
-        botonJess.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                mostrarPantJess();
-                frame.dispose();
-            }
+        botonJess.addActionListener(_ -> {
+            mostrarPantJess();
+            frame.dispose();
         });
 
         botonRyan.addActionListener(new ActionListener() {
@@ -736,12 +727,9 @@ public class UI {
                 frame.dispose();
             }
         });
-        botonNoLeer.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                mostrarFinal();
-                frame.dispose();
-            }
+        botonNoLeer.addActionListener(_ -> {
+            mostrarFinal();
+            frame.dispose();
         });
 
         frame.setVisible(true);
@@ -851,7 +839,7 @@ public class UI {
         frame.add(panel);
 
         // Acciones para los botones
-        botonDefenderte.addActionListener(e -> {
+        botonDefenderte.addActionListener(_ -> {
             // Verificar condiciones de la pistola
             if (!pistola.isDisponible()) {
                 mostrarPantaExtra(); // La pistola no está disponible
@@ -864,7 +852,7 @@ public class UI {
             frame.dispose(); // Cerrar la ventana actual
         });
 
-        botonNoDefenderte.addActionListener(e -> {
+        botonNoDefenderte.addActionListener(_ -> {
             mostrarPantaExtra(); // Mostrar pantalla extra
             frame.dispose(); // Cerrar la ventana actual
         });
@@ -1014,7 +1002,7 @@ public class UI {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
                 // Cargar la imagen de fondo
-                ImageIcon fondo = new ImageIcon(getClass().getResource("/HAS_MUERTO.jpg"));
+                ImageIcon fondo = new ImageIcon(Objects.requireNonNull(getClass().getResource("/HAS_MUERTO.jpg")));
                 g.drawImage(fondo.getImage(), 0, 0, getWidth(), getHeight(), this);
             }
         };
@@ -1037,7 +1025,7 @@ public class UI {
         JButton botonMenu = new JButton("Volver al menú");
         botonMenu.setPreferredSize(new Dimension(300, 80));
         botonMenu.setFont(new Font("Arial", Font.BOLD, 24));
-        botonMenu.addActionListener(e -> {
+        botonMenu.addActionListener(_ -> {
             mostrarMenu(); // Regresar al menú principal
             frame.dispose(); // Cerrar la ventana actual
         });
