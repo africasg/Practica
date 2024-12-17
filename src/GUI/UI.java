@@ -600,8 +600,16 @@ public class UI {
         botonDisparas.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                disparo=game.disparas(pistola);
-                mostrarPantalla5a();
+
+                if(!pistola.isDisponible()){
+                    mostrarPantalla5b();
+                } else if (!pistola.tieneBala()) {
+                    mostrarPantalla5b();
+                }else{
+                    game.disparas(pistola);
+                    mostrarPantalla5a();
+                }
+
                 frame.dispose();
             }
         });
@@ -787,75 +795,84 @@ public class UI {
 
         frame.setVisible(true);
     }
-    public  void mostrarPantalla7(){
-        //has ido a hablar con ryan para confrontarle pero te ataca
-        //usas pistola (mostrarPantalla8())
-        //no la usas(no la tienes, no quieres, no tienes bala)-mostrarPantExtra()
-
-        JFrame frame= new JFrame("Pantalla 7");
-        frame.setSize(400, 300);
+    public void mostrarPantalla7() {
+        // Crear el marco principal
+        JFrame frame = new JFrame("Pantalla 7");
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        JPanel panel = new JPanel(){
+        // Crear el panel personalizado con fondo
+        JPanel panel = new JPanel() {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
                 // Cargar la imagen de fondo
                 ImageIcon fondo = new ImageIcon(Objects.requireNonNull(getClass().getResource("/casaryan.png")));
-                Image img = fondo.getImage();
-                // Dibujar la imagen en el panel
-                g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
+                g.drawImage(fondo.getImage(), 0, 0, getWidth(), getHeight(), this);
             }
         };
-        frame.add(panel);
+        panel.setLayout(new GridBagLayout()); // Establecer diseño antes de añadir componentes
 
-        Game game= new Game();
+        // Crear un objeto de juego
+        Game game = new Game();
         game.Accion14();
 
-
-        JLabel texto= new JLabel("Estoy en graves problemas, ¿Qué hago?");
-        texto.setAlignmentX(Component.CENTER_ALIGNMENT);
+        // Etiqueta de texto
+        JLabel texto = new JLabel("Estoy en graves problemas, ¿Qué hago?");
         texto.setForeground(Color.WHITE);
         texto.setFont(new Font("Verdana", Font.PLAIN, 24));
-        panel.add(texto);
-        panel.setLayout(new GridBagLayout());
 
+        // Botones
         JButton botonDefenderte = new JButton("Defenderte con pistola");
         botonDefenderte.setPreferredSize(new Dimension(300, 80));
         botonDefenderte.setFont(new Font("Arial", Font.BOLD, 24));
-        panel.add(botonDefenderte);
 
         JButton botonNoDefenderte = new JButton("No te defiendes");
         botonNoDefenderte.setPreferredSize(new Dimension(300, 80));
         botonNoDefenderte.setFont(new Font("Arial", Font.BOLD, 24));
-        panel.add(botonNoDefenderte);
 
-        botonDefenderte.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                disparo=game.disparas(pistola);
-                if(disparo==1){
-                    mostrarPantalla8();
-                    frame.dispose();
-                }else{
-                    mostrarPantaExtra();
-                    frame.dispose();
-                }
+        // Configuración de GridBagConstraints para posicionar elementos
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.insets = new Insets(20, 0, 20, 0);
+        gbc.anchor = GridBagConstraints.CENTER;
 
+        // Añadir componentes al panel
+        panel.add(texto, gbc);
 
+        gbc.gridy++; // Siguiente fila
+        panel.add(botonDefenderte, gbc);
+
+        gbc.gridy++; // Siguiente fila
+        panel.add(botonNoDefenderte, gbc);
+
+        // Añadir el panel al marco
+        frame.add(panel);
+
+        // Acciones para los botones
+        botonDefenderte.addActionListener(e -> {
+            // Verificar condiciones de la pistola
+            if (!pistola.isDisponible()) {
+                mostrarPantaExtra(); // La pistola no está disponible
+            } else if (!pistola.tieneBala()) {
+                mostrarPantaExtra(); // La pistola no tiene balas
+            } else {
+                game.disparas(pistola); // Realizar disparo
+                mostrarPantalla8(); // Continuar a la pantalla 8
             }
-        });
-        botonNoDefenderte.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                mostrarPantaExtra();
-                frame.dispose();
-            }
+            frame.dispose(); // Cerrar la ventana actual
         });
 
+        botonNoDefenderte.addActionListener(e -> {
+            mostrarPantaExtra(); // Mostrar pantalla extra
+            frame.dispose(); // Cerrar la ventana actual
+        });
+
+        // Hacer visible el marco principal
         frame.setVisible(true);
     }
+
     public  void mostrarPantalla8(){
         //te defiendes y has ganado. detienes a ryan
         JFrame frame= new JFrame("Pantalla 8");
@@ -985,57 +1002,51 @@ public class UI {
     }
 
 
-    public  void mostrarPantaExtra(){
-        //no te has podido defender y mueres dejando el caso sin resolver
-
-        JFrame frame= new JFrame("Pantalla Extra");
-        frame.setSize(400, 300);
+    public void mostrarPantaExtra() {
+        // No te has podido defender y mueres dejando el caso sin resolver
+        JFrame frame = new JFrame("Pantalla Extra");
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        JPanel panel = new JPanel(){
+        // Crear un panel personalizado con fondo
+        JPanel panel = new JPanel(new GridBagLayout()) {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                ImageIcon fondo = new ImageIcon(Objects.requireNonNull(getClass().getResource("/HAS_MUERTO.png")));
-                Image img = fondo.getImage();
-                g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
+                // Cargar la imagen de fondo
+                ImageIcon fondo = new ImageIcon(getClass().getResource("/HAS_MUERTO.jpg"));
+                g.drawImage(fondo.getImage(), 0, 0, getWidth(), getHeight(), this);
             }
         };
-        frame.add(panel);
 
-
-        JLabel texto= new JLabel("No pudiste defenderte de Ryan y has muerto");
-        texto.setAlignmentX(Component.CENTER_ALIGNMENT);
-        texto.setForeground(Color.WHITE);
-        texto.setFont(new Font("Verdana", Font.PLAIN, 24));
-        panel.add(texto);
-        panel.setLayout(new GridBagLayout());
-
+        // Configurar el diseño del panel
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.gridx = 0;
         gbc.gridy = 0;
-        gbc.insets = new Insets(10, 0, 10, 0);
+        gbc.insets = new Insets(20, 0, 20, 0);
         gbc.anchor = GridBagConstraints.CENTER;
 
+        // Crear y agregar el mensaje al panel
+        JLabel texto = new JLabel("No pudiste defenderte de Ryan y has muerto.(no tenias pistola o no tenias bala)");
+        texto.setForeground(Color.WHITE);
+        texto.setFont(new Font("Verdana", Font.BOLD, 28));
+        panel.add(texto, gbc);
+
+        // Crear y configurar el botón de volver al menú
         gbc.gridy++;
-        JButton botonMenu = new JButton("Volver al menu");
+        JButton botonMenu = new JButton("Volver al menú");
         botonMenu.setPreferredSize(new Dimension(300, 80));
         botonMenu.setFont(new Font("Arial", Font.BOLD, 24));
-
-
-        botonMenu.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                mostrarMenu();
-                frame.dispose();
-            }
-
+        botonMenu.addActionListener(e -> {
+            mostrarMenu(); // Regresar al menú principal
+            frame.dispose(); // Cerrar la ventana actual
         });
-
         panel.add(botonMenu, gbc);
 
-
+        // Agregar el panel al frame y hacerlo visible
+        frame.add(panel);
         frame.setVisible(true);
     }
+
+
 }

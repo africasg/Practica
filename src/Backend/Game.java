@@ -2,11 +2,12 @@ package Backend;
 
 import Objetos.Objeto;
 import Objetos.Pistola;
-import Personajes.Personajes;
 import Personajes.Detective;
-
+import GUI.UI;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -709,8 +710,8 @@ public class Game {
         dialog1.setVisible(true);
     }
 
-    public int disparas(Pistola pistola){
-        int disparo=0;
+    public void disparas(Pistola pistola){
+
         //objeto detective allyson
         String ruta="imagen_Allyson.png";
         List<Objeto> inventario=new ArrayList<>();
@@ -726,8 +727,7 @@ public class Game {
 
         if(pistola.isDisponible()){
            Allysson.dispararPistola(pistola);
-          disparo =1;
-          return disparo;
+
 
         }else{
             JDialog dialog1 = new JDialog(frame, null, true);
@@ -748,7 +748,7 @@ public class Game {
 
             dialog1.setLocationRelativeTo(frame);
             dialog1.setVisible(true);
-            return disparo;
+
         }
     }
 
@@ -929,7 +929,7 @@ public class Game {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
                 // Dibujar la imagen de fondo
-                ImageIcon fondo = new ImageIcon(getClass().getResource("/BOSQUE.JPG"));
+                ImageIcon fondo = new ImageIcon(getClass().getResource("/casaryan.png"));
                 g.drawImage(fondo.getImage(), 0, 0, getWidth(), getHeight(), this);
             }
         };
@@ -1033,33 +1033,43 @@ public class Game {
                 }
             };
 
-            fondoPanel.setLayout(new BorderLayout());
+            // Usar GridBagLayout para organizar los elementos
+            fondoPanel.setLayout(new GridBagLayout());
             frame.setContentPane(fondoPanel); // Actualizar el panel de contenido del marco
 
-            // Crear el diálogo con el mensaje adecuado
-            JDialog dialog = new JDialog(frame, null, true);
-            dialog.setSize(750, 500);
-            dialog.setResizable(false);
-            dialog.setLayout(new BorderLayout());
+            // Configurar los constraints para los elementos
+            GridBagConstraints gbc = new GridBagConstraints();
+            gbc.gridx = 0;
+            gbc.gridy = 0;
+            gbc.insets = new Insets(20, 0, 20, 0);
+            gbc.anchor = GridBagConstraints.CENTER;
 
             // Determinar mensaje según el resultado
             String mensaje = nom.equals("Ryan")
-                    ? "Genial Detective, has adivinado quién es el asesino."
-                    : "Vaya... No has resuelto el caso, ese no es el asesino.";
-            JTextArea mensajeArea = new JTextArea(mensaje);
-            mensajeArea.setEditable(false);
-            mensajeArea.setLineWrap(true);
-            mensajeArea.setWrapStyleWord(true);
-            mensajeArea.setFont(new Font("Verdana", Font.PLAIN, 24));
-            dialog.add(new JScrollPane(mensajeArea), BorderLayout.CENTER);
+                    ? "<html><center>¡Genial Detective!<br>Has adivinado quién es el asesino.</center></html>"
+                    : "<html><center>Vaya...<br>No has resuelto el caso, ese no es el asesino.</center></html>";
+            JLabel mensajeLabel = new JLabel(mensaje);
+            mensajeLabel.setHorizontalAlignment(SwingConstants.CENTER);
+            mensajeLabel.setFont(new Font("Verdana", Font.BOLD, 28));
+            mensajeLabel.setForeground(Color.WHITE); // Para mejor visibilidad sobre el fondo
+            fondoPanel.add(mensajeLabel, gbc);
 
-            // Botón para cerrar el diálogo
-            JButton botonCerrar = new JButton("Cerrar");
-            botonCerrar.addActionListener(e -> dialog.dispose());
-            dialog.add(botonCerrar, BorderLayout.SOUTH);
+            // Añadir botón "Volver al menú"
+            gbc.gridy++; // Cambiar a la siguiente fila
+            JButton botonMenu = new JButton("Volver al menú");
+            botonMenu.setPreferredSize(new Dimension(300, 80));
+            botonMenu.setFont(new Font("Arial", Font.BOLD, 24));
+            fondoPanel.add(botonMenu, gbc);
 
-            dialog.setLocationRelativeTo(frame); // Centrar el diálogo en el marco
-            dialog.setVisible(true);
+            // Acción del botón "Volver al menú"
+            botonMenu.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    UI menu = new UI(); // Crear instancia de tu clase UI
+                    menu.mostrarMenu(); // Llamar al método mostrarMenu()
+                    frame.dispose(); // Cerrar la ventana actual
+                }
+            });
         };
 
         // Mostrar el resultado
@@ -1068,5 +1078,7 @@ public class Game {
         // Hacer visible el marco principal
         frame.setVisible(true);
     }
+
+
 
 }
