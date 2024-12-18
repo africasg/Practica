@@ -7,26 +7,17 @@ import Objetos.Pistola;
 
 
 
+
 public class UI {
 
     Pistola pistola = new Pistola("pistola", "Arma de la victima", false, true);
-
-    //Crear metodo para hacer el texto bonito
-    private JLabel crearTextoCentrado(String texto, int tamañoFuente, Color color) {
-        JLabel etiqueta = new JLabel(texto);
-        etiqueta.setAlignmentX(Component.CENTER_ALIGNMENT);
-        etiqueta.setForeground(color);
-        etiqueta.setFont(new Font("Verdana", Font.PLAIN, tamañoFuente));
-        return etiqueta;
-    }
-
 
     public void mostrarMenu() {
         JFrame frame = new JFrame("Mistery Murder");
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-//Fondo imagen (Metodo extraído)
+    //Fondo imagen (Metodo extraído)
         JPanel panel = getjPanel();
 
         GridBagConstraints gbc = new GridBagConstraints();
@@ -35,13 +26,13 @@ public class UI {
         gbc.insets = new Insets(10, 0, 10, 0); // Espaciado entre componentes
         gbc.anchor = GridBagConstraints.CENTER;
 
-// Mensaje
+    // Mensaje
         JLabel mensaje = new JLabel("Bienvenido al juego detective ¿Qué quieres hacer?");
         mensaje.setForeground(Color.WHITE); // Cambiar el color del texto
         mensaje.setFont(new Font("Verdana", Font.PLAIN, 24));// Estilo de la fuente
         panel.add(mensaje, gbc);
 
-// Botón Jugar
+    // Botón Jugar
         gbc.gridy++;
         JButton btnIniciar = new JButton("Jugar");
         btnIniciar.setPreferredSize(new Dimension(300, 80)); // Tamaño del botón
@@ -52,7 +43,7 @@ public class UI {
         });
         panel.add(btnIniciar, gbc);
 
-// Botón Salir
+    // Botón Salir
         gbc.gridy++;
         JButton btnSalir = new JButton("Salir");
         btnSalir.setPreferredSize(new Dimension(300, 80));
@@ -72,10 +63,10 @@ public class UI {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-// Cargar la imagen de fondo
+    // Cargar la imagen de fondo
                 ImageIcon fondo = new ImageIcon(Objects.requireNonNull(getClass().getResource("/PANTALLA_TITULO.jpg")));
                 Image img = fondo.getImage();
-// Dibujar la imagen en el panel
+    // Dibujar la imagen en el panel
                 g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
             }
         };

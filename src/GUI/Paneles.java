@@ -1,10 +1,9 @@
 package GUI;
-import GUI.UI;
 import Objetos.Objeto;
-import Objetos.Pistola;
 import Personajes.Detective;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -73,6 +72,25 @@ public class Paneles {
         List<Objeto> inventario = new ArrayList<>();
         return new Detective(nombre, rutaImagen, "Detective", inventario, false);
     }
+
+    // Método auxiliar para crear etiquetas
+    public JLabel crearEtiqueta(String texto, Font fuente, Color color) {
+        JLabel etiqueta = new JLabel(texto);
+        etiqueta.setHorizontalAlignment(SwingConstants.CENTER);
+        etiqueta.setFont(fuente);
+        etiqueta.setForeground(color);
+        return etiqueta;
+    }
+
+    // Método auxiliar para crear botones
+    public JButton crearBoton(String texto, Font fuente, ActionListener accion) {
+        JButton boton = new JButton(texto);
+        boton.setPreferredSize(new Dimension(300, 80));
+        boton.setFont(fuente);
+        boton.addActionListener(accion);
+        return boton;
+    }
+
 
 
 }
