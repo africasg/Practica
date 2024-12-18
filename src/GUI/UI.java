@@ -1,5 +1,4 @@
 package GUI;
-
 import javax.swing.*;
 import java.awt.*;
 import java.util.Objects;
@@ -10,7 +9,8 @@ import Objetos.Pistola;
 
 public class UI {
 
-    Pistola pistola= new Pistola("pistola","Arma de la victima",false,true);
+    Pistola pistola = new Pistola("pistola", "Arma de la victima", false, true);
+
     //Crear metodo para hacer el texto bonito
     private JLabel crearTextoCentrado(String texto, int tamañoFuente, Color color) {
         JLabel etiqueta = new JLabel(texto);
@@ -20,7 +20,7 @@ public class UI {
         return etiqueta;
     }
 
-    public void mostrarMenu(){
+    public void mostrarMenu() {
         JFrame frame = new JFrame("Mistery Murder");
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -82,14 +82,14 @@ public class UI {
         return panel;
     }
 
-    public void mostrarPantallaInicial(){
+    public void mostrarPantallaInicial() {
         //Se muestra el texto con lore, consigues movil(lees conver y tienes codigo)
-        Game game= new Game();
-        JFrame frame= new JFrame("Pantalla inicial");
+        Game game = new Game();
+        JFrame frame = new JFrame("Pantalla inicial");
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        JPanel panel = new JPanel(){
+        JPanel panel = new JPanel() {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
@@ -102,12 +102,14 @@ public class UI {
 
 
         game.Accion1();
-        JLabel texto= new JLabel(" ¿A quién vas a interrogar?");
-        texto.setAlignmentX(Component.CENTER_ALIGNMENT);
-        texto.setForeground(Color.WHITE);
-        texto.setFont(new Font("Verdana", Font.PLAIN, 24));
-        panel.add(texto);
+        JLabel textoCentrado = crearTextoCentrado(
+                "¿A quién vas a interrogar?",
+                24, // Tamaño de la fuente
+                Color.WHITE // Color del texto
+        );
         panel.setLayout(new GridBagLayout());
+        panel.add(textoCentrado);
+
 
         GridBagConstraints gbc = new GridBagConstraints(); //PARA PONER LOS BOTONES GRANDES Y EN EL MEDIO HAY QUE UTILIZAR EL GRIDY
         gbc.gridx = 0;
@@ -141,15 +143,16 @@ public class UI {
 
         frame.setVisible(true);
     }
-    public void mostrarPantJess(){
+
+    public void mostrarPantJess() {
         //Te cuenta su parte de la historia
-        JFrame frame= new JFrame("Pantalla Jess");
+        JFrame frame = new JFrame("Pantalla Jess");
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        Game game= new Game();
+        Game game = new Game();
 
-        JPanel panel = new JPanel(){
+        JPanel panel = new JPanel() {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
@@ -164,12 +167,15 @@ public class UI {
 
         game.Accion3();
 
-        JLabel texto= new JLabel("MMMM...Parece que el caso es más complicado de lo que pensabas");
-        texto.setAlignmentX(Component.CENTER_ALIGNMENT);
-        texto.setForeground(Color.WHITE);
-        texto.setFont(new Font("Verdana", Font.PLAIN, 24));
-        panel.add(texto);
+        // Crear y agregar el texto al panel
+        JLabel textoCentrado = crearTextoCentrado(
+                "MMMM...Parece que el caso es más complicado de lo que pensabas",
+                24, // Tamaño de la fuente
+                Color.WHITE // Color del texto
+        );
         panel.setLayout(new GridBagLayout());
+        panel.add(textoCentrado);
+
 
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.gridx = 0;
@@ -186,21 +192,22 @@ public class UI {
 
         boton1.addActionListener(
                 _ -> {
-            mostrarPantalla1();
-            frame.dispose();
-        });
+                    mostrarPantalla1();
+                    frame.dispose();
+                });
 
         frame.setVisible(true);
     }
-    public void mostrarPantRyan(){
+
+    public void mostrarPantRyan() {
         //Te cuenta su parte de la historia
-        JFrame frame= new JFrame("Pantalla Ryan");
+        JFrame frame = new JFrame("Pantalla Ryan");
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        Game game= new Game();
+        Game game = new Game();
 
-        JPanel panel = new JPanel(){
+        JPanel panel = new JPanel() {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
@@ -216,12 +223,14 @@ public class UI {
         game.Accion4();
 
 
-        JLabel texto= new JLabel("MMMM...Parece que el caso es más complicado de lo que pensabas");
-        texto.setAlignmentX(Component.CENTER_ALIGNMENT);
-        texto.setForeground(Color.WHITE);
-        texto.setFont(new Font("Verdana", Font.PLAIN, 24));
-        panel.add(texto);
+        JLabel textoCentrado = crearTextoCentrado(
+                "MMMM...Parece que el caso es más complicado de lo que pensabas",
+                24, // Tamaño de la fuente
+                Color.WHITE // Color del texto
+        );
         panel.setLayout(new GridBagLayout());
+        panel.add(textoCentrado);
+
 
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.gridx = 0;
@@ -236,25 +245,26 @@ public class UI {
 
         panel.add(boton1);
 
-        boton1.addActionListener(_ -> {
+        boton1.addActionListener(e -> {
             mostrarPantalla1();
             frame.dispose();
         });
 
         frame.setVisible(true);
     }
-    public void mostrarPantalla1(){
+
+    public void mostrarPantalla1() {
         //No sabes si volver a la escena del crimen
         //Vas (mostrarPantalla2a())
         //No vas(mostrarPantalla2b())
 
-        JFrame frame= new JFrame("Pantalla 1");
+        JFrame frame = new JFrame("Pantalla 1");
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        Game game= new Game();
+        Game game = new Game();
 
-        JPanel panel = new JPanel(){
+        JPanel panel = new JPanel() {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
@@ -269,12 +279,13 @@ public class UI {
 
         game.Accion5();
 
-        JLabel texto= new JLabel("¿Volverás a la escena del crimen?");
-        texto.setAlignmentX(Component.CENTER_ALIGNMENT);
-        texto.setForeground(Color.WHITE);
-        texto.setFont(new Font("Verdana", Font.PLAIN, 24));
-        panel.add(texto);
+        JLabel textoCentrado = crearTextoCentrado(
+                "¿Volverás a la escena del crimen?",
+                24, // Tamaño de la fuente
+                Color.WHITE // Color del texto
+        );
         panel.setLayout(new GridBagLayout());
+        panel.add(textoCentrado);
 
 
         JButton botonsi = new JButton("Volver");
@@ -287,31 +298,31 @@ public class UI {
         botonNo.setFont(new Font("Arial", Font.BOLD, 24));
         panel.add(botonNo);
 
-        botonsi.addActionListener(
-                _ -> {
+        botonsi.addActionListener(e -> {
             mostrarPantalla2a();
             frame.dispose();
         });
-        botonNo.addActionListener(_ -> {
+        botonNo.addActionListener(e -> {
             mostrarPantalla2b();
             frame.dispose();
         });
 
         frame.setVisible(true);
     }
-    public  void mostrarPantalla2a(){
+
+    public void mostrarPantalla2a() {
         //encuentras caja fuerte y usas el codigo
         //coges los papeles
         //coges pistola (mostrarPantalla3a())
         //no coges pistola (mostrarPantalla3a())
 
-        JFrame frame= new JFrame("Pantalla 2a");
+        JFrame frame = new JFrame("Pantalla 2a");
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        Game game= new Game();
+        Game game = new Game();
 
-        JPanel panel = new JPanel(){
+        JPanel panel = new JPanel() {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
@@ -326,12 +337,15 @@ public class UI {
 
         game.Accion6();
 
-        JLabel texto= new JLabel("¿Qué harás?");
-        texto.setAlignmentX(Component.CENTER_ALIGNMENT);
-        texto.setForeground(Color.WHITE);
-        texto.setFont(new Font("Verdana", Font.PLAIN, 24));
-        panel.add(texto);
+        // Crear y agregar el texto al panel
+        JLabel textoCentrado = crearTextoCentrado(
+                "¿Que harás?",
+                24, // Tamaño de la fuente
+                Color.WHITE // Color del texto
+        );
         panel.setLayout(new GridBagLayout());
+        panel.add(textoCentrado);
+
 
         JButton botonCoger = new JButton("Coges la pistola");
         botonCoger.setPreferredSize(new Dimension(300, 80));
@@ -343,12 +357,12 @@ public class UI {
         botonNoCoger.setFont(new Font("Arial", Font.BOLD, 24));
         panel.add(botonNoCoger);
 
-        botonCoger.addActionListener(_ -> {
+        botonCoger.addActionListener(e -> {
             game.cogePistola(pistola);
             mostrarPantalla3a();
             frame.dispose();
         });
-        botonNoCoger.addActionListener(_ -> {
+        botonNoCoger.addActionListener(e -> {
             mostrarPantalla3a();
 
             frame.dispose();
@@ -358,15 +372,16 @@ public class UI {
 
 
     }
-    public  void mostrarPantalla2b(){
+
+    public void mostrarPantalla2b() {
         //revisas de nuevo el movil encuentras un mail(papeles)
         //mostrarPantalla3b()
 
-        JFrame frame= new JFrame("Pantalla 2b");
+        JFrame frame = new JFrame("Pantalla 2b");
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        JPanel panel = new JPanel(){
+        JPanel panel = new JPanel() {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
@@ -379,16 +394,19 @@ public class UI {
         };
         frame.add(panel);
 
-        Game game= new Game();
+        Game game = new Game();
 
         game.Accion7();
 
-        JLabel texto= new JLabel("Creo que sí debería abrir el mensaje");
-        texto.setAlignmentX(Component.CENTER_ALIGNMENT);
-        texto.setForeground(Color.WHITE);
-        texto.setFont(new Font("Verdana", Font.PLAIN, 24));
-        panel.add(texto);
+        // Crear y agregar el texto al panel
+        JLabel textoCentrado = crearTextoCentrado(
+                "Creo que sí debería abrir el mensaje",
+                24, // Tamaño de la fuente
+                Color.WHITE // Color del texto
+        );
         panel.setLayout(new GridBagLayout());
+        panel.add(textoCentrado);
+
 
         JButton botonMensaje = new JButton("*Abrir mensaje*");
         botonMensaje.setPreferredSize(new Dimension(300, 80)); // Tamaño del botón boton
@@ -396,24 +414,25 @@ public class UI {
         panel.add(botonMensaje);
 
 
-        botonMensaje.addActionListener(_ -> {
+        botonMensaje.addActionListener(e -> {
             mostrarPantalla3b();
             frame.dispose();
         });
         frame.setVisible(true);
 
     }
-    public  void mostrarPantalla3a(){
+
+    public void mostrarPantalla3a() {
         //ves a una persona fuera
         //la sigues(mostrarPantalla4())
         //no la sigues(mostrarFinal())
 
-        JFrame frame= new JFrame("Pantalla 3a");
+        JFrame frame = new JFrame("Pantalla 3a");
         frame.setSize(400, 300);
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        JPanel panel = new JPanel(){
+        JPanel panel = new JPanel() {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
@@ -426,17 +445,19 @@ public class UI {
         };
         frame.add(panel);
 
-        Game game= new Game();
+        Game game = new Game();
 
         game.Accion8();
 
 
-        JLabel texto= new JLabel(" ¿Seguirás a la persona?");
-        texto.setAlignmentX(Component.CENTER_ALIGNMENT);
-        texto.setForeground(Color.WHITE);
-        texto.setFont(new Font("Verdana", Font.PLAIN, 24));
-        panel.add(texto);
+        // Crear y agregar el texto al panel
+        JLabel textoCentrado = crearTextoCentrado(
+                "¿Seguirás a la persona?",
+                24, // Tamaño de la fuente
+                Color.WHITE // Color del texto
+        );
         panel.setLayout(new GridBagLayout());
+        panel.add(textoCentrado);
 
         JButton botonSeguir = new JButton("Le sigues");
         botonSeguir.setPreferredSize(new Dimension(300, 80));
@@ -448,28 +469,29 @@ public class UI {
         botonNoSeguir.setFont(new Font("Arial", Font.BOLD, 24));
         panel.add(botonNoSeguir);
 
-        botonSeguir.addActionListener(_ -> {
+        botonSeguir.addActionListener(e -> {
             mostrarPantalla4();
             frame.dispose();
         });
-        botonNoSeguir.addActionListener(_ -> {
+        botonNoSeguir.addActionListener(e -> {
             mostrarFinal();
             frame.dispose();
         });
 
         frame.setVisible(true);
     }
-    public  void mostrarPantalla3b(){
+
+    public void mostrarPantalla3b() {
         //te llega un mensaje
         //vas (mostrarPantalla4())
         //no vas (mostrarFinal())
 
-        JFrame frame= new JFrame("Pantalla 3b");
+        JFrame frame = new JFrame("Pantalla 3b");
         frame.setSize(400, 300);
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        JPanel panel = new JPanel(){
+        JPanel panel = new JPanel() {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
@@ -482,18 +504,19 @@ public class UI {
         };
         frame.add(panel);
 
-        Game game= new Game();
+        Game game = new Game();
         game.Accion9();
 
-
-        JLabel texto= new JLabel("¿Le harás caso al mensaje?");
-        texto.setAlignmentX(Component.CENTER_ALIGNMENT);
-        texto.setForeground(Color.WHITE);
-        texto.setFont(new Font("Verdana", Font.PLAIN, 24));
-        panel.add(texto);
+        JLabel textoCentrado = crearTextoCentrado(
+                "¿Le harás caso al mensaje?",
+                24, // Tamaño de la fuente
+                Color.WHITE // Color del texto
+        );
         panel.setLayout(new GridBagLayout());
+        panel.add(textoCentrado);
 
-        JButton botonVas= new JButton("Ir al bosque");
+
+        JButton botonVas = new JButton("Ir al bosque");
         botonVas.setPreferredSize(new Dimension(300, 80));
         botonVas.setFont(new Font("Arial", Font.BOLD, 24));
         panel.add(botonVas);
@@ -503,30 +526,31 @@ public class UI {
         botonNoVas.setFont(new Font("Arial", Font.BOLD, 24));
         panel.add(botonNoVas);
 
-        botonVas.addActionListener(_ -> {
+        botonVas.addActionListener(e -> {
             mostrarPantalla4();
             frame.dispose();
         });
-        botonNoVas.addActionListener(_ -> {
+        botonNoVas.addActionListener(e -> {
             mostrarFinal();
             frame.dispose();
         });
 
         frame.setVisible(true);
     }
-    public  void mostrarPantalla4(){
+
+    public void mostrarPantalla4() {
         //has ido y ahora escuchas un ruido detras de un arbusto
         //decides disparar.TE QUEDAS SIN BALA (mostrarPantalla5a())
         //no disparas. SIGUES CON BALA (mostrarPantalla5b())
         //y si no hay pistola??????
 
 
-        JFrame frame= new JFrame("Pantalla 4");
+        JFrame frame = new JFrame("Pantalla 4");
         frame.setSize(400, 300);
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        JPanel panel = new JPanel(){
+        JPanel panel = new JPanel() {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
@@ -539,16 +563,17 @@ public class UI {
         };
         frame.add(panel);
 
-        Game game= new Game();
+        Game game = new Game();
         game.Accion10();
 
-
-        JLabel texto= new JLabel("¡OH NO! ¿QUE HARÁS?");
-        texto.setAlignmentX(Component.CENTER_ALIGNMENT);
-        texto.setForeground(Color.WHITE);
-        texto.setFont(new Font("Verdana", Font.PLAIN, 24));
-        panel.add(texto);
+        JLabel textoCentrado = crearTextoCentrado(
+                "¡OH NO! ¿Que harás?",
+                24, // Tamaño de la fuente
+                Color.WHITE // Color del texto
+        );
         panel.setLayout(new GridBagLayout());
+        panel.add(textoCentrado);
+
 
         JButton botonDisparas = new JButton("DISPARAR");
         botonDisparas.setPreferredSize(new Dimension(300, 80));
@@ -560,38 +585,39 @@ public class UI {
         botonNoDisparas.setFont(new Font("Arial", Font.BOLD, 24));
         panel.add(botonNoDisparas);
 
-        botonDisparas.addActionListener(_ -> {
+        botonDisparas.addActionListener(e -> {
 
-            if(!pistola.isDisponible()){
+            if (!pistola.isDisponible()) {
                 mostrarPantalla5b();
             } else if (!pistola.tieneBala()) {
                 mostrarPantalla5b();
-            }else{
+            } else {
                 game.disparas(pistola);
                 mostrarPantalla5a();
             }
 
             frame.dispose();
         });
-        botonNoDisparas.addActionListener(_ -> {
+        botonNoDisparas.addActionListener(e -> {
             mostrarPantalla5b();
             frame.dispose();
         });
 
         frame.setVisible(true);
     }
-    public  void mostrarPantalla5a(){
+
+    public void mostrarPantalla5a() {
         //era un conejo que sale corriendo por el disparo
         //encuentras una nota
         //vas (mostrarPantalla6())
         //no vas (mostrarfinal())
 
-        JFrame frame= new JFrame("Pantalla 5a");
+        JFrame frame = new JFrame("Pantalla 5a");
         frame.setSize(400, 300);
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        JPanel panel = new JPanel(){
+        JPanel panel = new JPanel() {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
@@ -604,16 +630,16 @@ public class UI {
         };
         frame.add(panel);
 
-        Game game= new Game();
+        Game game = new Game();
         game.Accion11();
 
-
-        JLabel texto= new JLabel("¿Que harás con esta información? ¿Volverás aquí mañana?");
-        texto.setAlignmentX(Component.CENTER_ALIGNMENT);
-        texto.setForeground(Color.WHITE);
-        texto.setFont(new Font("Verdana", Font.PLAIN, 24));
-        panel.add(texto);
+        JLabel textoCentrado = crearTextoCentrado(
+                "¿Que harás con esta información? ¿Volverás aquí mañana?",
+                24, // Tamaño de la fuente
+                Color.WHITE // Color del texto
+        );
         panel.setLayout(new GridBagLayout());
+        panel.add(textoCentrado);
 
         JButton botonLeer = new JButton("Volveré");
         botonLeer.setPreferredSize(new Dimension(300, 80));
@@ -625,28 +651,29 @@ public class UI {
         botonLeer.setFont(new Font("Arial", Font.BOLD, 24));
         panel.add(botonLeer);
 
-        botonLeer.addActionListener(_ -> {
+        botonLeer.addActionListener(e -> {
             mostrarPantalla6();
             frame.dispose();
         });
-        botonNoLeer.addActionListener(_ -> {
+        botonNoLeer.addActionListener(e -> {
             mostrarFinal();
             frame.dispose();
         });
 
         frame.setVisible(true);
     }
-    public  void mostrarPantalla5b(){
+
+    public void mostrarPantalla5b() {
         //Sale un conejo del arbusto y ves la nota
         //vas (mostrarPantalla6())
         //no vas (mostrarfinal())
 
-        JFrame frame= new JFrame("Pantalla 5b");
+        JFrame frame = new JFrame("Pantalla 5b");
         frame.setSize(400, 300);
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        JPanel panel = new JPanel(){
+        JPanel panel = new JPanel() {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
@@ -659,16 +686,16 @@ public class UI {
         };
         frame.add(panel);
 
-        Game game= new Game();
+        Game game = new Game();
         game.Accion12();
 
-
-        JLabel texto= new JLabel("¿Que harás con esta información? ¿Volverás aquí mañana?");
-        texto.setAlignmentX(Component.CENTER_ALIGNMENT);
-        texto.setForeground(Color.WHITE);
-        texto.setFont(new Font("Verdana", Font.PLAIN, 24));
-        panel.add(texto);
+        JLabel textoCentrado = crearTextoCentrado(
+                "¿Que harás con esta información? ¿Volverás aquí mañana?",
+                24, // Tamaño de la fuente
+                Color.WHITE // Color del texto
+        );
         panel.setLayout(new GridBagLayout());
+        panel.add(textoCentrado);
 
         JButton botonLeer = new JButton(" Volveré ");
         botonLeer.setPreferredSize(new Dimension(300, 80));
@@ -680,27 +707,28 @@ public class UI {
         botonLeer.setFont(new Font("Arial", Font.BOLD, 24));
         panel.add(botonNoLeer);
 
-        botonLeer.addActionListener(_ -> {
+        botonLeer.addActionListener(e -> {
             mostrarPantalla6();
             frame.dispose();
         });
-        botonNoLeer.addActionListener(_ -> {
+        botonNoLeer.addActionListener(e -> {
             mostrarFinal();
             frame.dispose();
         });
 
         frame.setVisible(true);
     }
-    public  void mostrarPantalla6(){
+
+    public void mostrarPantalla6() {
         //has ido y te encuentras con mike que te cuenta lo que paso
         //mostrarPantalla7()
 
-        JFrame frame= new JFrame("Pantalla 6");
+        JFrame frame = new JFrame("Pantalla 6");
         frame.setSize(400, 300);
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        JPanel panel = new JPanel(){
+        JPanel panel = new JPanel() {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
@@ -713,15 +741,16 @@ public class UI {
         };
         frame.add(panel);
 
-        Game game= new Game();
+        Game game = new Game();
         game.Accion13();
 
-        JLabel texto= new JLabel("Esto lo cambia todo, necesito una confesión por su parte.");
-        texto.setAlignmentX(Component.CENTER_ALIGNMENT);
-        texto.setForeground(Color.WHITE);
-        texto.setFont(new Font("Verdana", Font.PLAIN, 24));
-        panel.add(texto);
+        JLabel textoCentrado = crearTextoCentrado(
+                "Esto lo cambia todo, necesito una confesión por su parte.",
+                24, // Tamaño de la fuente
+                Color.WHITE // Color del texto
+        );
         panel.setLayout(new GridBagLayout());
+        panel.add(textoCentrado);
 
         JButton botonir = new JButton("Vas a ver a Ryan");
         botonir.setPreferredSize(new Dimension(300, 80));
@@ -729,21 +758,21 @@ public class UI {
         panel.add(botonir);
 
 
-
-        botonir.addActionListener(_ -> {
+        botonir.addActionListener(e -> {
             mostrarPantalla7();
             frame.dispose();
         });
 
         frame.setVisible(true);
     }
+
     public void mostrarPantalla7() {
-        // Crear el marco principal
+
         JFrame frame = new JFrame("Pantalla 7");
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        // Crear el panel personalizado con fondo
+
         JPanel panel = new JPanel() {
             @Override
             protected void paintComponent(Graphics g) {
@@ -753,11 +782,18 @@ public class UI {
                 g.drawImage(fondo.getImage(), 0, 0, getWidth(), getHeight(), this);
             }
         };
-        panel.setLayout(new GridBagLayout()); // Establecer diseño antes de añadir componentes
+        panel.setLayout(new GridBagLayout());
 
-        // Crear un objeto de juego
+
         Game game = new Game();
         game.Accion14();
+
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.insets = new Insets(20, 0, 20, 0);
+        gbc.anchor = GridBagConstraints.CENTER;
+
 
         // Etiqueta de texto
         JLabel texto = new JLabel("Estoy en graves problemas, ¿Qué hago?");
@@ -773,20 +809,14 @@ public class UI {
         botonNoDefenderte.setPreferredSize(new Dimension(300, 80));
         botonNoDefenderte.setFont(new Font("Arial", Font.BOLD, 24));
 
-        // Configuración de GridBagConstraints para posicionar elementos
-        GridBagConstraints gbc = new GridBagConstraints();
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        gbc.insets = new Insets(20, 0, 20, 0);
-        gbc.anchor = GridBagConstraints.CENTER;
 
         // Añadir componentes al panel
         panel.add(texto, gbc);
 
-        gbc.gridy++; // Siguiente fila
+        gbc.gridy++;
         panel.add(botonDefenderte, gbc);
 
-        gbc.gridy++; // Siguiente fila
+        gbc.gridy++;
         panel.add(botonNoDefenderte, gbc);
 
         // Añadir el panel al marco
@@ -816,7 +846,6 @@ public class UI {
     }
 
 
-
     public void mostrarFinal() {
         final String[] nom = {""}; // Arreglo para almacenar el nombre del asesino ingresado
 
@@ -839,12 +868,13 @@ public class UI {
         gbc.insets = new Insets(10, 0, 10, 0);
         gbc.anchor = GridBagConstraints.CENTER;
 
-        // Etiqueta de texto
-        JLabel texto = new JLabel("Llegaste al final, ¿quién crees que ha matado a Emily Carter?");
-        texto.setForeground(Color.WHITE);
-        texto.setFont(new Font("Verdana", Font.PLAIN, 24));
-        panel.add(texto);
-        panel.add(texto, gbc);
+        JLabel textoCentrado = crearTextoCentrado(
+                "Llegaste al final, ¿quién crees que ha matado a Emily Carter?",
+                24, // Tamaño de la fuente
+                Color.WHITE // Color del texto
+        );
+        panel.setLayout(new GridBagLayout());
+        panel.add(textoCentrado);
 
         // Campo de texto para ingresar el nombre del sospechoso
         gbc.gridy++; // Mover a la siguiente fila
@@ -879,7 +909,7 @@ public class UI {
         });
 
         // Acción del botón "Volver al menú"
-        botonMenu.addActionListener(_ -> {
+        botonMenu.addActionListener(e -> {
             mostrarMenu(); // Regresar al menú principal
             frame.dispose(); // Cerrar la ventana actual
         });
@@ -934,6 +964,4 @@ public class UI {
         frame.add(panel);
         frame.setVisible(true);
     }
-
-
 }
