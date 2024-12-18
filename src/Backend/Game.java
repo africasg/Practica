@@ -4,7 +4,6 @@ import GUI.UI;
 import Objetos.Objeto;
 import Objetos.Pistola;
 import Personajes.Detective;
-
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;

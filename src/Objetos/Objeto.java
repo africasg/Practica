@@ -1,8 +1,8 @@
 package Objetos;
 
 public  class Objeto {
-    private String nombreobj;
-    private String desc;
+    private final String nombreobj;
+    private final String desc;
     private boolean disponible;
 
     public Objeto(String nombreobj, String desc, boolean disponible) {
@@ -13,10 +13,6 @@ public  class Objeto {
 
     public String getNombreobj() {
         return nombreobj;
-    }
-
-    public String getDesc() {
-        return desc;
     }
 
     public boolean isDisponible() {

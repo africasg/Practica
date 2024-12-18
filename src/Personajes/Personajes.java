@@ -19,10 +19,6 @@ public abstract class Personajes {
         return nombre;
     }
 
-    public ImageIcon getImagen() {
-        return imagen;
-    }
-
     public String getDescripcion() {
         return descripcion;
     }
