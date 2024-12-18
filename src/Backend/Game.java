@@ -734,9 +734,9 @@ public class Game {
         dialog1.setLayout(new BorderLayout());
 
         JTextArea mensaje1 = new JTextArea("""
-                "Después de seguir a la figura, la pierdes de vista al entrar al bosque. Igual esto ha sido una mala idea...
+                Llegaste al bosque. Notas una sensación extraña. Igual esto ha sido una mala idea...
                 
-                De pronto, escuchas un ruido detrás del arbusto que está justo detrás de ti."
+                De pronto, escuchas un ruido detrás del arbusto que está justo detrás de ti.
                 """);
         mensaje1.setEditable(false);
         mensaje1.setLineWrap(true);
