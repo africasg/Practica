@@ -9,68 +9,28 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import GUI.Paneles;
 
 public class Game {
-
+    Paneles panel= new Paneles();
     public void Accion1(){
         //objeto detective allyson
-        String ruta="imagen_Allyson.png";
-        List<Objeto> inventario=new ArrayList<>();
-        new Detective("Allyson", ruta, "Detective", inventario, false);
+        Detective Allysson = panel.crearDetective("Allyson", "imagen_Allyson.png");
 
         //FONFO DEL FRAME
-        JFrame frame = new JFrame();
-        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setVisible(true);
-
-
-        JPanel fondoPanel = new JPanel() {
-            @Override
-            protected void paintComponent(Graphics g) {
-                super.paintComponent(g);
-                // Dibujar la imagen de fondo
-                ImageIcon fondo = new ImageIcon(Objects.requireNonNull(getClass().getResource("/escena1.jpg")));
-                g.drawImage(fondo.getImage(), 0, 0, getWidth(), getHeight(), this);
-            }
-        };
-        fondoPanel.setLayout(new BorderLayout());
-        frame.add(fondoPanel);
-
-        frame.setVisible(true);
+        JFrame frame = panel.crearFrame("/escena1.jpg");
 
         //primer texto
 
-
-        JDialog dialog1 = new JDialog(frame, null, true);
-        dialog1.setSize(750, 500);
-        dialog1.setResizable(false);
-        dialog1.setLayout(new BorderLayout());
-
-        JTextArea mensaje1 = new JTextArea("""
-                Bienvenida detective Allysson, necesitamos que investigue este caso de asesinato
-                De momento lo único que sabemos es que la víctima es Emily Carter, una estudiante universitaria. \n
-                La reportaron como desaparecida en el trabajo y al llegar a su casa nos la encontramos así en el baño.
-                La última persona en verla con vida fue su amiga Jessica Smith. Además la víctima tenía un novio llamado Ryan White.
-                Ambos tienen coartadas
-                Puedes investigar un poco más la zona, a ver si encuentras alguna pista de utilidad.\s""");
-        mensaje1.setEditable(false);
-        mensaje1.setLineWrap(true);
-        mensaje1.setWrapStyleWord(true);
-        mensaje1.setFont(new Font("Verdana", Font.PLAIN, 24));
-        dialog1.add(new JScrollPane(mensaje1), BorderLayout.CENTER);
-
-        JPanel botonesPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-        JButton botonCerrar1 = new JButton("Cerrar");
-        botonCerrar1.addActionListener(_ -> dialog1.dispose());
-        botonesPanel.add(botonCerrar1);
-
-        dialog1.add(botonesPanel, BorderLayout.SOUTH);
-
-
-        dialog1.setLocationRelativeTo(frame);
-        dialog1.setVisible(true);
+        String mensaje1 = """
+                    Bienvenida detective Allysson, necesitamos que investigue este caso de asesinato
+                        De momento lo único que sabemos es que la víctima es Emily Carter, una estudiante universitaria. \n
+                        La reportaron como desaparecida en el trabajo y al llegar a su casa nos la encontramos así en el baño.
+                        La última persona en verla con vida fue su amiga Jessica Smith. Además la víctima tenía un novio llamado Ryan White.
+                        Ambos tienen coartadas
+                        Puedes investigar un poco más la zona, a ver si encuentras alguna pista de utilidad.\s
+                """;
+        panel.crearDialogo(frame, mensaje1);
 
     }
 
@@ -80,64 +40,30 @@ public class Game {
         ImageIcon iconomovil= new ImageIcon(Objects.requireNonNull(getClass().getResource("/telefono_juego.png")));
 
         //objeto detective allyson
-        String ruta="imagen_Allyson.png";
-        List<Objeto> inventario=new ArrayList<>();
-        Detective Allysson= new Detective("Allyson", ruta, "Detective", inventario, false);
+        Detective Allysson = panel.crearDetective("Allyson", "imagen_Allyson.png");
 
         //FONFO DEL FRAME
-        JFrame frame = new JFrame();
-        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setVisible(true);
-
-        JPanel fondoPanel = new JPanel() {
-            @Override
-            protected void paintComponent(Graphics g) {
-                super.paintComponent(g);
-                // Dibujar la imagen de fondo
-                ImageIcon fondo = new ImageIcon(Objects.requireNonNull(getClass().getResource("/escena1.jpg")));
-                g.drawImage(fondo.getImage(), 0, 0, getWidth(), getHeight(), this);
-            }
-        };
-        fondoPanel.setLayout(new BorderLayout());
-        frame.add(fondoPanel);
-
-        frame.setVisible(true);
+        JFrame frame = panel.crearFrame("/escena1.jpg");
 
         //primer texto
 
-        JDialog dialog1 = new JDialog(frame, null, true);
-        dialog1.setSize(750, 500);
-        dialog1.setResizable(false);
-        dialog1.setLayout(new BorderLayout());
-
-        JTextArea mensaje1 = new JTextArea("""
-                Decides dar una vuelta por la casa a investigar la escena.\s
+        String mensaje1 = """
+                   Decides dar una vuelta por la casa a investigar la escena.\s
                 Encuentras el móvil de la víctima y te lo guardas como pista
                 Cuando enciendes el móvil, empiezas a buscar algo que te pueda dar una pista sobre lo que le pasó a Emily y ahí encuentras una conversación entre ella y su amiga Jess
                 Parece una discusión entre ambas por... Ryan.\s
                 En el mensaje, Jess amenazaba a Emily por haber empezado a salir con el chico que le gustaba
                 Esto es una gran pista. Jess pudo haber hecho daño a Emily por celos.\s
                 Además de eso encuentras en la aplicación de notas un código (40605)
-                Me pregunto que podré hacer con el.""");
-        mensaje1.setEditable(false);
-        mensaje1.setLineWrap(true);
-        mensaje1.setWrapStyleWord(true);
-        mensaje1.setFont(new Font("Verdana", Font.PLAIN, 24));
-        dialog1.add(new JScrollPane(mensaje1), BorderLayout.CENTER);
-
-        JButton botonCerrar1 = new JButton("Cerrar");
-        botonCerrar1.addActionListener(_ -> dialog1.dispose());
-        dialog1.add(botonCerrar1, BorderLayout.SOUTH);
-
-        dialog1.setLocationRelativeTo(frame);
-        dialog1.setVisible(true);
+                Me pregunto que podré hacer con el.
+                """;
+        panel.crearDialogo(frame, mensaje1);
 
 
         //obtienes el movie
         Allysson.cogerObjeto(movil);
 
-        //Segundo dialogo
+        //Segundo dialogo con imagen
         JDialog dialog2 = new JDialog(frame, null, true);
         dialog2.setSize(750, 500);
         dialog2.setResizable(false);
@@ -145,13 +71,12 @@ public class Game {
 
         JLabel iconoLabel = new JLabel(iconomovil);
         JLabel mensaje2 = new JLabel("¡¡¡Has obtenido el móvil!!!");
-        mensaje2.setHorizontalAlignment(SwingConstants.CENTER);
-        mensaje1.setFont(new Font("Verdana", Font.PLAIN, 18));
+
         dialog2.add(iconoLabel, BorderLayout.WEST);
         dialog2.add(mensaje2, BorderLayout.CENTER);
 
         JButton botonCerrar2 = new JButton("Cerrar");
-        botonCerrar2.addActionListener(e -> {
+        botonCerrar2.addActionListener(_ -> {
             dialog2.dispose();
             frame.dispose();
 
@@ -166,66 +91,31 @@ public class Game {
 
     public void Accion3(){
 
-        String ruta="imagen_Allyson.png";
-        List<Objeto> inventario=new ArrayList<>();
-        new Detective("Allyson", ruta, "Detective", inventario, false);
-
         //FONFO DEL FRAME
-        JFrame frame = new JFrame();
-        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setVisible(true);
-        JPanel fondoPanel = new JPanel() {
-            @Override
-            protected void paintComponent(Graphics g) {
-                super.paintComponent(g);
-                // Dibujar la imagen de fondo
-                ImageIcon fondo = new ImageIcon(Objects.requireNonNull(getClass().getResource("/interrogatorio.jpg")));
-                g.drawImage(fondo.getImage(), 0, 0, getWidth(), getHeight(), this);
-            }
-        };
-        fondoPanel.setLayout(new BorderLayout());
-        frame.add(fondoPanel);
-
-        frame.setVisible(true);
+        JFrame frame = panel.crearFrame("/escena1.jpg");
 
         //primer texto
 
-
-        JDialog dialog1 = new JDialog(frame, null, true);
-        dialog1.setSize(750, 500);
-        dialog1.setResizable(false);
-        dialog1.setLayout(new BorderLayout());
-
-        JTextArea mensaje1 = new JTextArea("""
-                Decides ir a interrogar a Jessica,la cual tiene mucho en su contra por el momento
-                
+        String mensaje1 = """
+                   Decides ir a interrogar a Jessica,la cual tiene mucho en su contra por el momento
+                                
                 Detective Allyson: Bueno Jessica, me gustaría hablar contigo sobre Emily, la cual como ya sabes ha aparecido MUERTA en su casa
                 Tengo motivos para pensar que tú has estado detrás de esto
-                
+                                
                 Jessica Smith: ¿¿¿PERDONE??? ¡¡¡YO JAMAS LE HARIA DAÑO A EMILY!!!!
-                
+                                
                 Detective Allysson: Tengo una conversación en el móvil de la víctima que demuestra lo contrario... Le amenazabas por salir con el chico que te gustaba...
-                
+                                
                 Jessica Smith: Eso... Fue una pelea tonta, nada más. Ella sabía que me gustaba Ryan desde hace mucho, y aún así decidió salir con él...
                 Pero no pasó nada más que esa conversación, todo quedo aclarado.\s
                 Ella era mi mejor amiga...
-                
+                                
                 Detective Allysson: Bueno, suficiente por hoy Jessica
-                 Muchas gracias por tu testimonio.\s""");
-        mensaje1.setEditable(false);
-        mensaje1.setLineWrap(true);
-        mensaje1.setWrapStyleWord(true);
-        mensaje1.setFont(new Font("Verdana", Font.PLAIN, 24));
-        dialog1.add(new JScrollPane(mensaje1), BorderLayout.CENTER);
+                 Muchas gracias por tu testimonio.\s
+                """;
+        panel.crearDialogo(frame, mensaje1);
 
-        JButton botonCerrar1 = new JButton("Cerrar");
-        botonCerrar1.addActionListener(_ -> dialog1.dispose());
-        dialog1.add(botonCerrar1, BorderLayout.SOUTH);
 
-        dialog1.setLocationRelativeTo(frame);
-        dialog1.setVisible(true);
     }
 
     public void Accion4(){
