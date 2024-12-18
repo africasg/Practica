@@ -2,7 +2,7 @@ package Personajes;
 
 import javax.swing.*;
 
-public abstract class Personajes {
+public class Personajes {
     private String nombre;
     private ImageIcon imagen;
     private String descripcion;
@@ -12,7 +12,8 @@ public abstract class Personajes {
         this.imagen = new ImageIcon(ruta);
         this.descripcion = descripcion;
     }
-    /*metodos: aparecer
+    /**
+     * metodos: aparecer
 
      */
     public String getNombre() {

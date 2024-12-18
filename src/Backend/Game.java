@@ -24,6 +24,8 @@ public class Game {
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
+
+
         JPanel fondoPanel = new JPanel() {
             @Override
             protected void paintComponent(Graphics g) {
@@ -149,7 +151,7 @@ public class Game {
         dialog2.add(mensaje2, BorderLayout.CENTER);
 
         JButton botonCerrar2 = new JButton("Cerrar");
-        botonCerrar2.addActionListener(_ -> {
+        botonCerrar2.addActionListener(e -> {
             dialog2.dispose();
             frame.dispose();
 

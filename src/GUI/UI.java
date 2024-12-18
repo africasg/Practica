@@ -7,9 +7,18 @@ import Backend.Game;
 import Objetos.Pistola;
 
 
+
 public class UI {
 
     Pistola pistola= new Pistola("pistola","Arma de la victima",false,true);
+    //Crear metodo para hacer el texto bonito
+    private JLabel crearTextoCentrado(String texto, int tamañoFuente, Color color) {
+        JLabel etiqueta = new JLabel(texto);
+        etiqueta.setAlignmentX(Component.CENTER_ALIGNMENT);
+        etiqueta.setForeground(color);
+        etiqueta.setFont(new Font("Verdana", Font.PLAIN, tamañoFuente));
+        return etiqueta;
+    }
 
     public void mostrarMenu(){
         JFrame frame = new JFrame("Mistery Murder");
