@@ -1,5 +1,6 @@
 package Backend;
 
+import GUI.UI;
 import Objetos.Objeto;
 import Objetos.Pistola;
 import Personajes.Detective;
@@ -981,7 +982,7 @@ public class Game {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
                 // Dibujar la imagen de fondo
-                ImageIcon fondo = new ImageIcon(Objects.requireNonNull(getClass().getResource("/BOSQUE.JPG")));
+                ImageIcon fondo = new ImageIcon(Objects.requireNonNull(getClass().getResource("/casaryan.png")));
                 g.drawImage(fondo.getImage(), 0, 0, getWidth(), getHeight(), this);
             }
         };
@@ -1037,6 +1038,7 @@ public class Game {
 
     public void ganas(){
 
+        UI menu= new UI();
         //FONFO DEL FRAME
         JFrame frame = new JFrame();
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -1052,35 +1054,37 @@ public class Game {
                 g.drawImage(fondo.getImage(), 0, 0, getWidth(), getHeight(), this);
             }
         };
-        fondoPanel.setLayout(new BorderLayout());
+        // Configurar el diseño del panel como GridBagLayout
+        fondoPanel.setLayout(new GridBagLayout());
+
+// Configurar el diseño del panel con restricciones
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.insets = new Insets(20, 0, 20, 0); // Espaciado interno
+        gbc.anchor = GridBagConstraints.CENTER; // Centrar componentes
+
+// Crear y agregar el mensaje al panel
+        JLabel texto = new JLabel("Te has defendido de Ryan y tras su paso por el hospital, has logrado encarcelarlo");
+        texto.setForeground(Color.WHITE);
+        texto.setFont(new Font("Verdana", Font.BOLD, 28));
+        fondoPanel.add(texto, gbc);
+
+// Crear y configurar el botón de volver al menú
+        gbc.gridy++; // Siguiente fila
+        JButton botonMenu = new JButton("Volver al menú");
+        botonMenu.setPreferredSize(new Dimension(300, 80));
+        botonMenu.setFont(new Font("Arial", Font.BOLD, 24));
+        botonMenu.addActionListener(_ -> {
+            menu.mostrarMenu(); // Regresar al menú principal
+            frame.dispose(); // Cerrar la ventana actual
+        });
+        fondoPanel.add(botonMenu, gbc);
+
+
+        // Agregar el panel al frame y hacerlo visible
         frame.add(fondoPanel);
-
         frame.setVisible(true);
-
-        //primer texto
-
-        JDialog dialog1 = new JDialog(frame, null, true);
-        dialog1.setSize(750, 500);
-        dialog1.setResizable(false);
-        dialog1.setLayout(new BorderLayout());
-
-        JTextArea mensaje1 = new JTextArea("""
-                Conseguiste defenderte usando la pistola de la víctima. Gracias a la grabación que hiciste, la policía pudo detener a Ryan después de que fuera dado de alta en el hospital por el disparo. \s
-                
-                **¡GENIAL, DETECTIVE, LO CONSEGUISTE!**
-                """);
-        mensaje1.setEditable(false);
-        mensaje1.setLineWrap(true);
-        mensaje1.setWrapStyleWord(true);
-        mensaje1.setFont(new Font("Verdana", Font.PLAIN, 24));
-        dialog1.add(new JScrollPane(mensaje1), BorderLayout.CENTER);
-
-        JButton botonCerrar1 = new JButton("Cerrar");
-        botonCerrar1.addActionListener(_ -> dialog1.dispose());
-        dialog1.add(botonCerrar1, BorderLayout.SOUTH);
-
-        dialog1.setLocationRelativeTo(frame);
-        dialog1.setVisible(true);
     }
 
     public void decides(String nom) {
@@ -1103,6 +1107,8 @@ public class Game {
             };
 
             fondoPanel.setLayout(new BorderLayout());
+            // Usar GridBagLayout para organizar los elementos
+            fondoPanel.setLayout(new GridBagLayout());
             frame.setContentPane(fondoPanel); // Actualizar el panel de contenido del marco
 
             // Crear el diálogo con el mensaje adecuado
@@ -1110,25 +1116,34 @@ public class Game {
             dialog.setSize(750, 500);
             dialog.setResizable(false);
             dialog.setLayout(new BorderLayout());
+            // Configurar los constraints para los elementos
+            GridBagConstraints gbc = new GridBagConstraints();
+            gbc.gridx = 0;
+            gbc.gridy = 0;
+            gbc.insets = new Insets(20, 0, 20, 0);
+            gbc.anchor = GridBagConstraints.CENTER;
 
             // Determinar mensaje según el resultado
             String mensaje = nom.equals("Ryan")
                     ? "Genial Detective, has adivinado quién es el asesino."
                     : "Vaya... No has resuelto el caso, ese no es el asesino.";
-            JTextArea mensajeArea = new JTextArea(mensaje);
-            mensajeArea.setEditable(false);
-            mensajeArea.setLineWrap(true);
-            mensajeArea.setWrapStyleWord(true);
-            mensajeArea.setFont(new Font("Verdana", Font.PLAIN, 24));
-            dialog.add(new JScrollPane(mensajeArea), BorderLayout.CENTER);
+            JLabel mensajeLabel = new JLabel(mensaje);
+            mensajeLabel.setHorizontalAlignment(SwingConstants.CENTER);
+            mensajeLabel.setFont(new Font("Verdana", Font.BOLD, 28));
+            mensajeLabel.setForeground(Color.WHITE);
+            fondoPanel.add(mensajeLabel, gbc);
 
-            // Botón para cerrar el diálogo
-            JButton botonCerrar = new JButton("Cerrar");
-            botonCerrar.addActionListener(_ -> dialog.dispose());
-            dialog.add(botonCerrar, BorderLayout.SOUTH);
+            gbc.gridy++; // Cambiar a la siguiente fila
+            JButton botonMenu = new JButton("Volver al menú");
+            botonMenu.setPreferredSize(new Dimension(300, 80));
+            botonMenu.setFont(new Font("Arial", Font.BOLD, 24));
+            fondoPanel.add(botonMenu, gbc);
 
-            dialog.setLocationRelativeTo(frame); // Centrar el diálogo en el marco
-            dialog.setVisible(true);
+            botonMenu.addActionListener(_ -> {
+                UI menu = new UI();
+                menu.mostrarMenu();
+                frame.dispose(); // Cerrar la ventana actual
+            });
         };
 
         // Mostrar el resultado

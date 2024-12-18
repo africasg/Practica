@@ -792,7 +792,7 @@ public class UI {
                 mostrarPantaExtra(); // La pistola no tiene balas
             } else {
                 game.disparas(pistola); // Realizar disparo
-                mostrarPantalla8(); // Continuar a la pantalla 8
+                game.ganas(); // Continuar a la pantalla 8
             }
             frame.dispose(); // Cerrar la ventana actual
         });
@@ -803,51 +803,6 @@ public class UI {
         });
 
         // Hacer visible el marco principal
-        frame.setVisible(true);
-    }
-
-    public  void mostrarPantalla8(){
-        //te defiendes y has ganado. detienes a ryan
-        JFrame frame= new JFrame("Pantalla 8");
-        frame.setSize(400, 300);
-        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        JPanel panel = new JPanel(){
-            @Override
-            protected void paintComponent(Graphics g) {
-                super.paintComponent(g);
-                // Cargar la imagen de fondo
-                ImageIcon fondo = new ImageIcon(Objects.requireNonNull(getClass().getResource("/HAS_CONSEGUIDO.jpg")));
-                Image img = fondo.getImage();
-                // Dibujar la imagen en el panel
-                g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
-            }
-        };
-        frame.add(panel);
-        Game game= new Game();
-        game.ganas();
-
-
-        GridBagConstraints gbc = new GridBagConstraints();
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        gbc.insets = new Insets(10, 0, 10, 0); // Espaciado entre componentes
-        gbc.anchor = GridBagConstraints.CENTER;
-
-        gbc.gridy++;
-        JButton botonMenu = new JButton("Volver al menu");
-        botonMenu.setPreferredSize(new Dimension(300, 80)); // Tamaño del botón
-        botonMenu.setFont(new Font("Arial", Font.BOLD, 24));
-
-
-        botonMenu.addActionListener(_ -> {
-            mostrarMenu();
-            frame.dispose();
-        });
-
-        panel.add(botonMenu, gbc);
-
         frame.setVisible(true);
     }
 
