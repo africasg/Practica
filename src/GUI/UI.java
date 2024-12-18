@@ -2,8 +2,6 @@ package GUI;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.Objects;
 import Backend.Game;
 import Objetos.Pistola;
@@ -12,7 +10,6 @@ import Objetos.Pistola;
 public class UI {
 
     Pistola pistola= new Pistola("pistola","Arma de la victima",false,true);
-    int disparo;
 
     public void mostrarMenu(){
         JFrame frame = new JFrame("Mistery Murder");
@@ -128,12 +125,9 @@ public class UI {
             frame.dispose();
         });
 
-        botonRyan.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                mostrarPantRyan();
-                frame.dispose();
-            }
+        botonRyan.addActionListener(_ -> {
+            mostrarPantRyan();
+            frame.dispose();
         });
 
         frame.setVisible(true);
@@ -181,12 +175,10 @@ public class UI {
 
         panel.add(boton1);
 
-        boton1.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                mostrarPantalla1();
-                frame.dispose();
-            }
+        boton1.addActionListener(
+                _ -> {
+            mostrarPantalla1();
+            frame.dispose();
         });
 
         frame.setVisible(true);
@@ -235,12 +227,9 @@ public class UI {
 
         panel.add(boton1);
 
-        boton1.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                mostrarPantalla1();
-                frame.dispose();
-            }
+        boton1.addActionListener(_ -> {
+            mostrarPantalla1();
+            frame.dispose();
         });
 
         frame.setVisible(true);
@@ -289,19 +278,14 @@ public class UI {
         botonNo.setFont(new Font("Arial", Font.BOLD, 24));
         panel.add(botonNo);
 
-        botonsi.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                mostrarPantalla2a();
-                frame.dispose();
-            }
+        botonsi.addActionListener(
+                _ -> {
+            mostrarPantalla2a();
+            frame.dispose();
         });
-        botonNo.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                mostrarPantalla2b();
-                frame.dispose();
-            }
+        botonNo.addActionListener(_ -> {
+            mostrarPantalla2b();
+            frame.dispose();
         });
 
         frame.setVisible(true);
@@ -350,21 +334,15 @@ public class UI {
         botonNoCoger.setFont(new Font("Arial", Font.BOLD, 24));
         panel.add(botonNoCoger);
 
-        botonCoger.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                game.cogePistola(pistola);
-                mostrarPantalla3a();
-                frame.dispose();
-            }
+        botonCoger.addActionListener(_ -> {
+            game.cogePistola(pistola);
+            mostrarPantalla3a();
+            frame.dispose();
         });
-        botonNoCoger.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                mostrarPantalla3a();
+        botonNoCoger.addActionListener(_ -> {
+            mostrarPantalla3a();
 
-                frame.dispose();
-            }
+            frame.dispose();
         });
 
         frame.setVisible(true);
@@ -409,12 +387,9 @@ public class UI {
         panel.add(botonMensaje);
 
 
-        botonMensaje.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                mostrarPantalla3b();
-                frame.dispose();
-            }
+        botonMensaje.addActionListener(_ -> {
+            mostrarPantalla3b();
+            frame.dispose();
         });
         frame.setVisible(true);
 
@@ -464,19 +439,13 @@ public class UI {
         botonNoSeguir.setFont(new Font("Arial", Font.BOLD, 24));
         panel.add(botonNoSeguir);
 
-        botonSeguir.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                mostrarPantalla4();
-                frame.dispose();
-            }
+        botonSeguir.addActionListener(_ -> {
+            mostrarPantalla4();
+            frame.dispose();
         });
-        botonNoSeguir.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                mostrarFinal();
-                frame.dispose();
-            }
+        botonNoSeguir.addActionListener(_ -> {
+            mostrarFinal();
+            frame.dispose();
         });
 
         frame.setVisible(true);
@@ -525,19 +494,13 @@ public class UI {
         botonNoVas.setFont(new Font("Arial", Font.BOLD, 24));
         panel.add(botonNoVas);
 
-        botonVas.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                mostrarPantalla4();
-                frame.dispose();
-            }
+        botonVas.addActionListener(_ -> {
+            mostrarPantalla4();
+            frame.dispose();
         });
-        botonNoVas.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                mostrarFinal();
-                frame.dispose();
-            }
+        botonNoVas.addActionListener(_ -> {
+            mostrarFinal();
+            frame.dispose();
         });
 
         frame.setVisible(true);
@@ -588,28 +551,22 @@ public class UI {
         botonNoDisparas.setFont(new Font("Arial", Font.BOLD, 24));
         panel.add(botonNoDisparas);
 
-        botonDisparas.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
+        botonDisparas.addActionListener(_ -> {
 
-                if(!pistola.isDisponible()){
-                    mostrarPantalla5b();
-                } else if (!pistola.tieneBala()) {
-                    mostrarPantalla5b();
-                }else{
-                    game.disparas(pistola);
-                    mostrarPantalla5a();
-                }
-
-                frame.dispose();
-            }
-        });
-        botonNoDisparas.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
+            if(!pistola.isDisponible()){
                 mostrarPantalla5b();
-                frame.dispose();
+            } else if (!pistola.tieneBala()) {
+                mostrarPantalla5b();
+            }else{
+                game.disparas(pistola);
+                mostrarPantalla5a();
             }
+
+            frame.dispose();
+        });
+        botonNoDisparas.addActionListener(_ -> {
+            mostrarPantalla5b();
+            frame.dispose();
         });
 
         frame.setVisible(true);
@@ -659,19 +616,13 @@ public class UI {
         botonLeer.setFont(new Font("Arial", Font.BOLD, 24));
         panel.add(botonLeer);
 
-        botonLeer.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                mostrarPantalla6();
-                frame.dispose();
-            }
+        botonLeer.addActionListener(_ -> {
+            mostrarPantalla6();
+            frame.dispose();
         });
-        botonNoLeer.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                mostrarFinal();
-                frame.dispose();
-            }
+        botonNoLeer.addActionListener(_ -> {
+            mostrarFinal();
+            frame.dispose();
         });
 
         frame.setVisible(true);
@@ -720,12 +671,9 @@ public class UI {
         botonLeer.setFont(new Font("Arial", Font.BOLD, 24));
         panel.add(botonNoLeer);
 
-        botonLeer.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                mostrarPantalla6();
-                frame.dispose();
-            }
+        botonLeer.addActionListener(_ -> {
+            mostrarPantalla6();
+            frame.dispose();
         });
         botonNoLeer.addActionListener(_ -> {
             mostrarFinal();
@@ -773,12 +721,9 @@ public class UI {
 
 
 
-        botonir.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                mostrarPantalla7();
-                frame.dispose();
-            }
+        botonir.addActionListener(_ -> {
+            mostrarPantalla7();
+            frame.dispose();
         });
 
         frame.setVisible(true);
@@ -896,13 +841,9 @@ public class UI {
         botonMenu.setFont(new Font("Arial", Font.BOLD, 24));
 
 
-        botonMenu.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                mostrarMenu();
-                frame.dispose();
-            }
-
+        botonMenu.addActionListener(_ -> {
+            mostrarMenu();
+            frame.dispose();
         });
 
         panel.add(botonMenu, gbc);
@@ -961,28 +902,22 @@ public class UI {
         botonMenu.setFont(new Font("Arial", Font.BOLD, 24));
         panel.add(botonMenu, gbc);
         // Acción del botón "Guardar"
-        button.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                nom[0] = textField.getText().trim(); // Capturar el nombre ingresado
-                if (nom[0].isEmpty()) {
-                    JOptionPane.showMessageDialog(frame, "Por favor, ingresa un nombre.", "Error", JOptionPane.ERROR_MESSAGE);
-                } else {
-                    // Llamar al método del paquete "Game"
-                    Game game = new Game(); // Asegúrate de que esta clase exista y sea accesible
-                    game.decides(nom[0]); // Pasar el nombre ingresado al método correspondiente
-                    frame.dispose(); // Cerrar la ventana actual
-                }
+        button.addActionListener(_ -> {
+            nom[0] = textField.getText().trim(); // Capturar el nombre ingresado
+            if (nom[0].isEmpty()) {
+                JOptionPane.showMessageDialog(frame, "Por favor, ingresa un nombre.", "Error", JOptionPane.ERROR_MESSAGE);
+            } else {
+                // Llamar al método del paquete "Game"
+                Game game = new Game(); // Asegúrate de que esta clase exista y sea accesible
+                game.decides(nom[0]); // Pasar el nombre ingresado al método correspondiente
+                frame.dispose(); // Cerrar la ventana actual
             }
         });
 
         // Acción del botón "Volver al menú"
-        botonMenu.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                mostrarMenu(); // Regresar al menú principal
-                frame.dispose(); // Cerrar la ventana actual
-            }
+        botonMenu.addActionListener(_ -> {
+            mostrarMenu(); // Regresar al menú principal
+            frame.dispose(); // Cerrar la ventana actual
         });
 
         // Mostrar el marco

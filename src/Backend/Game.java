@@ -623,10 +623,10 @@ public class Game {
         dialog1.setLayout(new BorderLayout());
 
         JTextArea mensaje1 = new JTextArea("""
-                "Tras andar un poco más por la casa, escuchas un fuerte golpe fuera.  
-                Corriendo, te acercas a la ventana más cercana al ruido y ves una silueta mirando hacia la casa, pero enseguida sale corriendo hacia el bosque...  
+                "Tras andar un poco más por la casa, escuchas un fuerte golpe fuera. \s
+                Corriendo, te acercas a la ventana más cercana al ruido y ves una silueta mirando hacia la casa, pero enseguida sale corriendo hacia el bosque... \s
                 "Creo que es demasiado arriesgado seguir a la persona de negro, pero esto podría ser una gran pista.
-                """);
+               \s""");
         mensaje1.setEditable(false);
         mensaje1.setLineWrap(true);
         mensaje1.setWrapStyleWord(true);
@@ -733,9 +733,11 @@ public class Game {
         dialog1.setResizable(false);
         dialog1.setLayout(new BorderLayout());
 
-        JTextArea mensaje1 = new JTextArea("\"Después de seguir a la figura, la pierdes de vista al entrar al bosque. Igual esto ha sido una mala idea...\n" +
-                "\n" +
-                "De pronto, escuchas un ruido detrás del arbusto que está justo detrás de ti.\"\n" );
+        JTextArea mensaje1 = new JTextArea("""
+                "Después de seguir a la figura, la pierdes de vista al entrar al bosque. Igual esto ha sido una mala idea...
+                
+                De pronto, escuchas un ruido detrás del arbusto que está justo detrás de ti."
+                """);
         mensaje1.setEditable(false);
         mensaje1.setLineWrap(true);
         mensaje1.setWrapStyleWord(true);
@@ -935,18 +937,18 @@ public class Game {
 
         JTextArea mensaje1 = new JTextArea("""
               "Al final decides hacerle caso a la nota de ayer y vas al lugar, tal y como se te pidió. Esperas no arrepentirte. \s
-                
+               \s
               **???**: Hola, detective Allysson. Me alegro de que haya venido. \s
-                
+               \s
               **Allysson**:Hola... Espera... Tú eres Mike, el amigo de Ryan... No entiendo, ¿qué haces tú aquí? \s
-                
+               \s
               **Mike**: Así es, soy yo, pero no podía mantenerme callado por mucho más tiempo. La verdad es que, en mi declaración a la policía, dije que Ryan estuvo conmigo el día de la muerte de Emily, pero no fue así. \s
                Él me pidió que mintiese por él, pero eso fue antes de saber lo que le había pasado a Emily. Cuando lo supe, la culpabilidad me estaba matando, y es cuando contacté con usted. \s
-                
+               \s
               La verdad es que Ryan es el asesino. Me lo confesó borracho el otro día... Dijo que estaba sin dinero y que, cuando se enteró de la herencia del abuelo de Emily, lo planeó todo. \s
-                
+               \s
              **Allysson**: Mike... Si lo que dices es cierto, esto podría ayudarme a detener a Ryan. Aunque primero tendré que ir a hablar con él y, después de su confesión, delatarle a la policía.
-                """);
+               \s""");
         mensaje1.setEditable(false);
         mensaje1.setLineWrap(true);
         mensaje1.setWrapStyleWord(true);
@@ -997,26 +999,28 @@ public class Game {
 
         JTextArea mensaje1 = new JTextArea("""
                "Ahora que sabes que Ryan es el asesino, tienes que ir con mucho cuidado para que no te pase nada malo a ti tampoco. \s
-                
+               \s
                Cuando llamas a la puerta, Ryan te recibe y te deja pasar. Nos sentamos en su sofá. \s
-                
+               \s
                **Allysson**: Bueno, Ryan, tengo algunas noticias sobre el caso de Emily... \s
-                
+               \s
                **Ryan**: ¿En serio? Menos mal, espero que pronto podáis hacer justicia. ¿Qué es lo nuevo que han descubierto? \s
-                
-               **Allysson**: No lo sé, Ryan, dímelo tú.\n ¿Merecía la pena la vida de Emily por un poco de dinero? \s
-                
+               \s
+               **Allysson**: No lo sé, Ryan, dímelo tú.
+                ¿Merecía la pena la vida de Emily por un poco de dinero? \s
+               \s
                Se hizo el silencio. \s
-                
+               \s
                **Ryan**: No sé de qué me está hablando, pero no me está gustando nada esta conversación. \s
-                
-               **Allysson**: No te hagas el tonto, ya sé que fuiste tú quien mató a Emily.\n Tengo pruebas, Ryan. \s
-                
+               \s
+               **Allysson**: No te hagas el tonto, ya sé que fuiste tú quien mató a Emily.
+                Tengo pruebas, Ryan. \s
+               \s
                **Ryan**: Vaya, Allysson... No me esperaba que lo consiguieses. Me temo que tendré que hacer algo contigo. Lo siento, me caías bien \s
-                
+               \s
                Tras decir eso, te levantas con la grabación de la conversación y te alejas de Ryan. Pero él saca un cuchillo de un cajón y se acerca a ti.
-                
-                """);
+               \s
+               \s""");
         mensaje1.setEditable(false);
         mensaje1.setLineWrap(true);
         mensaje1.setWrapStyleWord(true);
