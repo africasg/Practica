@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class Paneles {
-    public JLabel crearTextoCentrado(String texto, int tamañoFuente, Color color) {
+    public static JLabel crearTextoCentrado(String texto, int tamañoFuente, Color color) {
         JLabel etiqueta = new JLabel(texto);
         etiqueta.setAlignmentX(Component.CENTER_ALIGNMENT);
         etiqueta.setForeground(color);

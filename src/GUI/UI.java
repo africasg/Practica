@@ -5,17 +5,28 @@ import java.util.Objects;
 import Backend.Game;
 import Objetos.Pistola;
 
+
+
 public class UI {
 
     Pistola pistola = new Pistola("pistola", "Arma de la victima", false, true);
 
-   
+    //Crear metodo para hacer el texto bonito
+    private JLabel crearTextoCentrado(String texto, int tamañoFuente, Color color) {
+        JLabel etiqueta = new JLabel(texto);
+        etiqueta.setAlignmentX(Component.CENTER_ALIGNMENT);
+        etiqueta.setForeground(color);
+        etiqueta.setFont(new Font("Verdana", Font.PLAIN, tamañoFuente));
+        return etiqueta;
+    }
+
+
     public void mostrarMenu() {
         JFrame frame = new JFrame("Mistery Murder");
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        //Fondo imagen (Metodo extraído)
+//Fondo imagen (Metodo extraído)
         JPanel panel = getjPanel();
 
         GridBagConstraints gbc = new GridBagConstraints();
@@ -24,13 +35,13 @@ public class UI {
         gbc.insets = new Insets(10, 0, 10, 0); // Espaciado entre componentes
         gbc.anchor = GridBagConstraints.CENTER;
 
-        // Mensaje
+// Mensaje
         JLabel mensaje = new JLabel("Bienvenido al juego detective ¿Qué quieres hacer?");
         mensaje.setForeground(Color.WHITE); // Cambiar el color del texto
         mensaje.setFont(new Font("Verdana", Font.PLAIN, 24));// Estilo de la fuente
         panel.add(mensaje, gbc);
 
-        // Botón Jugar
+// Botón Jugar
         gbc.gridy++;
         JButton btnIniciar = new JButton("Jugar");
         btnIniciar.setPreferredSize(new Dimension(300, 80)); // Tamaño del botón
@@ -41,7 +52,7 @@ public class UI {
         });
         panel.add(btnIniciar, gbc);
 
-        // Botón Salir
+// Botón Salir
         gbc.gridy++;
         JButton btnSalir = new JButton("Salir");
         btnSalir.setPreferredSize(new Dimension(300, 80));
@@ -61,10 +72,10 @@ public class UI {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                // Cargar la imagen de fondo
+// Cargar la imagen de fondo
                 ImageIcon fondo = new ImageIcon(Objects.requireNonNull(getClass().getResource("/PANTALLA_TITULO.jpg")));
                 Image img = fondo.getImage();
-                // Dibujar la imagen en el panel
+// Dibujar la imagen en el panel
                 g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
             }
         };
@@ -73,7 +84,7 @@ public class UI {
     }
 
     public void mostrarPantallaInicial() {
-        //Se muestra el texto con lore, consigues movil(lees conver y tienes codigo)
+//Se muestra el texto con lore, consigues movil(lees conver y tienes codigo)
         Game game = new Game();
         JFrame frame = new JFrame("Pantalla inicial");
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -93,10 +104,10 @@ public class UI {
 
         game.Accion1();
         JLabel textoCentrado = Paneles.crearTextoCentrado(
-                "¿A quién vas a interrogar?",
-                24, // Tamaño de la fuente
-                Color.WHITE // Color del texto
-        );
+                        "¿A quién vas a interrogar?",
+                        24, // Tamaño de la fuente
+                        Color.WHITE // Color del texto
+                );
         panel.setLayout(new GridBagLayout());
         panel.add(textoCentrado);
 
@@ -135,7 +146,7 @@ public class UI {
     }
 
     public void mostrarPantJess() {
-        //Te cuenta su parte de la historia
+//Te cuenta su parte de la historia
         JFrame frame = new JFrame("Pantalla Jess");
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -157,12 +168,12 @@ public class UI {
 
         game.Accion3();
 
-        // Crear y agregar el texto al panel
+// Crear y agregar el texto al panel
         JLabel textoCentrado = Paneles.crearTextoCentrado(
-                "MMMM...Parece que el caso es más complicado de lo que pensabas",
+                "¿A quién vas a interrogar?",
                 24, // Tamaño de la fuente
-                Color.WHITE // Color del texto
-        );
+                Color.WHITE
+        );// Color del texto
         panel.setLayout(new GridBagLayout());
         panel.add(textoCentrado);
 
@@ -190,7 +201,7 @@ public class UI {
     }
 
     public void mostrarPantRyan() {
-        //Te cuenta su parte de la historia
+//Te cuenta su parte de la historia
         JFrame frame = new JFrame("Pantalla Ryan");
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -201,10 +212,10 @@ public class UI {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                // Cargar la imagen de fondo
+// Cargar la imagen de fondo
                 ImageIcon fondo = new ImageIcon(Objects.requireNonNull(getClass().getResource("/interrogatorio.jpg")));
                 Image img = fondo.getImage();
-                // Dibujar la imagen en el panel
+// Dibujar la imagen en el panel
                 g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
             }
         };
@@ -212,12 +223,11 @@ public class UI {
 
         game.Accion4();
 
-
-        JLabel textoCentrado = Paneles.crearTextoCentrado(
-                "MMMM...Parece que el caso es más complicado de lo que pensabas",
-                24, // Tamaño de la fuente
-                Color.WHITE // Color del texto
-        );
+                JLabel textoCentrado = Paneles.crearTextoCentrado(
+                        "MMMM...Parece que el caso es más complicado de lo que pensabas",
+                        24, // Tamaño de la fuente
+                        Color.WHITE // Color del texto
+                );
         panel.setLayout(new GridBagLayout());
         panel.add(textoCentrado);
 
@@ -244,9 +254,9 @@ public class UI {
     }
 
     public void mostrarPantalla1() {
-        //No sabes si volver a la escena del crimen
-        //Vas (mostrarPantalla2a())
-        //No vas(mostrarPantalla2b())
+//No sabes si volver a la escena del crimen
+//Vas (mostrarPantalla2a())
+//No vas(mostrarPantalla2b())
 
         JFrame frame = new JFrame("Pantalla 1");
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -258,10 +268,10 @@ public class UI {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                // Cargar la imagen de fondo
+// Cargar la imagen de fondo
                 ImageIcon fondo = new ImageIcon(Objects.requireNonNull(getClass().getResource("/despacho.jpg")));
                 Image img = fondo.getImage();
-                // Dibujar la imagen en el panel
+// Dibujar la imagen en el panel
                 g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
             }
         };
@@ -269,11 +279,11 @@ public class UI {
 
         game.Accion5();
 
-        JLabel textoCentrado = Paneles.crearTextoCentrado(
-                "¿Volverás a la escena del crimen?",
-                24, // Tamaño de la fuente
-                Color.WHITE // Color del texto
-        );
+                JLabel textoCentrado = Paneles.crearTextoCentrado(
+                        "¿Volverás a la escena del crimen?",
+                        24, // Tamaño de la fuente
+                        Color.WHITE // Color del texto
+                );
         panel.setLayout(new GridBagLayout());
         panel.add(textoCentrado);
 
@@ -301,10 +311,10 @@ public class UI {
     }
 
     public void mostrarPantalla2a() {
-        //encuentras caja fuerte y usas el codigo
-        //coges los papeles
-        //coges pistola (mostrarPantalla3a())
-        //no coges pistola (mostrarPantalla3a())
+//encuentras caja fuerte y usas el codigo
+//coges los papeles
+//coges pistola (mostrarPantalla3a())
+//no coges pistola (mostrarPantalla3a())
 
         JFrame frame = new JFrame("Pantalla 2a");
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -327,12 +337,12 @@ public class UI {
 
         game.Accion6();
 
-        // Crear y agregar el texto al panel
-        JLabel textoCentrado = Paneles.crearTextoCentrado(
-                "¿Que harás?",
-                24, // Tamaño de la fuente
-                Color.WHITE // Color del texto
-        );
+
+                JLabel textoCentrado = Paneles.crearTextoCentrado(
+                        "¿Que harás?",
+                        24, // Tamaño de la fuente
+                        Color.WHITE // Color del texto
+                );
         panel.setLayout(new GridBagLayout());
         panel.add(textoCentrado);
 
@@ -364,8 +374,8 @@ public class UI {
     }
 
     public void mostrarPantalla2b() {
-        //revisas de nuevo el movil encuentras un mail(papeles)
-        //mostrarPantalla3b()
+//revisas de nuevo el movil encuentras un mail(papeles)
+//mostrarPantalla3b()
 
         JFrame frame = new JFrame("Pantalla 2b");
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -375,10 +385,10 @@ public class UI {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                // Cargar la imagen de fondo
+// Cargar la imagen de fondo
                 ImageIcon fondo = new ImageIcon(Objects.requireNonNull(getClass().getResource("/despacho.jpg")));
                 Image img = fondo.getImage();
-                // Dibujar la imagen en el panel
+// Dibujar la imagen en el panel
                 g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
             }
         };
@@ -388,12 +398,12 @@ public class UI {
 
         game.Accion7();
 
-        // Crear y agregar el texto al panel
-        JLabel textoCentrado =Paneles.crearTextoCentrado(
-                "Creo que sí debería abrir el mensaje",
-                24, // Tamaño de la fuente
-                Color.WHITE // Color del texto
-        );
+
+                JLabel textoCentrado =Paneles.crearTextoCentrado(
+                        "Creo que sí debería abrir el mensaje",
+                        24, // Tamaño de la fuente
+                        Color.WHITE // Color del texto
+                );
         panel.setLayout(new GridBagLayout());
         panel.add(textoCentrado);
 
@@ -413,9 +423,9 @@ public class UI {
     }
 
     public void mostrarPantalla3a() {
-        //ves a una persona fuera
-        //la sigues(mostrarPantalla4())
-        //no la sigues(mostrarFinal())
+//ves a una persona fuera
+//la sigues(mostrarPantalla4())
+//no la sigues(mostrarFinal())
 
         JFrame frame = new JFrame("Pantalla 3a");
         frame.setSize(400, 300);
@@ -440,12 +450,12 @@ public class UI {
         game.Accion8();
 
 
-        // Crear y agregar el texto al panel
-        JLabel textoCentrado = Paneles.crearTextoCentrado(
-                "¿Seguirás a la persona?",
-                24, // Tamaño de la fuente
-                Color.WHITE // Color del texto
-        );
+
+                JLabel textoCentrado = Paneles.crearTextoCentrado(
+                        "¿Seguirás a la persona?",
+                        24, // Tamaño de la fuente
+                        Color.WHITE // Color del texto
+                );
         panel.setLayout(new GridBagLayout());
         panel.add(textoCentrado);
 
@@ -472,9 +482,9 @@ public class UI {
     }
 
     public void mostrarPantalla3b() {
-        //te llega un mensaje
-        //vas (mostrarPantalla4())
-        //no vas (mostrarFinal())
+//te llega un mensaje
+//vas (mostrarPantalla4())
+//no vas (mostrarFinal())
 
         JFrame frame = new JFrame("Pantalla 3b");
         frame.setSize(400, 300);
@@ -485,10 +495,10 @@ public class UI {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                // Cargar la imagen de fondo
+// Cargar la imagen de fondo
                 ImageIcon fondo = new ImageIcon(Objects.requireNonNull(getClass().getResource("/despacho.jpg")));
                 Image img = fondo.getImage();
-                // Dibujar la imagen en el panel
+// Dibujar la imagen en el panel
                 g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
             }
         };
@@ -497,11 +507,12 @@ public class UI {
         Game game = new Game();
         game.Accion9();
 
-        JLabel textoCentrado = Paneles.crearTextoCentrado(
-                "¿Le harás caso al mensaje?",
-                24, // Tamaño de la fuente
-                Color.WHITE // Color del texto
-        );
+
+                JLabel textoCentrado = Paneles.crearTextoCentrado(
+                        "¿Le harás caso al mensaje?",
+                        24, // Tamaño de la fuente
+                        Color.WHITE // Color del texto
+                );
         panel.setLayout(new GridBagLayout());
         panel.add(textoCentrado);
 
@@ -529,10 +540,10 @@ public class UI {
     }
 
     public void mostrarPantalla4() {
-        //has ido y ahora escuchas un ruido detras de un arbusto
-        //decides disparar.TE QUEDAS SIN BALA (mostrarPantalla5a())
-        //no disparas. SIGUES CON BALA (mostrarPantalla5b())
-        //y si no hay pistola??????
+//has ido y ahora escuchas un ruido detras de un arbusto
+//decides disparar.TE QUEDAS SIN BALA (mostrarPantalla5a())
+//no disparas. SIGUES CON BALA (mostrarPantalla5b())
+//y si no hay pistola??????
 
 
         JFrame frame = new JFrame("Pantalla 4");
@@ -556,11 +567,12 @@ public class UI {
         Game game = new Game();
         game.Accion10();
 
-        JLabel textoCentrado = Paneles.crearTextoCentrado(
-                "¡OH NO! ¿Que harás?",
-                24, // Tamaño de la fuente
-                Color.WHITE // Color del texto
-        );
+
+                JLabel textoCentrado = Paneles.crearTextoCentrado(
+                        "¡OH NO! ¿Que harás?",
+                        24, // Tamaño de la fuente
+                        Color.WHITE // Color del texto
+                );
         panel.setLayout(new GridBagLayout());
         panel.add(textoCentrado);
 
@@ -597,10 +609,10 @@ public class UI {
     }
 
     public void mostrarPantalla5a() {
-        //era un conejo que sale corriendo por el disparo
-        //encuentras una nota
-        //vas (mostrarPantalla6())
-        //no vas (mostrarfinal())
+//era un conejo que sale corriendo por el disparo
+//encuentras una nota
+//vas (mostrarPantalla6())
+//no vas (mostrarfinal())
 
         JFrame frame = new JFrame("Pantalla 5a");
         frame.setSize(400, 300);
@@ -611,10 +623,10 @@ public class UI {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                // Cargar la imagen de fondo
+// Cargar la imagen de fondo
                 ImageIcon fondo = new ImageIcon(Objects.requireNonNull(getClass().getResource("/BOSQUE.JPG")));
                 Image img = fondo.getImage();
-                // Dibujar la imagen en el panel
+// Dibujar la imagen en el panel
                 g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
             }
         };
@@ -623,11 +635,11 @@ public class UI {
         Game game = new Game();
         game.Accion11();
 
-        JLabel textoCentrado = Paneles.crearTextoCentrado(
-                "¿Que harás con esta información? ¿Volverás aquí mañana?",
-                24, // Tamaño de la fuente
-                Color.WHITE // Color del texto
-        );
+                JLabel textoCentrado = Paneles.crearTextoCentrado(
+                        "¿Que harás con esta información? ¿Volverás aquí mañana?",
+                        24, // Tamaño de la fuente
+                        Color.WHITE // Color del texto
+                );
         panel.setLayout(new GridBagLayout());
         panel.add(textoCentrado);
 
@@ -654,9 +666,9 @@ public class UI {
     }
 
     public void mostrarPantalla5b() {
-        //Sale un conejo del arbusto y ves la nota
-        //vas (mostrarPantalla6())
-        //no vas (mostrarfinal())
+//Sale un conejo del arbusto y ves la nota
+//vas (mostrarPantalla6())
+//no vas (mostrarfinal())
 
         JFrame frame = new JFrame("Pantalla 5b");
         frame.setSize(400, 300);
@@ -667,10 +679,10 @@ public class UI {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                // Cargar la imagen de fondo
+// Cargar la imagen de fondo
                 ImageIcon fondo = new ImageIcon(Objects.requireNonNull(getClass().getResource("/BOSQUE.JPG")));
                 Image img = fondo.getImage();
-                // Dibujar la imagen en el panel
+// Dibujar la imagen en el panel
                 g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
             }
         };
@@ -679,11 +691,12 @@ public class UI {
         Game game = new Game();
         game.Accion12();
 
-        JLabel textoCentrado = Paneles.crearTextoCentrado(
-                "¿Que harás con esta información? ¿Volverás aquí mañana?",
-                24, // Tamaño de la fuente
-                Color.WHITE // Color del texto
-        );
+
+                JLabel textoCentrado = Paneles.crearTextoCentrado(
+                        "¿Que harás con esta información? ¿Volverás aquí mañana?",
+                        24, // Tamaño de la fuente
+                        Color.WHITE // Color del texto
+                );
         panel.setLayout(new GridBagLayout());
         panel.add(textoCentrado);
 
@@ -710,8 +723,8 @@ public class UI {
     }
 
     public void mostrarPantalla6() {
-        //has ido y te encuentras con mike que te cuenta lo que paso
-        //mostrarPantalla7()
+//has ido y te encuentras con mike que te cuenta lo que paso
+//mostrarPantalla7()
 
         JFrame frame = new JFrame("Pantalla 6");
         frame.setSize(400, 300);
@@ -722,10 +735,10 @@ public class UI {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                // Cargar la imagen de fondo
+// Cargar la imagen de fondo
                 ImageIcon fondo = new ImageIcon(Objects.requireNonNull(getClass().getResource("/BOSQUE.JPG")));
                 Image img = fondo.getImage();
-                // Dibujar la imagen en el panel
+// Dibujar la imagen en el panel
                 g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
             }
         };
@@ -734,11 +747,12 @@ public class UI {
         Game game = new Game();
         game.Accion13();
 
-        JLabel textoCentrado = Paneles.crearTextoCentrado(
-                "Esto lo cambia todo, necesito una confesión por su parte.",
-                24, // Tamaño de la fuente
-                Color.WHITE // Color del texto
-        );
+
+                JLabel textoCentrado = Paneles.crearTextoCentrado(
+                        "Esto lo cambia todo, necesito una confesión por su parte.",
+                        24, // Tamaño de la fuente
+                        Color.WHITE // Color del texto
+                );
         panel.setLayout(new GridBagLayout());
         panel.add(textoCentrado);
 
@@ -767,7 +781,7 @@ public class UI {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                // Cargar la imagen de fondo
+// Cargar la imagen de fondo
                 ImageIcon fondo = new ImageIcon(Objects.requireNonNull(getClass().getResource("/casaryan.png")));
                 g.drawImage(fondo.getImage(), 0, 0, getWidth(), getHeight(), this);
             }
@@ -785,12 +799,12 @@ public class UI {
         gbc.anchor = GridBagConstraints.CENTER;
 
 
-        // Etiqueta de texto
+// Etiqueta de texto
         JLabel texto = new JLabel("Estoy en graves problemas, ¿Qué hago?");
         texto.setForeground(Color.WHITE);
         texto.setFont(new Font("Verdana", Font.PLAIN, 24));
 
-        // Botones
+// Botones
         JButton botonDefenderte = new JButton("Defenderte con pistola");
         botonDefenderte.setPreferredSize(new Dimension(300, 80));
         botonDefenderte.setFont(new Font("Arial", Font.BOLD, 24));
@@ -800,7 +814,7 @@ public class UI {
         botonNoDefenderte.setFont(new Font("Arial", Font.BOLD, 24));
 
 
-        // Añadir componentes al panel
+// Añadir componentes al panel
         panel.add(texto, gbc);
 
         gbc.gridy++;
@@ -809,12 +823,12 @@ public class UI {
         gbc.gridy++;
         panel.add(botonNoDefenderte, gbc);
 
-        // Añadir el panel al marco
+// Añadir el panel al marco
         frame.add(panel);
 
-        // Acciones para los botones
+// Acciones para los botones
         botonDefenderte.addActionListener(_ -> {
-            // Verificar condiciones de la pistola
+// Verificar condiciones de la pistola
             if (!pistola.isDisponible()) {
                 mostrarPantaExtra(); // La pistola no está disponible
             } else if (!pistola.tieneBala()) {
@@ -831,7 +845,7 @@ public class UI {
             frame.dispose(); // Cerrar la ventana actual
         });
 
-        // Hacer visible el marco principal
+// Hacer visible el marco principal
         frame.setVisible(true);
     }
 
@@ -839,13 +853,13 @@ public class UI {
     public void mostrarFinal() {
         final String[] nom = {""}; // Arreglo para almacenar el nombre del asesino ingresado
 
-        // Configuración del marco
+// Configuración del marco
         JFrame frame = new JFrame("Pantalla Final");
         frame.setSize(400, 300);
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        // Panel principal con GridBagLayout
+// Panel principal con GridBagLayout
         JPanel panel = new JPanel();
         panel.setLayout(new GridBagLayout());
         panel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
@@ -858,88 +872,88 @@ public class UI {
         gbc.insets = new Insets(10, 0, 10, 0);
         gbc.anchor = GridBagConstraints.CENTER;
 
-        JLabel textoCentrado =Paneles.crearTextoCentrado(
-                "Llegaste al final, ¿quién crees que ha matado a Emily Carter?",
-                24, // Tamaño de la fuente
-                Color.WHITE // Color del texto
-        );
+                JLabel textoCentrado =Paneles.crearTextoCentrado(
+                        "Llegaste al final, ¿quién crees que ha matado a Emily Carter?",
+                        24, // Tamaño de la fuente
+                        Color.WHITE // Color del texto
+                );
         panel.setLayout(new GridBagLayout());
         panel.add(textoCentrado);
 
-        // Campo de texto para ingresar el nombre del sospechoso
+// Campo de texto para ingresar el nombre del sospechoso
         gbc.gridy++; // Mover a la siguiente fila
         JTextField textField = new JTextField();
         textField.setPreferredSize(new Dimension(300, 30)); // Tamaño del campo de texto
         panel.add(textField, gbc);
 
-        // Botón "Guardar"
+// Botón "Guardar"
         gbc.gridy++;
         JButton button = new JButton("Guardar");
         button.setPreferredSize(new Dimension(150, 40));
         button.setFont(new Font("Arial", Font.BOLD, 18));
         panel.add(button, gbc);
 
-        // Botón "Volver al menú"
+// Botón "Volver al menú"
         gbc.gridy++;
         JButton botonMenu = new JButton("Volver al menú");
         botonMenu.setPreferredSize(new Dimension(300, 60));
         botonMenu.setFont(new Font("Arial", Font.BOLD, 24));
         panel.add(botonMenu, gbc);
-        // Acción del botón "Guardar"
+// Acción del botón "Guardar"
         button.addActionListener(_ -> {
             nom[0] = textField.getText().trim(); // Capturar el nombre ingresado
             if (nom[0].isEmpty()) {
                 JOptionPane.showMessageDialog(frame, "Por favor, ingresa un nombre.", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
-                // Llamar al método del paquete "Game"
+// Llamar al método del paquete "Game"
                 Game game = new Game(); // Asegúrate de que esta clase exista y sea accesible
                 game.decides(nom[0]); // Pasar el nombre ingresado al método correspondiente
                 frame.dispose(); // Cerrar la ventana actual
             }
         });
 
-        // Acción del botón "Volver al menú"
+// Acción del botón "Volver al menú"
         botonMenu.addActionListener(e -> {
             mostrarMenu(); // Regresar al menú principal
             frame.dispose(); // Cerrar la ventana actual
         });
 
-        // Mostrar el marco
+// Mostrar el marco
         frame.setVisible(true);
     }
 
 
     public void mostrarPantaExtra() {
-        // No te has podido defender y mueres dejando el caso sin resolver
+// No te has podido defender y mueres dejando el caso sin resolver
         JFrame frame = new JFrame("Pantalla Extra");
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        // Crear un panel personalizado con fondo
+// Crear un panel personalizado con fondo
         JPanel panel = new JPanel(new GridBagLayout()) {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                // Cargar la imagen de fondo
+// Cargar la imagen de fondo
                 ImageIcon fondo = new ImageIcon(Objects.requireNonNull(getClass().getResource("/HAS_MUERTO.jpg")));
                 g.drawImage(fondo.getImage(), 0, 0, getWidth(), getHeight(), this);
             }
         };
 
-        // Configurar el diseño del panel
+// Configurar el diseño del panel
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.insets = new Insets(20, 0, 20, 0);
         gbc.anchor = GridBagConstraints.CENTER;
 
-        // Crear y agregar el mensaje al panel
+// Crear y agregar el mensaje al panel
         JLabel texto = new JLabel("No pudiste defenderte de Ryan y has muerto.(no tenias pistola o no tenias bala)");
         texto.setForeground(Color.WHITE);
         texto.setFont(new Font("Verdana", Font.BOLD, 28));
         panel.add(texto, gbc);
 
-        // Crear y configurar el botón de volver al menú
+// Crear y configurar el botón de volver al menú
         gbc.gridy++;
         JButton botonMenu = new JButton("Volver al menú");
         botonMenu.setPreferredSize(new Dimension(300, 80));
@@ -950,7 +964,7 @@ public class UI {
         });
         panel.add(botonMenu, gbc);
 
-        // Agregar el panel al frame y hacerlo visible
+// Agregar el panel al frame y hacerlo visible
         frame.add(panel);
         frame.setVisible(true);
     }
