@@ -5,21 +5,11 @@ import java.util.Objects;
 import Backend.Game;
 import Objetos.Pistola;
 
-
-
 public class UI {
 
     Pistola pistola = new Pistola("pistola", "Arma de la victima", false, true);
 
-    //Crear metodo para hacer el texto bonito
-    private JLabel crearTextoCentrado(String texto, int tamañoFuente, Color color) {
-        JLabel etiqueta = new JLabel(texto);
-        etiqueta.setAlignmentX(Component.CENTER_ALIGNMENT);
-        etiqueta.setForeground(color);
-        etiqueta.setFont(new Font("Verdana", Font.PLAIN, tamañoFuente));
-        return etiqueta;
-    }
-
+   
     public void mostrarMenu() {
         JFrame frame = new JFrame("Mistery Murder");
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -102,7 +92,7 @@ public class UI {
 
 
         game.Accion1();
-        JLabel textoCentrado = crearTextoCentrado(
+        JLabel textoCentrado = Paneles.crearTextoCentrado(
                 "¿A quién vas a interrogar?",
                 24, // Tamaño de la fuente
                 Color.WHITE // Color del texto
@@ -168,7 +158,7 @@ public class UI {
         game.Accion3();
 
         // Crear y agregar el texto al panel
-        JLabel textoCentrado = crearTextoCentrado(
+        JLabel textoCentrado = Paneles.crearTextoCentrado(
                 "MMMM...Parece que el caso es más complicado de lo que pensabas",
                 24, // Tamaño de la fuente
                 Color.WHITE // Color del texto
@@ -223,7 +213,7 @@ public class UI {
         game.Accion4();
 
 
-        JLabel textoCentrado = crearTextoCentrado(
+        JLabel textoCentrado = Paneles.crearTextoCentrado(
                 "MMMM...Parece que el caso es más complicado de lo que pensabas",
                 24, // Tamaño de la fuente
                 Color.WHITE // Color del texto
@@ -279,7 +269,7 @@ public class UI {
 
         game.Accion5();
 
-        JLabel textoCentrado = crearTextoCentrado(
+        JLabel textoCentrado = Paneles.crearTextoCentrado(
                 "¿Volverás a la escena del crimen?",
                 24, // Tamaño de la fuente
                 Color.WHITE // Color del texto
@@ -338,7 +328,7 @@ public class UI {
         game.Accion6();
 
         // Crear y agregar el texto al panel
-        JLabel textoCentrado = crearTextoCentrado(
+        JLabel textoCentrado = Paneles.crearTextoCentrado(
                 "¿Que harás?",
                 24, // Tamaño de la fuente
                 Color.WHITE // Color del texto
@@ -399,7 +389,7 @@ public class UI {
         game.Accion7();
 
         // Crear y agregar el texto al panel
-        JLabel textoCentrado = crearTextoCentrado(
+        JLabel textoCentrado =Paneles.crearTextoCentrado(
                 "Creo que sí debería abrir el mensaje",
                 24, // Tamaño de la fuente
                 Color.WHITE // Color del texto
@@ -451,7 +441,7 @@ public class UI {
 
 
         // Crear y agregar el texto al panel
-        JLabel textoCentrado = crearTextoCentrado(
+        JLabel textoCentrado = Paneles.crearTextoCentrado(
                 "¿Seguirás a la persona?",
                 24, // Tamaño de la fuente
                 Color.WHITE // Color del texto
@@ -507,7 +497,7 @@ public class UI {
         Game game = new Game();
         game.Accion9();
 
-        JLabel textoCentrado = crearTextoCentrado(
+        JLabel textoCentrado = Paneles.crearTextoCentrado(
                 "¿Le harás caso al mensaje?",
                 24, // Tamaño de la fuente
                 Color.WHITE // Color del texto
@@ -566,7 +556,7 @@ public class UI {
         Game game = new Game();
         game.Accion10();
 
-        JLabel textoCentrado = crearTextoCentrado(
+        JLabel textoCentrado = Paneles.crearTextoCentrado(
                 "¡OH NO! ¿Que harás?",
                 24, // Tamaño de la fuente
                 Color.WHITE // Color del texto
@@ -633,7 +623,7 @@ public class UI {
         Game game = new Game();
         game.Accion11();
 
-        JLabel textoCentrado = crearTextoCentrado(
+        JLabel textoCentrado = Paneles.crearTextoCentrado(
                 "¿Que harás con esta información? ¿Volverás aquí mañana?",
                 24, // Tamaño de la fuente
                 Color.WHITE // Color del texto
@@ -689,7 +679,7 @@ public class UI {
         Game game = new Game();
         game.Accion12();
 
-        JLabel textoCentrado = crearTextoCentrado(
+        JLabel textoCentrado = Paneles.crearTextoCentrado(
                 "¿Que harás con esta información? ¿Volverás aquí mañana?",
                 24, // Tamaño de la fuente
                 Color.WHITE // Color del texto
@@ -744,7 +734,7 @@ public class UI {
         Game game = new Game();
         game.Accion13();
 
-        JLabel textoCentrado = crearTextoCentrado(
+        JLabel textoCentrado = Paneles.crearTextoCentrado(
                 "Esto lo cambia todo, necesito una confesión por su parte.",
                 24, // Tamaño de la fuente
                 Color.WHITE // Color del texto
@@ -868,7 +858,7 @@ public class UI {
         gbc.insets = new Insets(10, 0, 10, 0);
         gbc.anchor = GridBagConstraints.CENTER;
 
-        JLabel textoCentrado = crearTextoCentrado(
+        JLabel textoCentrado =Paneles.crearTextoCentrado(
                 "Llegaste al final, ¿quién crees que ha matado a Emily Carter?",
                 24, // Tamaño de la fuente
                 Color.WHITE // Color del texto
