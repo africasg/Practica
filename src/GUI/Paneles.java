@@ -9,6 +9,8 @@ import java.util.List;
 import java.util.Objects;
 
 public class Paneles {
+
+    // Método para crear un texto centrado
     public static JLabel crearTextoCentrado(String texto, int tamañoFuente, Color color) {
         JLabel etiqueta = new JLabel(texto);
         etiqueta.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -16,6 +18,7 @@ public class Paneles {
         etiqueta.setFont(new Font("Verdana", Font.PLAIN, tamañoFuente));
         return etiqueta;
     }
+
     // Método para crear el fondo del JFrame
     public JPanel crearPanelFondo(String rutaFondo) {
         return new JPanel() {
@@ -82,15 +85,14 @@ public class Paneles {
         return etiqueta;
     }
 
-    // Método auxiliar para crear botones
+
+    // Método general para crear un botón con decoradores opcionales
     public JButton crearBoton(String texto, Font fuente, ActionListener accion) {
         JButton boton = new JButton(texto);
         boton.setPreferredSize(new Dimension(300, 80));
         boton.setFont(fuente);
-        boton.addActionListener(accion);
-        return boton;
+
+       return boton;
+
     }
-
-
-
 }

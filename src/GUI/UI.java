@@ -5,9 +5,6 @@ import java.util.Objects;
 import Backend.Game;
 import Objetos.Pistola;
 
-
-
-
 public class UI {
 
     Pistola pistola = new Pistola("pistola", "Arma de la victima", false, true);
@@ -37,7 +34,7 @@ public class UI {
         JButton btnIniciar = new JButton("Jugar");
         btnIniciar.setPreferredSize(new Dimension(300, 80)); // Tamaño del botón
         btnIniciar.setFont(new Font("Arial", Font.BOLD, 24)); // Texto más grande
-        btnIniciar.addActionListener(_ -> {
+        btnIniciar.addActionListener(e -> {
             frame.dispose(); // Cerrar el menú
             mostrarPantallaInicial();
         });
@@ -48,7 +45,7 @@ public class UI {
         JButton btnSalir = new JButton("Salir");
         btnSalir.setPreferredSize(new Dimension(300, 80));
         btnSalir.setFont(new Font("Arial", Font.BOLD, 24));
-        btnSalir.addActionListener(_ -> {
+        btnSalir.addActionListener(e-> {
             JOptionPane.showMessageDialog(frame, "Gracias por jugar.");
             System.exit(0); // Cerrar el juego
         });
@@ -123,12 +120,12 @@ public class UI {
         botonRyan.setFont(new Font("Arial", Font.BOLD, 24));
         panel.add(botonRyan);
 
-        botonJess.addActionListener(_ -> {
+        botonJess.addActionListener(e -> {
             mostrarPantJess();
             frame.dispose();
         });
 
-        botonRyan.addActionListener(_ -> {
+        botonRyan.addActionListener(e -> {
             mostrarPantRyan();
             frame.dispose();
         });
@@ -182,8 +179,7 @@ public class UI {
 
         panel.add(boton1);
 
-        boton1.addActionListener(
-                _ -> {
+        boton1.addActionListener(e -> {
                     mostrarPantalla1();
                     frame.dispose();
                 });

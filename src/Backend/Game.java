@@ -75,7 +75,7 @@ public class Game {
         dialog2.add(mensaje2, BorderLayout.CENTER);
 
         JButton botonCerrar2 = new JButton("Cerrar");
-        botonCerrar2.addActionListener(_ -> {
+        botonCerrar2.addActionListener(e -> {
             dialog2.dispose();
             frame.dispose();
 
@@ -203,7 +203,7 @@ public class Game {
         dialog2.add(mensaje2, BorderLayout.CENTER);
 
         JButton botonCerrar2 = new JButton("Cerrar");
-        botonCerrar2.addActionListener(_ -> {
+        botonCerrar2.addActionListener(e -> {
             dialog2.dispose();
             frame.dispose();
 
@@ -248,7 +248,7 @@ public class Game {
         dialog2.add(mensaje2, BorderLayout.CENTER);
 
         JButton botonCerrar2 = new JButton("Cerrar");
-        botonCerrar2.addActionListener(_ -> {
+        botonCerrar2.addActionListener(e-> {
             dialog2.dispose();
             frame.dispose();
 
@@ -303,7 +303,7 @@ public class Game {
         dialog2.add(mensaje2, BorderLayout.CENTER);
 
         JButton botonCerrar2 = new JButton("Cerrar");
-        botonCerrar2.addActionListener(_ -> {
+        botonCerrar2.addActionListener(e-> {
             dialog2.dispose();
             frame.dispose();
 
@@ -516,7 +516,7 @@ public class Game {
         JButton botonMenu = new JButton("Volver al menú");
         botonMenu.setPreferredSize(new Dimension(300, 80));
         botonMenu.setFont(new Font("Arial", Font.BOLD, 24));
-        botonMenu.addActionListener(_ -> {
+        botonMenu.addActionListener(e-> {
             menu.mostrarMenu(); // Regresar al menú principal
             frame.dispose(); // Cerrar la ventana actual
         });
