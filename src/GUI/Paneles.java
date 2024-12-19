@@ -10,7 +10,10 @@ import java.util.Objects;
 
 public class Paneles {
 
-    // Método para crear un texto centrado
+    /**
+     * Metodo para crear etiquetas con el texto centrado.
+     * Recibe un texto, el tamaño de la fuente y el color de la letra y devuelve un JLabel.
+     */
     public static JLabel crearTextoCentrado(String texto, int tamañoFuente, Color color) {
         JLabel etiqueta = new JLabel(texto);
         etiqueta.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -19,7 +22,10 @@ public class Paneles {
         return etiqueta;
     }
 
-    // Método para crear el fondo del JFrame
+    /**
+     * Metodo que pinta una imagen en el fondo de un panel.
+     * Recibe una ruta de imagen y devuelve un JPanel.
+     */
     public JPanel crearPanelFondo(String rutaFondo) {
         return new JPanel() {
             @Override
@@ -32,7 +38,10 @@ public class Paneles {
         };
     }
 
-    // Método para crear un JDialog con un mensaje
+    /**
+     * Metodo para crear dialogos a partir de un Frame y un texto.
+     * Devuelve un JDialog.
+     */
     public JDialog crearDialogo(JFrame frame, String texto) {
         JDialog dialogo = new JDialog(frame, null, true);
         dialogo.setSize(750, 500);
@@ -56,7 +65,10 @@ public class Paneles {
         return dialogo;
     }
 
-    // Método para configurar el JFrame
+    /**
+     * Metodo que crea nuevos frames y llama al metodo crearPanelFondo para pintarlos.
+     * Devuelve un JFrame.
+     */
     public JFrame crearFrame(String rutaFondo) {
         JFrame frame = new JFrame();
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -70,13 +82,19 @@ public class Paneles {
         return frame;
     }
 
-    // Método para inicializar el Detective
+    /**
+     * Metodo que crea un objeto de la clase detective.
+     * Recibe un String y una ruta de imagen y devuelve un detective.
+     */
     public Detective crearDetective(String nombre, String rutaImagen) {
         List<Objeto> inventario = new ArrayList<>();
         return new Detective(nombre, rutaImagen, "Detective", inventario, false);
     }
 
-    // Método auxiliar para crear etiquetas
+    /**
+     * Metodo que crea etiquetas.
+     * Recibe un texto, una fuente y un color y devuelve un JLabel.
+     */
     public JLabel crearEtiqueta(String texto, Font fuente, Color color) {
         JLabel etiqueta = new JLabel(texto);
         etiqueta.setHorizontalAlignment(SwingConstants.CENTER);
@@ -86,7 +104,10 @@ public class Paneles {
     }
 
 
-    // Método general para crear un botón con decoradores opcionales
+    /**
+     * Metodo para crear botones.
+     * Recibe un texto, una fuente, un color y un evento y devuelve un JButton.
+     */
     public JButton crearBoton(String texto, Font fuente, ActionListener accion) {
         JButton boton = new JButton(texto);
         boton.setPreferredSize(new Dimension(300, 80));
@@ -95,4 +116,6 @@ public class Paneles {
        return boton;
 
     }
+
+
 }

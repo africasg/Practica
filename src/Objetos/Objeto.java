@@ -14,11 +14,15 @@ public  class Objeto {
     public String getNombreobj() {
         return nombreobj;
     }
-
+    /**
+     * Metodo que comprueba si un objeto esta disponible
+     */
     public boolean isDisponible() {
         return disponible;
     }
-
+    /**
+     * Metodo que cambia la disponibilidad de un objeto del juego
+     */
     public void setDisponible(boolean disponible){
         this.disponible=disponible;
     }

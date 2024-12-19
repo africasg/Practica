@@ -9,9 +9,17 @@ import java.awt.*;
 import java.util.Objects;
 import GUI.Paneles;
 
+/**
+ * Representa el flujo principal del juego, con acciones específicas
+ * que definen eventos y escenas.
+ */
 public class Game {
     Paneles panel= new Paneles();
 
+
+    /**
+     * primera pantalla con la historia del juego
+     */
     public void Accion1(){
         //objeto detective allyson
         Detective Allysson = panel.crearDetective("Allyson", "imagen_Allyson.png");
@@ -21,8 +29,8 @@ public class Game {
 
         //primer texto
 
-        String mensaje1 = """
-                    Bienvenida detective Allysson, necesitamos que investigue este caso de asesinato
+        String mensaje1 = """ 
+                        Bienvenida detective Allysson, necesitamos que investigue este caso de asesinato.\n
                         De momento lo único que sabemos es que la víctima es Emily Carter, una estudiante universitaria. \n
                         La reportaron como desaparecida en el trabajo y al llegar a su casa nos la encontramos así en el baño.
                         La última persona en verla con vida fue su amiga Jessica Smith. Además la víctima tenía un novio llamado Ryan White.
@@ -32,7 +40,9 @@ public class Game {
         panel.crearDialogo(frame, mensaje1);
 
     }
-
+    /**
+     * continua la historia y obtienes objetos
+     */
     public void Accion2(){
         //objeto movil
         Objeto movil= new Objeto("Movil","Movil de la victima.",true);
@@ -88,6 +98,9 @@ public class Game {
 
     }
 
+    /**
+     * texto sobre jessica
+     */
     public void Accion3(){
 
         //FONFO DEL FRAME
@@ -116,7 +129,9 @@ public class Game {
 
 
     }
-
+    /**
+     * texto sobre Ryan
+     */
     public void Accion4(){
 
         //Fondo y frame
@@ -141,7 +156,9 @@ public class Game {
 
 
     }
-
+    /**
+     * continuacion de la historia
+     */
     public void Accion5(){
 
         //Fondo y frame
@@ -154,7 +171,9 @@ public class Game {
         panel.crearDialogo(frame, mensaje1);
 
     }
-
+    /**
+     * continua la historia y obtienes objetos
+     */
     public void Accion6(){
 
         //objeto detective allyson
@@ -214,7 +233,9 @@ public class Game {
         dialog2.setLocationRelativeTo(frame);
         dialog2.setVisible(true);
     }
-
+    /**
+     * metdodo donde coges la pistola
+     */
     public void cogePistola(Pistola pistola){
 
         //objeto detective allyson
@@ -262,7 +283,9 @@ public class Game {
     }
 
 
-
+    /**
+     * Continua la historia y obtienes objetos
+     */
     public void Accion7(){
 
         //imagen papeles
@@ -314,7 +337,9 @@ public class Game {
         dialog2.setLocationRelativeTo(frame);
         dialog2.setVisible(true);
     }
-
+    /**
+     * continua la historia
+     */
     public void Accion8(){
 
         //Fondo y frame
@@ -331,7 +356,9 @@ public class Game {
         panel.crearDialogo(frame, mensaje1);
 
     }
-
+    /**
+     * Continua la historia
+     */
     public void Accion9(){
 
         //Fondo y frame
@@ -352,7 +379,9 @@ public class Game {
         panel.crearDialogo(frame, mensaje1);
 
     }
-
+    /**
+     * Continua la historia
+     */
     public void Accion10(){
 
         //Fondo y frame
@@ -368,7 +397,9 @@ public class Game {
         panel.crearDialogo(frame, mensaje1);
 
     }
-
+    /**
+     * Metodo con el que disparas la pistola si se dan ciertas condiciones
+     */
     public void disparas(Pistola pistola){
         //objeto detective allyson
         Detective Allysson = panel.crearDetective("Allyson", "imagen_Allyson.png");
@@ -391,7 +422,9 @@ public class Game {
 
         }
     }
-
+    /**
+     * Continua la historia
+     */
     public void Accion11(){
 
         //Fondo y frame
@@ -409,7 +442,9 @@ public class Game {
         panel.crearDialogo(frame, mensaje1);
 
     }
-
+    /**
+     * Continua la historia
+     */
     public void Accion12(){
 
         //Fondo y frame
@@ -427,7 +462,9 @@ public class Game {
         panel.crearDialogo(frame, mensaje1);
 
     }
-
+    /**
+     * Continua la historia
+     */
     public void Accion13(){
 
         //Fondo y frame
@@ -453,7 +490,9 @@ public class Game {
         panel.crearDialogo(frame, mensaje1);
 
     }
-
+    /**
+     * Continua la historia
+     */
     public void Accion14(){
 
         //Fondo y frame
@@ -489,7 +528,9 @@ public class Game {
         panel.crearDialogo(frame, mensaje1);
 
     }
-
+    /**
+     * Metodo que indica que has ganado en el caso de que te defiendas de Ryan
+     */
     public void ganas(){
 
         UI menu= new UI();
@@ -525,7 +566,10 @@ public class Game {
         frame.add(fondoPanel);
         frame.setVisible(true);
     }
-
+    /**
+     * Metodo que recibe un nombre y lo comprueba para ver si has acertado o no
+     * Pone un fondo distinto en cada situación.
+     */
     public void decides(String nom) {
         // Crear el marco principal
         JFrame frame = new JFrame("Resultado Final");

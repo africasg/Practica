@@ -5,7 +5,7 @@ import Objetos.Pistola;
 
 import java.util.ArrayList;
 import java.util.List;
-//TODO Añadir imagen
+
 public class Detective extends Personajes {
     private final List<Objeto> inventario;
 
@@ -14,8 +14,10 @@ public class Detective extends Personajes {
         this.inventario = new ArrayList<>();
         boolean tieneBala1 = false;
     }
-    //METODOS:
 
+    /**
+     * Metodo que permite al detective coger los objetos del juego.
+     */
     public void cogerObjeto(Objeto objeto) {
         if (objeto.isDisponible()) {
             inventario.add(objeto);
@@ -24,7 +26,9 @@ public class Detective extends Personajes {
             System.out.println("No puedes coger " + objeto.getNombreobj());
         }
     }
-
+    /**
+     * Metodo que permite coger la pistola.
+     */
     public void cogerPistola(Pistola pistola) {
         if (pistola.isDisponible()) {
             inventario.add(pistola);
@@ -34,7 +38,10 @@ public class Detective extends Personajes {
         }
     }
 
-    //Metodos propios de los objetos
+    /**
+     * Metodo que permite disparar la pistola.
+     * Recibe la pistola como parametro para ver si esta disponible o si ha sido usada ya.
+     */
    public void dispararPistola(Pistola pistola) {
         if (pistola.tieneBala()) {
             System.out.println("Disparas la pistola.");
