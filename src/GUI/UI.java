@@ -9,6 +9,10 @@ public class UI {
 
     Pistola pistola = new Pistola("pistola", "Arma de la victima", false, true);
 
+    /**
+     * mostrarMenu : Este método muestra el Menu siemrpre igual. El fondo de la pantalla de título, texto, y dos botones (jugar y salir)
+     */
+
     public void mostrarMenu() {
         JFrame frame = new JFrame("Mistery Murder");
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -22,24 +26,21 @@ public class UI {
         gbc.gridy = 0;
         gbc.insets = new Insets(10, 0, 10, 0); // Espaciado entre componentes
         gbc.anchor = GridBagConstraints.CENTER;
-
     // Mensaje
         JLabel mensaje = new JLabel("Bienvenido al juego detective ¿Qué quieres hacer?");
         mensaje.setForeground(Color.WHITE); // Cambiar el color del texto
         mensaje.setFont(new Font("Verdana", Font.PLAIN, 24));// Estilo de la fuente
         panel.add(mensaje, gbc);
-
     // Botón Jugar
         gbc.gridy++;
         JButton btnIniciar = new JButton("Jugar");
         btnIniciar.setPreferredSize(new Dimension(300, 80)); // Tamaño del botón
-        btnIniciar.setFont(new Font("Arial", Font.BOLD, 24)); // Texto más grande
+        btnIniciar.setFont(new Font("Arial", Font.BOLD, 24)); // Texto
         btnIniciar.addActionListener(e -> {
             frame.dispose(); // Cerrar el menú
             mostrarPantallaInicial();
         });
         panel.add(btnIniciar, gbc);
-
     // Botón Salir
         gbc.gridy++;
         JButton btnSalir = new JButton("Salir");
@@ -55,6 +56,10 @@ public class UI {
         frame.setVisible(true);
     }
 
+    /**
+     * getJPanel: devuelve el panel con el fondo "pintado" es decir, que aparezca la imagen
+     * @return panel
+     */
     private JPanel getjPanel() {
         JPanel panel = new JPanel() {
             @Override
@@ -71,6 +76,10 @@ public class UI {
         return panel;
     }
 
+    /**
+     *  mostrarPantallaInicial : Esto muestra la primera pantalla, con el fondo de interrogatorio, y el panel que contará la historia
+     *  incluye la accion1, que tras el dialogo, tienes la opcion de escoger hablar con Jess o con Ryan
+     */
     public void mostrarPantallaInicial() {
 //Se muestra el texto con lore, consigues movil(lees conver y tienes codigo)
         Game game = new Game();
@@ -93,12 +102,11 @@ public class UI {
         game.Accion1();
         JLabel textoCentrado = Paneles.crearTextoCentrado(
                         "¿A quién vas a interrogar?",
-                        24, // Tamaño de la fuente
-                        Color.WHITE // Color del texto
+                        24,
+                        Color.WHITE
                 );
         panel.setLayout(new GridBagLayout());
         panel.add(textoCentrado);
-
 
         GridBagConstraints gbc = new GridBagConstraints(); //PARA PONER LOS BOTONES GRANDES Y EN EL MEDIO HAY QUE UTILIZAR EL GRIDY
         gbc.gridx = 0;
@@ -108,7 +116,6 @@ public class UI {
 
         game.Accion2();
         gbc.gridy++;
-
 
         JButton botonJess = new JButton("Hablar con Jess");
         botonJess.setPreferredSize(new Dimension(300, 80));
@@ -133,6 +140,9 @@ public class UI {
         frame.setVisible(true);
     }
 
+    /**
+     *  mostrarPantJess:Tras ser invocado por el anterior metodo, este mostrará la pantalla de Jess (su parte de la historia , con un fondo y tras el diálogo, la opcion de ir a la oficina)
+     */
     public void mostrarPantJess() {
 //Te cuenta su parte de la historia
         JFrame frame = new JFrame("Pantalla Jess");
@@ -156,15 +166,13 @@ public class UI {
 
         game.Accion3();
 
-// Crear y agregar el texto al panel
         JLabel textoCentrado = Paneles.crearTextoCentrado(
-                "¿A quién vas a interrogar?",
-                24, // Tamaño de la fuente
+                "MMMM...Parece que el caso es más complicado de lo que pensabas\"",
+                24,
                 Color.WHITE
         );// Color del texto
         panel.setLayout(new GridBagLayout());
         panel.add(textoCentrado);
-
 
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.gridx = 0;
@@ -187,6 +195,9 @@ public class UI {
         frame.setVisible(true);
     }
 
+    /**
+     * mostrarPantRyan: mismo funcionamiento que el anterior metodo
+     */
     public void mostrarPantRyan() {
 //Te cuenta su parte de la historia
         JFrame frame = new JFrame("Pantalla Ryan");
@@ -212,8 +223,8 @@ public class UI {
 
                 JLabel textoCentrado = Paneles.crearTextoCentrado(
                         "MMMM...Parece que el caso es más complicado de lo que pensabas",
-                        24, // Tamaño de la fuente
-                        Color.WHITE // Color del texto
+                        24,
+                        Color.WHITE
                 );
         panel.setLayout(new GridBagLayout());
         panel.add(textoCentrado);
@@ -239,12 +250,13 @@ public class UI {
 
         frame.setVisible(true);
     }
-
+    /**
+     * mostrarPantalla1: Dialogo a traves de un panel, que nos mostrará la historia, y despues te dará la opcion de o volver a la escena del crimen o no
+     */
     public void mostrarPantalla1() {
 //No sabes si volver a la escena del crimen
 //Vas (mostrarPantalla2a())
 //No vas(mostrarPantalla2b())
-
         JFrame frame = new JFrame("Pantalla 1");
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -255,10 +267,8 @@ public class UI {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-// Cargar la imagen de fondo
                 ImageIcon fondo = new ImageIcon(Objects.requireNonNull(getClass().getResource("/despacho.jpg")));
                 Image img = fondo.getImage();
-// Dibujar la imagen en el panel
                 g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
             }
         };
@@ -268,8 +278,8 @@ public class UI {
 
                 JLabel textoCentrado = Paneles.crearTextoCentrado(
                         "¿Volverás a la escena del crimen?",
-                        24, // Tamaño de la fuente
-                        Color.WHITE // Color del texto
+                        24,
+                        Color.WHITE
                 );
         panel.setLayout(new GridBagLayout());
         panel.add(textoCentrado);
@@ -297,6 +307,9 @@ public class UI {
         frame.setVisible(true);
     }
 
+    /**
+     * mostrarPantalla2a: Mismo funcionamiento que el anterior, dialogo y despues nos da a escoger a través de dos botones dos opciones diferentes
+     */
     public void mostrarPantalla2a() {
 //encuentras caja fuerte y usas el codigo
 //coges los papeles
@@ -313,10 +326,8 @@ public class UI {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-
                 ImageIcon fondo = new ImageIcon(Objects.requireNonNull(getClass().getResource("/casa.jpg")));
                 Image img = fondo.getImage();
-
                 g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
             }
         };
@@ -327,8 +338,8 @@ public class UI {
 
                 JLabel textoCentrado = Paneles.crearTextoCentrado(
                         "¿Que harás?",
-                        24, // Tamaño de la fuente
-                        Color.WHITE // Color del texto
+                        24,
+                        Color.WHITE
                 );
         panel.setLayout(new GridBagLayout());
         panel.add(textoCentrado);
@@ -359,6 +370,9 @@ public class UI {
 
 
     }
+    /**
+     * mostrarPantalla2b: Mismo funcionamiento que el anterior, dialogo y despues nos da la opcion de abrir el mensaje
+     */
 
     public void mostrarPantalla2b() {
 //revisas de nuevo el movil encuentras un mail(papeles)
@@ -372,10 +386,8 @@ public class UI {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-// Cargar la imagen de fondo
                 ImageIcon fondo = new ImageIcon(Objects.requireNonNull(getClass().getResource("/despacho.jpg")));
                 Image img = fondo.getImage();
-// Dibujar la imagen en el panel
                 g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
             }
         };
@@ -388,15 +400,15 @@ public class UI {
 
                 JLabel textoCentrado =Paneles.crearTextoCentrado(
                         "Creo que sí debería abrir el mensaje",
-                        24, // Tamaño de la fuente
-                        Color.WHITE // Color del texto
+                        24,
+                        Color.WHITE
                 );
         panel.setLayout(new GridBagLayout());
         panel.add(textoCentrado);
 
 
         JButton botonMensaje = new JButton("*Abrir mensaje*");
-        botonMensaje.setPreferredSize(new Dimension(300, 80)); // Tamaño del botón boton
+        botonMensaje.setPreferredSize(new Dimension(300, 80));
         botonMensaje.setFont(new Font("Arial", Font.BOLD, 24));
         panel.add(botonMensaje);
 
@@ -408,11 +420,10 @@ public class UI {
         frame.setVisible(true);
 
     }
-
+    /**
+     * mostrarPantalla3a: mismo funcionamiento que las anteriores, nos dará dos opciones, o le sigues o no le sigues (a la persona extraña)
+     */
     public void mostrarPantalla3a() {
-//ves a una persona fuera
-//la sigues(mostrarPantalla4())
-//no la sigues(mostrarFinal())
 
         JFrame frame = new JFrame("Pantalla 3a");
         frame.setSize(400, 300);
@@ -423,10 +434,8 @@ public class UI {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-
                 ImageIcon fondo = new ImageIcon(Objects.requireNonNull(getClass().getResource("/casa.jpg")));
                 Image img = fondo.getImage();
-
                 g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
             }
         };
@@ -440,8 +449,8 @@ public class UI {
 
                 JLabel textoCentrado = Paneles.crearTextoCentrado(
                         "¿Seguirás a la persona?",
-                        24, // Tamaño de la fuente
-                        Color.WHITE // Color del texto
+                        24,
+                        Color.WHITE
                 );
         panel.setLayout(new GridBagLayout());
         panel.add(textoCentrado);
@@ -468,10 +477,11 @@ public class UI {
         frame.setVisible(true);
     }
 
+    /**
+     * mostrarPantalla3b: mismo funcionamiento que las anteriores, nos dará dos opciones, o le haces caso al mensaje o no
+     */
     public void mostrarPantalla3b() {
-//te llega un mensaje
-//vas (mostrarPantalla4())
-//no vas (mostrarFinal())
+
 
         JFrame frame = new JFrame("Pantalla 3b");
         frame.setSize(400, 300);
@@ -482,10 +492,8 @@ public class UI {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-// Cargar la imagen de fondo
                 ImageIcon fondo = new ImageIcon(Objects.requireNonNull(getClass().getResource("/despacho.jpg")));
                 Image img = fondo.getImage();
-// Dibujar la imagen en el panel
                 g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
             }
         };
@@ -493,12 +501,10 @@ public class UI {
 
         Game game = new Game();
         game.Accion9();
-
-
                 JLabel textoCentrado = Paneles.crearTextoCentrado(
                         "¿Le harás caso al mensaje?",
-                        24, // Tamaño de la fuente
-                        Color.WHITE // Color del texto
+                        24,
+                        Color.WHITE
                 );
         panel.setLayout(new GridBagLayout());
         panel.add(textoCentrado);
@@ -525,14 +531,13 @@ public class UI {
 
         frame.setVisible(true);
     }
-
+    /**
+     * mostrarPantalla4: mismo funcionamiento que las anteriores, nos dará dos opciones, o disparar la pistola o no
+     * Además, cabe destacar la lógica de la pistola
+     * si la pistola está disponible y tiene bala, pasaremos a la pantalla 5a
+     * SI NO pasaremos a la siguiente pantalla (la pantalla 5b)
+     */
     public void mostrarPantalla4() {
-//has ido y ahora escuchas un ruido detras de un arbusto
-//decides disparar.TE QUEDAS SIN BALA (mostrarPantalla5a())
-//no disparas. SIGUES CON BALA (mostrarPantalla5b())
-//y si no hay pistola??????
-
-
         JFrame frame = new JFrame("Pantalla 4");
         frame.setSize(400, 300);
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -557,8 +562,8 @@ public class UI {
 
                 JLabel textoCentrado = Paneles.crearTextoCentrado(
                         "¡OH NO! ¿Que harás?",
-                        24, // Tamaño de la fuente
-                        Color.WHITE // Color del texto
+                        24,
+                        Color.WHITE
                 );
         panel.setLayout(new GridBagLayout());
         panel.add(textoCentrado);
@@ -594,13 +599,10 @@ public class UI {
 
         frame.setVisible(true);
     }
-
+    /**
+     * mostrarPantalla5a: mismo funcionamiento que las anteriores, nos dará dos opciones, o vuelves al dia siguiente o no
+     */
     public void mostrarPantalla5a() {
-//era un conejo que sale corriendo por el disparo
-//encuentras una nota
-//vas (mostrarPantalla6())
-//no vas (mostrarfinal())
-
         JFrame frame = new JFrame("Pantalla 5a");
         frame.setSize(400, 300);
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -610,10 +612,8 @@ public class UI {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-// Cargar la imagen de fondo
                 ImageIcon fondo = new ImageIcon(Objects.requireNonNull(getClass().getResource("/BOSQUE.JPG")));
                 Image img = fondo.getImage();
-// Dibujar la imagen en el panel
                 g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
             }
         };
@@ -624,8 +624,8 @@ public class UI {
 
                 JLabel textoCentrado = Paneles.crearTextoCentrado(
                         "¿Que harás con esta información? ¿Volverás aquí mañana?",
-                        24, // Tamaño de la fuente
-                        Color.WHITE // Color del texto
+                        24,
+                        Color.WHITE
                 );
         panel.setLayout(new GridBagLayout());
         panel.add(textoCentrado);
@@ -651,12 +651,10 @@ public class UI {
 
         frame.setVisible(true);
     }
-
+    /**
+     * mostrarPantalla5b: mismo funcionamiento que las anteriores, nos dará dos opciones, o vuelves al dia siguiente o no
+     */
     public void mostrarPantalla5b() {
-//Sale un conejo del arbusto y ves la nota
-//vas (mostrarPantalla6())
-//no vas (mostrarfinal())
-
         JFrame frame = new JFrame("Pantalla 5b");
         frame.setSize(400, 300);
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -666,10 +664,8 @@ public class UI {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-// Cargar la imagen de fondo
                 ImageIcon fondo = new ImageIcon(Objects.requireNonNull(getClass().getResource("/BOSQUE.JPG")));
                 Image img = fondo.getImage();
-// Dibujar la imagen en el panel
                 g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
             }
         };
@@ -681,8 +677,8 @@ public class UI {
 
                 JLabel textoCentrado = Paneles.crearTextoCentrado(
                         "¿Que harás con esta información? ¿Volverás aquí mañana?",
-                        24, // Tamaño de la fuente
-                        Color.WHITE // Color del texto
+                        24,
+                        Color.WHITE
                 );
         panel.setLayout(new GridBagLayout());
         panel.add(textoCentrado);
@@ -708,10 +704,10 @@ public class UI {
 
         frame.setVisible(true);
     }
-
+    /**
+     * mostrarPantalla6: mismo funcionamiento que las anteriores,nos dará la opción de ir a ver a Ryan
+     */
     public void mostrarPantalla6() {
-//has ido y te encuentras con mike que te cuenta lo que paso
-//mostrarPantalla7()
 
         JFrame frame = new JFrame("Pantalla 6");
         frame.setSize(400, 300);
@@ -722,10 +718,8 @@ public class UI {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-// Cargar la imagen de fondo
                 ImageIcon fondo = new ImageIcon(Objects.requireNonNull(getClass().getResource("/BOSQUE.JPG")));
                 Image img = fondo.getImage();
-// Dibujar la imagen en el panel
                 g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
             }
         };
@@ -737,8 +731,8 @@ public class UI {
 
                 JLabel textoCentrado = Paneles.crearTextoCentrado(
                         "Esto lo cambia todo, necesito una confesión por su parte.",
-                        24, // Tamaño de la fuente
-                        Color.WHITE // Color del texto
+                        24,
+                        Color.WHITE
                 );
         panel.setLayout(new GridBagLayout());
         panel.add(textoCentrado);
@@ -756,7 +750,10 @@ public class UI {
 
         frame.setVisible(true);
     }
-
+    /**
+     * mostrarPantalla7:En la casa de Ryan, nos lanzará un dialogo y nos dará dos opciones, defenderte o no.
+     * Tras verificar la lógica de la pistola, nos permitirá atacarle o, de locontrario, falleceremos
+     */
     public void mostrarPantalla7() {
 
         JFrame frame = new JFrame("Pantalla 7");
@@ -768,7 +765,6 @@ public class UI {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-// Cargar la imagen de fondo
                 ImageIcon fondo = new ImageIcon(Objects.requireNonNull(getClass().getResource("/casaryan.png")));
                 g.drawImage(fondo.getImage(), 0, 0, getWidth(), getHeight(), this);
             }
@@ -785,13 +781,10 @@ public class UI {
         gbc.insets = new Insets(20, 0, 20, 0);
         gbc.anchor = GridBagConstraints.CENTER;
 
-
-// Etiqueta de texto
         JLabel texto = new JLabel("Estoy en graves problemas, ¿Qué hago?");
         texto.setForeground(Color.WHITE);
         texto.setFont(new Font("Verdana", Font.PLAIN, 24));
 
-// Botones
         JButton botonDefenderte = new JButton("Defenderte con pistola");
         botonDefenderte.setPreferredSize(new Dimension(300, 80));
         botonDefenderte.setFont(new Font("Arial", Font.BOLD, 24));
@@ -800,8 +793,6 @@ public class UI {
         botonNoDefenderte.setPreferredSize(new Dimension(300, 80));
         botonNoDefenderte.setFont(new Font("Arial", Font.BOLD, 24));
 
-
-// Añadir componentes al panel
         panel.add(texto, gbc);
 
         gbc.gridy++;
@@ -810,12 +801,10 @@ public class UI {
         gbc.gridy++;
         panel.add(botonNoDefenderte, gbc);
 
-// Añadir el panel al marco
         frame.add(panel);
 
-// Acciones para los botones
         botonDefenderte.addActionListener(_ -> {
-// Verificar condiciones de la pistola
+
             if (!pistola.isDisponible()) {
                 mostrarPantaExtra(); // La pistola no está disponible
             } else if (!pistola.tieneBala()) {
@@ -831,21 +820,21 @@ public class UI {
             mostrarPantaExtra(); // Mostrar pantalla extra
             frame.dispose(); // Cerrar la ventana actual
         });
-
 // Hacer visible el marco principal
         frame.setVisible(true);
     }
-
-
+    /**
+     * mostrarFinal:aunque tiene la misma base que las anteriores, esta tambien tiene un campo para el texto, lo que nos permitirá saber si nuestras sospechas eran correctas o no
+     * Aquí también podremos regresar directamente al menu. Cuando guardemos el nombre, si es correcto pasará a la siguiente pantalla.
+     * Si no, saldrá una pantalla avisando de que no lo hemos conseguido
+     */
     public void mostrarFinal() {
         final String[] nom = {""}; // Arreglo para almacenar el nombre del asesino ingresado
-
 // Configuración del marco
         JFrame frame = new JFrame("Pantalla Final");
         frame.setSize(400, 300);
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
 // Panel principal con GridBagLayout
         JPanel panel = new JPanel();
         panel.setLayout(new GridBagLayout());
@@ -861,25 +850,22 @@ public class UI {
 
                 JLabel textoCentrado =Paneles.crearTextoCentrado(
                         "Llegaste al final, ¿quién crees que ha matado a Emily Carter?",
-                        24, // Tamaño de la fuente
-                        Color.WHITE // Color del texto
+                        24,
+                        Color.WHITE
                 );
         panel.setLayout(new GridBagLayout());
         panel.add(textoCentrado);
-
 // Campo de texto para ingresar el nombre del sospechoso
         gbc.gridy++; // Mover a la siguiente fila
         JTextField textField = new JTextField();
         textField.setPreferredSize(new Dimension(300, 30)); // Tamaño del campo de texto
         panel.add(textField, gbc);
-
 // Botón "Guardar"
         gbc.gridy++;
         JButton button = new JButton("Guardar");
         button.setPreferredSize(new Dimension(150, 40));
         button.setFont(new Font("Arial", Font.BOLD, 18));
         panel.add(button, gbc);
-
 // Botón "Volver al menú"
         gbc.gridy++;
         JButton botonMenu = new JButton("Volver al menú");
@@ -899,48 +885,42 @@ public class UI {
             }
         });
 
-// Acción del botón "Volver al menú"
         botonMenu.addActionListener(e -> {
             mostrarMenu(); // Regresar al menú principal
             frame.dispose(); // Cerrar la ventana actual
         });
 
-// Mostrar el marco
         frame.setVisible(true);
     }
 
-
+    /**
+     * mostrarPantallaExtra: Esto es lo que ocurre si hemos muerto tras no poder defendernos de Ryan
+     */
     public void mostrarPantaExtra() {
 // No te has podido defender y mueres dejando el caso sin resolver
         JFrame frame = new JFrame("Pantalla Extra");
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-// Crear un panel personalizado con fondo
         JPanel panel = new JPanel(new GridBagLayout()) {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-// Cargar la imagen de fondo
                 ImageIcon fondo = new ImageIcon(Objects.requireNonNull(getClass().getResource("/HAS_MUERTO.jpg")));
                 g.drawImage(fondo.getImage(), 0, 0, getWidth(), getHeight(), this);
             }
         };
-
-// Configurar el diseño del panel
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.insets = new Insets(20, 0, 20, 0);
         gbc.anchor = GridBagConstraints.CENTER;
 
-// Crear y agregar el mensaje al panel
         JLabel texto = new JLabel("No pudiste defenderte de Ryan y has muerto.(no tenias pistola o no tenias bala)");
         texto.setForeground(Color.WHITE);
         texto.setFont(new Font("Verdana", Font.BOLD, 28));
         panel.add(texto, gbc);
 
-// Crear y configurar el botón de volver al menú
         gbc.gridy++;
         JButton botonMenu = new JButton("Volver al menú");
         botonMenu.setPreferredSize(new Dimension(300, 80));
@@ -951,7 +931,7 @@ public class UI {
         });
         panel.add(botonMenu, gbc);
 
-// Agregar el panel al frame y hacerlo visible
+
         frame.add(panel);
         frame.setVisible(true);
     }

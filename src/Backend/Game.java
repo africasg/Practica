@@ -571,25 +571,25 @@ public class Game {
      * Pone un fondo distinto en cada situación.
      */
     public void decides(String nom) {
+        UI menu = new UI();
+
         // Crear el marco principal
         JFrame frame = new JFrame("Resultado Final");
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         // Crear y configurar el panel de fondo
-
         JPanel fondoPanel = new JPanel() {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                String imagePath = nom.equals("Ryan") ? "/HAS_CONSEGUIDO.jpg" : "/NO_CONSEGUIDO.jpg";
+                String imagePath = nom.equalsIgnoreCase("Ryan") ? "/HAS_CONSEGUIDO.jpg" : "/NO_CONSEGUIDO.jpg";
                 ImageIcon fondo = new ImageIcon(Objects.requireNonNull(getClass().getResource(imagePath)));
                 g.drawImage(fondo.getImage(), 0, 0, getWidth(), getHeight(), this);
             }
         };
-        fondoPanel.setLayout(new GridBagLayout());
-        fondoPanel.setOpaque(false);
-        frame.setContentPane(fondoPanel);
+        fondoPanel.setLayout(new GridBagLayout()); // Usar GridBagLayout para componentes
+        fondoPanel.setOpaque(false); // Asegurar transparencia del panel
 
         // Configuración de restricciones para componentes
         GridBagConstraints gbc = new GridBagConstraints();
@@ -599,30 +599,28 @@ public class Game {
         gbc.anchor = GridBagConstraints.CENTER;
 
         // Crear y agregar el mensaje
-        JLabel mensajeLabel = panel.crearEtiqueta(
-                nom.equals("Ryan")
-                        ? "Genial Detective, has adivinado quién es el asesino."
-                        : "Vaya... No has resuelto el caso, ese no es el asesino.",
-                new Font("Verdana", Font.BOLD, 28),
-                Color.WHITE
+        JLabel mensajeLabel = new JLabel(
+                nom.equalsIgnoreCase("Ryan")
+                        ? "Genial Detective, has adivinado quién es el es."
+                        : "Vaya... No has resuelto el caso, ese no es el asesino."
         );
+        mensajeLabel.setFont(new Font("Verdana", Font.BOLD, 28));
+        mensajeLabel.setForeground(Color.WHITE);
         fondoPanel.add(mensajeLabel, gbc);
 
         // Crear y agregar el botón de volver al menú
         gbc.gridy++;
-        JButton botonMenu = panel.crearBoton(
-                "Volver al menú",
-                new Font("Arial", Font.BOLD, 24),
-                e -> {
-                    UI menu = new UI();
-                    menu.mostrarMenu();
-                    frame.dispose(); // Cerrar la ventana actual
-                }
-        );
+        JButton botonMenu = new JButton("Volver al menú");
+        botonMenu.setFont(new Font("Arial", Font.BOLD, 24));
+        botonMenu.setPreferredSize(new Dimension(300, 80));
+        botonMenu.addActionListener(e -> {
+            menu.mostrarMenu(); // Llamar al menú principal
+            frame.dispose(); // Cerrar la ventana actual
+        });
         fondoPanel.add(botonMenu, gbc);
 
-        // Mostrar el marco principal
+        // Configurar y mostrar el marco principal
+        frame.setContentPane(fondoPanel);
         frame.setVisible(true);
     }
-
 }
