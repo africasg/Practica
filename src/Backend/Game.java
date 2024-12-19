@@ -531,16 +531,25 @@ public class Game {
     /**
      * Metodo que indica que has ganado en el caso de que te defiendas de Ryan
      */
-    public void ganas(){
+    public void ganas() {
+        UI menu = new UI();
 
-        UI menu= new UI();
-        //Fondo y frame
-        JFrame frame = panel.crearFrame("/HAS_CONSEGUIDO.jpg");
+        JFrame frame = new JFrame();
+        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        // Crear panel para los elementos
-        JPanel fondoPanel1 = new JPanel();
-        fondoPanel1.setOpaque(false);
-        fondoPanel1.setLayout(new GridBagLayout());
+        // Crear y configurar el panel de fondo
+        JPanel fondoPanel = new JPanel() {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                ImageIcon fondo = new ImageIcon(Objects.requireNonNull(getClass().getResource("/HAS_CONSEGUIDO.jpg")));
+                g.drawImage(fondo.getImage(), 0, 0, getWidth(), getHeight(), this);
+            }
+        };
+        fondoPanel.setLayout(new GridBagLayout());
+        fondoPanel.setOpaque(false);
+
 
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.gridx = 0;
@@ -548,24 +557,26 @@ public class Game {
         gbc.insets = new Insets(20, 0, 20, 0);
         gbc.anchor = GridBagConstraints.CENTER;
 
+
         JLabel texto = new JLabel("Te has defendido de Ryan y tras su paso por el hospital, has logrado encarcelarlo");
         texto.setForeground(Color.WHITE);
         texto.setFont(new Font("Verdana", Font.BOLD, 28));
-        fondoPanel1.add(texto, gbc);
+        fondoPanel.add(texto, gbc);
 
         gbc.gridy++;
         JButton botonMenu = new JButton("Volver al menú");
         botonMenu.setPreferredSize(new Dimension(300, 80));
         botonMenu.setFont(new Font("Arial", Font.BOLD, 24));
-        botonMenu.addActionListener(e-> {
+        botonMenu.addActionListener(e -> {
             menu.mostrarMenu(); // Regresar al menú principal
             frame.dispose(); // Cerrar la ventana actual
         });
-        fondoPanel1.add(botonMenu, gbc);
+        fondoPanel.add(botonMenu, gbc);
 
-        frame.add(fondoPanel1);
+        frame.setContentPane(fondoPanel);
         frame.setVisible(true);
     }
+
     /**
      * Metodo que recibe un nombre y lo comprueba para ver si has acertado o no
      * Pone un fondo distinto en cada situación.
@@ -601,7 +612,7 @@ public class Game {
         // Crear y agregar el mensaje
         JLabel mensajeLabel = new JLabel(
                 nom.equalsIgnoreCase("Ryan")
-                        ? "Genial Detective, has adivinado quién es el es."
+                        ? "Genial Detective, has adivinado quién es el asesino."
                         : "Vaya... No has resuelto el caso, ese no es el asesino."
         );
         mensajeLabel.setFont(new Font("Verdana", Font.BOLD, 28));
