@@ -538,9 +538,9 @@ public class Game {
         JFrame frame = panel.crearFrame("/HAS_CONSEGUIDO.jpg");
 
         // Crear panel para los elementos
-        JPanel fondoPanel = new JPanel();
-        fondoPanel.setOpaque(false);
-        fondoPanel.setLayout(new GridBagLayout());
+        JPanel fondoPanel1 = new JPanel();
+        fondoPanel1.setOpaque(false);
+        fondoPanel1.setLayout(new GridBagLayout());
 
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.gridx = 0;
@@ -551,7 +551,7 @@ public class Game {
         JLabel texto = new JLabel("Te has defendido de Ryan y tras su paso por el hospital, has logrado encarcelarlo");
         texto.setForeground(Color.WHITE);
         texto.setFont(new Font("Verdana", Font.BOLD, 28));
-        fondoPanel.add(texto, gbc);
+        fondoPanel1.add(texto, gbc);
 
         gbc.gridy++;
         JButton botonMenu = new JButton("Volver al menú");
@@ -561,9 +561,9 @@ public class Game {
             menu.mostrarMenu(); // Regresar al menú principal
             frame.dispose(); // Cerrar la ventana actual
         });
-        fondoPanel.add(botonMenu, gbc);
+        fondoPanel1.add(botonMenu, gbc);
 
-        frame.add(fondoPanel);
+        frame.add(fondoPanel1);
         frame.setVisible(true);
     }
     /**
